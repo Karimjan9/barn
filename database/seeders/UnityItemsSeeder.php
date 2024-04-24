@@ -8,11 +8,7 @@ use Illuminate\Database\Seeder;
 
 class UnityItemsSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+  
     public function run()
     {
        
