@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('items', function (Blueprint $table) {
 
-            $table->dropForeign('items_first_foreign');
+            // $table->dropForeign('items_first_foreign');
 
         });
     }
@@ -29,7 +29,7 @@ return new class extends Migration
     {
         Schema::table('items', function (Blueprint $table) {
             
-            $table->foreign('first')->references('id')->on('type_of_items');
+            // $table->foreign('first')->references('id')->on('type_of_items');
 
         });
     }

@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('command', function (Blueprint $table) {
-            $table->dropColumn('old_job');
-            $table->dropColumn('new_job');
-       
+        Schema::table('items', function (Blueprint $table) {
+            $table->foreign('second')->references('id')->on('second_type_of_items');
         });
     }
 
@@ -27,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('command', function (Blueprint $table) {
-           
+        Schema::table('items', function (Blueprint $table) {
+            $table->dropForeign('items_second_foreign');
         });
     }
 };

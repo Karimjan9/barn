@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->bigInteger('first')->unsigned()->nullable()->default(0)->change();
+            $table->bigInteger('first')->nullable()->default(0)->change();
         });
     }
 

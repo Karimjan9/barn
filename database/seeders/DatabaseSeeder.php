@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CareerSeeder::class,
             DepartementsSeeder::class,
-            OrderSeeder::class,
+           
             RateOfWorkSeeder::class,
             TypeOfWorkSeeder::class,
             AcademicTitleSeeder::class,

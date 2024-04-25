@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
         
         \App\Models\User::create(['login' => "storekeeper",  "full_name" => "storekeeper", "password" => Hash::make('1111'), 'level_id' => 4]);
 
-        \App\Models\User::create(['login' => "kadr",  "full_name" => "kadr", "password" => Hash::make('1111'), 'level_id' => 5]);
+        \App\Models\User::create(['login' => "kadr",  "full_name" => "kadr", "password" => Hash::make('1234'), 'level_id' => 5]);
 
         \App\Models\User::create(['login' => "user",  "full_name" => "user", "password" => Hash::make('1111'), 'level_id' => 6]);
 
