@@ -61,7 +61,7 @@
                                 <label for="full_name" class="form-label">Jihoz nomi</label>
                                 <input type="text" name="name_of_type" value="{{ $second_type->name }}" class="form-control" id="full_name">
                             </div>
-                            {{-- <div class="col-md-8 mb-3">
+                            <div class="col-md-8 mb-3">
                                 <label for="first_type" class="form-label">Jihoz turi</label>
             
                                         <select name="first_type" id='first_type' class="form-select form-select-lg mb-3">
@@ -78,7 +78,7 @@
                                         @endforeach
 
                                         </select> 
-                           </div> --}}
+                           </div>
                             <div class="col-12 mb-3">
                                 <button type="submit" class="btn btn-primary px-5">O'zgartirish</button>
                             </div>

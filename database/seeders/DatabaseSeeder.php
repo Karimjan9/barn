@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
             AcademicDegreeSeeder::class,
             BodilySeeder::class,
             UnityItemsSeeder::class,
-
+            FirstSeeder::class,
+            SecondSeeder::class,
         ]);
     }
 }

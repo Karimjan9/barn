@@ -100,7 +100,7 @@ nav ul li ul li a:hover {
                                 <tr>
                                     <th class="fixed_header2 align-middle">#</th>
                                     <th class="fixed_header2 align-middle">Jihoz  nomi</th>
-                                    {{-- <th class="fixed_header2 align-middle">Jihoz turi</th> --}}
+                                    <th class="fixed_header2 align-middle">Jihoz turi</th>
                                     <th class="fixed_header2 align-middle">O'zgartirish</th>
                                     {{-- <th class="fixed_header2 align-middle">O'chirish</th> --}}
 
@@ -113,7 +113,7 @@ nav ul li ul li a:hover {
                                 <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $second_type->name }}</td>
-                                {{-- <td>{{ $second_type->get_first_type->name_of_type }}</td> --}}
+                                <td>{{ $second_type->get_first_type->name_of_type }}</td>
 
                                 {{-- <td class="d-flex align-items-center">
                                            

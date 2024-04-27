@@ -18,8 +18,8 @@ class SecondTypeOfItemsController extends Controller
 
     public function create()
     {
-        // $first_types=TypeOfItem::all();
-        return view('barn.storekeep.second_types.create',);
+        $first_types=TypeOfItem::all();
+        return view('barn.storekeep.second_types.create',compact('first_types'));
     }
 
 
@@ -28,7 +28,7 @@ class SecondTypeOfItemsController extends Controller
         // dd(1);
         $create=SecondTypeOfItem::create([
             'name'=>$request->name_of_type,
-            // 'type_of_item_id'=>$request->first_type
+            'type_of_item_id'=>$request->first_type
         ]);
         return redirect()->route('storekeeper_role.second_type_item.index');
     }
@@ -43,8 +43,8 @@ class SecondTypeOfItemsController extends Controller
     public function edit($id)
     {
         $second_type=SecondTypeOfItem::where('id',$id)->first();
-        // $first_types=TypeOfItem::all();
-        return view('barn.storekeep.second_types.edit',compact('second_type','id'));
+        $first_types=TypeOfItem::all();
+        return view('barn.storekeep.second_types.edit',compact('second_type','id','first_types'));
     }
 
 

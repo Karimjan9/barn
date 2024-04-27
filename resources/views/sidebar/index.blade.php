@@ -115,14 +115,6 @@
                                 <span class="badge bg-warning text-dark"></span>
                             </a>
                         </li>
-                       
-                        {{-- <li>
-                            <a href="#" onclick="redrect('{{ route('storekeeper_role.type_item_take.index') }}')">
-                                <i class="bx bx-right-arrow-alt"></i>
-                                <div style="margin-right: 5px;">Jihoz turi </div> 
-                                <span class="badge bg-warning text-dark"></span>
-                            </a>
-                        </li> --}}
                         <li>
                             <a href="#" onclick="redrect('{{ route('storekeeper_role.second_type_item.index') }}')">
                                 <i class="bx bx-right-arrow-alt"></i>
@@ -130,6 +122,14 @@
                                 <span class="badge bg-warning text-dark"></span>
                             </a>
                         </li>
+                        <li>
+                            <a href="#" onclick="redrect('{{ route('storekeeper_role.type_item_take.index') }}')">
+                                <i class="bx bx-right-arrow-alt"></i>
+                                <div style="margin-right: 5px;">Jihoz turi </div> 
+                                <span class="badge bg-warning text-dark"></span>
+                            </a>
+                        </li>
+                       
                         <li>
                             <a href="#" onclick="redrect('{{ route('storekeeper_role.item_unity.index') }}')">
                                 <i class="bx bx-right-arrow-alt"></i>

@@ -903,7 +903,6 @@ class ComposerStaticInit47d22f1c68e8ac255b1a8b61e245b652
         'Database\\Seeders\\CareerSeeder' => __DIR__ . '/../..' . '/database/seeders/CareerSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\DepartementsSeeder' => __DIR__ . '/../..' . '/database/seeders/DepartementsSeeder.php',
-        'Database\\Seeders\\OrderSeeder' => __DIR__ . '/../..' . '/database/seeders/OrderSeeder.php',
         'Database\\Seeders\\RateOfWorkSeeder' => __DIR__ . '/../..' . '/database/seeders/RateOfWorkSeeder.php',
         'Database\\Seeders\\TypeOfWorkSeeder' => __DIR__ . '/../..' . '/database/seeders/TypeOfWorkSeeder.php',
         'Database\\Seeders\\UnityItemsSeeder' => __DIR__ . '/../..' . '/database/seeders/UnityItemsSeeder.php',

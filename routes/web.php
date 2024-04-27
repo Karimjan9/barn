@@ -30,8 +30,7 @@ use App\Http\Controllers\Barn\Storekeeper\Provider\ProviderController;
 use App\Http\Controllers\Barn\Storekeeper\TypeOfItems\TypeOFItemsController;
 use App\Http\Controllers\Barn\Storekeeper\TypeOfItems\SecondTypeOfItemsController;
 use App\Http\Controllers\SuperAdmin\EmployeeController as SuperAdminEmployeeController;
-
-
+use App\Models\SecondTypeOfItem;
 
 /*
 |--------------------------------------------------------------------------
@@ -130,6 +129,10 @@ Route::middleware(['auth'])->group(function () {
     Route::group(['middleware' => 'role:kadr'], function() {
         Route::prefix('storekeeper_role')->group(function () {
             Route::name('storekeeper_role.')->group(function () {
+
+                Route::get('/command_input',[ItemsController::class,'command_input'])->name('command_input');
+
+                Route::post('/command_create',[ItemsController::class,'command_create'])->name('command_create');
 
                 Route::resource('/actions', StorekeeperController::class);
 
@@ -261,6 +264,8 @@ Route::middleware(['auth'])->group(function () {
         Route::any('/destroy', [AuthenticatedSessionController::class, 'destroy'])->name('destroy');
 
         Route::get('/clear_cache', function () {
+
+            dd(SecondTypeOfItem::all());
         
             Artisan::call('config:clear');
 

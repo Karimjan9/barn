@@ -12,10 +12,12 @@ class UnityItemsSeeder extends Seeder
     public function run()
     {
        
-        ItemUnityModel::create(['name'=>'комп']);
-        ItemUnityModel::create(['name'=>"дона"]);
-        ItemUnityModel::create(['name'=>"кв/метр"]);
-        ItemUnityModel::create(['name'=>"м2"]);
+        // ItemUnityModel::create(['name'=>'комп']);
+        // ItemUnityModel::create(['name'=>"дона"]);
+        // ItemUnityModel::create(['name'=>"кв/метр"]);
+        // ItemUnityModel::create(['name'=>"м2"]);
+        ItemUnityModel::create(['name'=>"метр"]);
+
 
     }
 }

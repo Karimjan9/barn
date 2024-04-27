@@ -31,10 +31,11 @@ class UserController extends Controller
     public function create()
     {
         $firsts=TypeOfItem::all();
+        $seconds=SecondTypeOfItem::all();
 
-    //   dd($first_types);
+        // dd($firsts);
     
-        return view('barn.users.ask.create',compact('firsts'));
+        return view('barn.users.ask.create',compact('seconds','firsts'));
     }
 
 

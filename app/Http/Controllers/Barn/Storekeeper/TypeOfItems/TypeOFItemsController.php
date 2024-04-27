@@ -52,6 +52,7 @@ class TypeOFItemsController extends Controller
 
     public function destroy($id)
     {
+        // dd(1);
         $type_delete=TypeOfItem::where('id',$id)->delete();
         return redirect()->route('storekeeper_role.type_item_take.index');
     }

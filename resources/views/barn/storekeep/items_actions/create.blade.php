@@ -77,12 +77,12 @@
                                         </select> 
                            </div>
                            
-                           {{-- <div class="col-md-8 mb-3">
+                           <div class="col-md-8 mb-3">
                             <label for="first_type" class="form-label">Jihoz turi</label>
         
                                     <select name="first" id='first_type' class="form-select form-select-lg mb-3">
-
-                                    @foreach ($first_types as $key=>$first_type)
+                                        <option  > </option>
+                                    @foreach ($firsts_types as $key=>$first_type)
                             
                                         
                                     <option value="{{ $first_type->id }}" 
@@ -91,19 +91,19 @@
                                     @endforeach
 
                                     </select> 
-                            </div> --}}
+                            </div>
                        <div class="col-md-8 mb-3">
                         <label for="second_type" class="form-label">Jihoz nomi</label>
     
                                 <select name="second" id='second_type' class="form-select form-select-lg mb-3">
 
-                                    @foreach ($second_types as $key=>$second_type)
+                                    {{-- @foreach ($second_types as $key=>$second_type)
                                     
 
                                     <option value="{{ $second_type->id }}" 
                                         >{{ $second_type->name }} </option>
                                         
-                                    @endforeach
+                                    @endforeach --}}
                                 </select> 
                         </div>
                       
@@ -147,7 +147,7 @@
 @endsection
 
 @section('scripte_include_end_body')
-{{-- <script>
+<script>
     function filter_types() {
         
         $.ajax('{{ route('storekeeper.ajax.get_second_types') }}', {
@@ -181,7 +181,7 @@
     $('#first_type').change( function () {
         filter_types();
     });
-</script> --}}
+</script>
 @endsection
 
 

@@ -74,7 +74,7 @@ textarea {
                                 <label for="first_type" class="form-label"> Jihoz Turi </label>
             
                                         <select name="type" id='type' class="form-select form-select-lg mb-3">
-                                        <option value=""></option>
+                                    
                                         @foreach ($firsts as $key=>$first)
                                 
                                             
@@ -98,7 +98,7 @@ textarea {
                           
                            <div class="col-md-8 mb-3" >
                                 <label for="full_name" class="form-label">Soni</label>
-                                <input type="number" name="number" class="form-control" id="count" >
+                                <input type="number" name="number" min="0" class="form-control" id="count" >
                              </div>
                              <div class="col-md-8 mb-3" >
                                 <label for="full_name" class="form-label">Mulohaza</label>

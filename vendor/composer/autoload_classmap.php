@@ -282,7 +282,6 @@ return array(
     'Database\\Seeders\\CareerSeeder' => $baseDir . '/database/seeders/CareerSeeder.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
     'Database\\Seeders\\DepartementsSeeder' => $baseDir . '/database/seeders/DepartementsSeeder.php',
-    'Database\\Seeders\\OrderSeeder' => $baseDir . '/database/seeders/OrderSeeder.php',
     'Database\\Seeders\\RateOfWorkSeeder' => $baseDir . '/database/seeders/RateOfWorkSeeder.php',
     'Database\\Seeders\\TypeOfWorkSeeder' => $baseDir . '/database/seeders/TypeOfWorkSeeder.php',
     'Database\\Seeders\\UnityItemsSeeder' => $baseDir . '/database/seeders/UnityItemsSeeder.php',
