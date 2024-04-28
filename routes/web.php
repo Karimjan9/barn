@@ -198,6 +198,9 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::post('/search', [SearchController::class, 'search'])->name('search');
 
+                Route::post('/search_item', [SearchController::class, 'search_item'])->name('search');
+
+
                 Route::get('/second_data/{user}', [KadrController::class, 'second_data'])->name(  'change.second_data');
 
                 Route::get('/user_functions/{user}', [KadrController::class, 'data_give'])->name(  'user.data_give');
@@ -265,19 +268,27 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/clear_cache', function () {
 
-            dd(SecondTypeOfItem::all());
-        
-            Artisan::call('config:clear');
+            // dd(Artisan::call('migrate'));
+            Artisan::call('migrate');
 
-            Artisan::call('config:cache');
+            Artisan::call('db:seed --class=UnityItemsSeeder');
+
+            Artisan::call('db:seed --class=FirstSeeder');
+
+            Artisan::call('db:seed --class=SecondSeeder');
+
+
+            // Artisan::call('config:clear');
+
+            // Artisan::call('config:cache');
             
-            Artisan::call('view:clear');
+            // Artisan::call('view:clear');
 
-            Artisan::call('view:cache');
+            // Artisan::call('view:cache');
 
-            Artisan::call('route:clear');
+            // Artisan::call('route:clear');
 
-            Artisan::call('route:cache');
+            // Artisan::call('route:cache');
 
             return redirect()->route('login');
         });

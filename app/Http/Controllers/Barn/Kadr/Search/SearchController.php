@@ -20,5 +20,11 @@ class SearchController extends Controller
      return view('barn.kadr.index',compact('users','search'));
     }
     
+
+    
+ }
+
+ public function search_item(Request $request){
+    dd($request->search);
  }
 }

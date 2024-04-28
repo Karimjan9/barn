@@ -80,7 +80,17 @@ nav ul li ul li a:hover {
         <div class="d-flex align-items-center">
             <h6 class="mb-0 text-uppercase">Hamma jihozlar</h6>
         </div>
-        
+        <br>
+        <div class="position-relative search-bar-box">
+          <form action="{{ route('kadr_role.search') }}" method="post">
+              @csrf
+              <div class="input-group">
+                  <input type="text"  name="search" class="form-control rounded" placeholder="Tovar ismi" aria-label="Search" aria-describedby="search-addon" />
+                  <input type="submit" class="btn btn-outline-primary" value="Qidiruv">
+                </div>
+          </form> 
+       
+      </div>
         <div class="d-flex align-items-center">
             <div class="ms-auto">
                 <a href="{{ route('storekeeper_role.items.create') }}" class="btn btn-primary px-3"><i class="bx bx-plus"></i>Yangi jihoz modeli</a>
