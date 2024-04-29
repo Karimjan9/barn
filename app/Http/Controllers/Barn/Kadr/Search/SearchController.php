@@ -26,6 +26,6 @@ class SearchController extends Controller
 
  public function search_item(Request $request){
    //  dd($request->search);
-    dd(1);
+    dd(2);
  }
 }
