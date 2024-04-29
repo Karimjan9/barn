@@ -27,10 +27,11 @@ class SearchController extends Controller
  }
 
  public function search_item(ItemSearchRequest $request){
+//   dd($request->search);
     $items=ItemsModel::where('name','LIKE',"%$request->search%")->with(['get_bodily','get_second','get_unity'])->paginate(20);;
    //  dd($items);
     
-    // dd($items);
+    
     return view('barn.storekeep.items_actions.index',compact('items'));
  
  }

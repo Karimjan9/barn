@@ -97,8 +97,7 @@ nav ul li ul li a:hover {
         </div>
         <br>
         <div class="position-relative search-bar-box">
-          <form action="{{ route('kadr_role.search.item') }}" method="post">
-              @csrf
+          <form action="{{ route('kadr_role.search.item') }}" method="GET">
               <div class="input-group">
                   <input type="text"  name="search" class="form-control rounded" placeholder="Tovar ismi" aria-label="Search" aria-describedby="search-addon" />
                   <input type="submit" class="btn btn-outline-primary" value="Qidiruv">
