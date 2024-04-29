@@ -269,7 +269,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/clear_cache', function () {
 
             // dd(Artisan::call('migrate'));
-            Artisan::call('migrate');
+            // Artisan::call('migrate');
 
             Artisan::call('db:seed --class=UnityItemsSeeder');
 
