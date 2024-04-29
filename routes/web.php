@@ -198,7 +198,7 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::post('/search', [SearchController::class, 'search'])->name('search');
 
-                Route::post('/search_item', [SearchController::class, 'search_item'])->name('search');
+                Route::post('/search_item', [SearchController::class, 'search_item'])->name('search.item');
 
 
                 Route::get('/second_data/{user}', [KadrController::class, 'second_data'])->name(  'change.second_data');
