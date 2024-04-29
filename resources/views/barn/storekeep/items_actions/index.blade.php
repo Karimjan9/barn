@@ -66,6 +66,15 @@ nav ul li ul li a:hover {
 <div class="page-wrapper">
     <div class="page-content">
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+       
+            <div class="starter-template">
+                @if(session()->has('success'))
+                    <p class="alert alert-success">{{ session()->get('success') }}</p>
+                @endif
+                @if(session()->has('warning'))
+                    <p class="alert alert-warning">{{ session()->get('warning') }}</p>
+                @endif
+            </div>
             <div class="breadcrumb-title pe-3">Jihozlar</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
@@ -76,7 +85,13 @@ nav ul li ul li a:hover {
                 </nav>
             </div>
         </div>
-
+        <div class="col-12">
+          @foreach ($errors->all() as $error)
+              <div class="alert alert-danger border-0 bg-danger alert-dismissible fade show">
+                  <div class="text-white">{{ $error }}</div>
+              </div>
+          @endforeach
+      </div>
         <div class="d-flex align-items-center">
             <h6 class="mb-0 text-uppercase">Hamma jihozlar</h6>
         </div>

@@ -273,9 +273,9 @@ Route::middleware(['auth'])->group(function () {
 
             // Artisan::call('db:seed --class=UnityItemsSeeder');
 
-            Artisan::call('db:seed --class=FirstSeeder');
+            // Artisan::call('db:seed --class=FirstSeeder');
 
-            Artisan::call('db:seed --class=SecondSeeder');
+            // Artisan::call('db:seed --class=SecondSeeder');
 
 
             // Artisan::call('config:clear');
