@@ -101,10 +101,10 @@ class ItemsController extends Controller
         // ProcessPodcast::dispatch($path);
         // dd($rows[0][169]);
         foreach($rows[0] as $key => $value){
-            // dd(($value));
+        //     dd(($value));
             $key=$key+1;
         //      dd($key);
-            if ( $key==170) {
+            if ( $key==171) {
 
                     ItemsModel::create(["name"=>$value[1],"bodily"=>1,"first"=>8,"second"=>24,"unity_id"=>1,"description"=>$value[2]]);
 
