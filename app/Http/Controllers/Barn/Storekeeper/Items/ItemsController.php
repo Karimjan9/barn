@@ -99,176 +99,176 @@ class ItemsController extends Controller
         //               $request->file('file_xlsx'));
                       $rows = Excel::toArray(new ImportItems, $request->file('file_xlsx')); 
         // ProcessPodcast::dispatch($path);
-        // dd($rows[1]);
-        foreach($rows[1] as $key => $value){
+        dd($rows[0][170]);
+        foreach($rows[0] as $key => $value){
             // dd(($value));
             $key=$key+1;
             //  dd($key);
-            if ($key>=4 && $key<=19) {
+            if ($key>=1 && $key<=169) {
 
-                    ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>1,"second"=>1,"unity_id"=>2,"description"=>$value[10]]);
+                    ItemsModel::create(["name"=>$value[1],"bodily"=>1,"first"=>1,"second"=>1,"unity_id"=>2,"description"=>$value[10]]);
 
             }
-            if ($key>=21 && $key<=41) {
-                // dd($value);
+        //     if ($key>=21 && $key<=41) {
+        //         // dd($value);
          
-                    ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>1,"second"=>2,"unity_id"=>2,"description"=>$value[10]]);
+        //             ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>1,"second"=>2,"unity_id"=>2,"description"=>$value[10]]);
 
-            }
+        //     }
 
 
-            if ($key>=43 && $key<=77) {
-                // dd($value);
+        //     if ($key>=43 && $key<=77) {
+        //         // dd($value);
         
-                    ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>1,"second"=>3,"unity_id"=>2,"description"=>$value[10]]);
+        //             ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>1,"second"=>3,"unity_id"=>2,"description"=>$value[10]]);
 
-            }
-            if ($key>=79 && $key<=106) {
+        //     }
+        //     if ($key>=79 && $key<=106) {
      
-                    ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>1,"second"=>4,"unity_id"=>2,"description"=>$value[10]]);
+        //             ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>1,"second"=>4,"unity_id"=>2,"description"=>$value[10]]);
 
      
-            }
-                if ($key>=108 && $key<=119) {
+        //     }
+        //         if ($key>=108 && $key<=119) {
 
-                        ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>1,"second"=>5,"unity_id"=>2,"description"=>$value[10]]);
+        //                 ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>1,"second"=>5,"unity_id"=>2,"description"=>$value[10]]);
     
         
-                // dd($value);
-                }
+        //         // dd($value);
+        //         }
 
-                if ($key>=121 && $key<=125) {
+        //         if ($key>=121 && $key<=125) {
 
-                    ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>1,"second"=>6,"unity_id"=>2,"description"=>$value[10]]);
+        //             ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>1,"second"=>6,"unity_id"=>2,"description"=>$value[10]]);
 
     
-            // dd($value);
-            }
+        //     // dd($value);
+        //     }
 
 
-                if ($key>=127 && $key<=135) {
+        //         if ($key>=127 && $key<=135) {
           
-                        ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>7,"unity_id"=>2,"description"=>$value[10]]);
+        //                 ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>7,"unity_id"=>2,"description"=>$value[10]]);
     
 
-                }
+        //         }
 
-                if ($key>=137 && $key<=146) {
+        //         if ($key>=137 && $key<=146) {
         
-                        ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>8,"unity_id"=>2,"description"=>$value[10]]);
+        //                 ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>8,"unity_id"=>2,"description"=>$value[10]]);
     
                 
-                }
+        //         }
 
-                    if ($key>=148 && $key<=152) {
+        //             if ($key>=148 && $key<=152) {
             
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>9,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>9,"unity_id"=>2,"description"=>$value[10]]);
         
           
                
-                    }
+        //             }
 
-                    if ($key>=154 && $key<=163) {
+        //             if ($key>=154 && $key<=163) {
            
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>10,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>10,"unity_id"=>2,"description"=>$value[10]]);
         
              
                
-                    }
-                    if ($key>=165 && $key<=186) {
+        //             }
+        //             if ($key>=165 && $key<=186) {
                   
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>11,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>11,"unity_id"=>2,"description"=>$value[10]]);
         
                 
                
-                    }
-                    if ($key>=188 && $key<=251) {
+        //             }
+        //             if ($key>=188 && $key<=251) {
                     
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>12,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>12,"unity_id"=>2,"description"=>$value[10]]);
         
                
                
-                    }
-                    if ($key>=253 && $key<=263) {
+        //             }
+        //             if ($key>=253 && $key<=263) {
               
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>13,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>13,"unity_id"=>2,"description"=>$value[10]]);
         
                
                
-                    }
-                    if ($key>=265 && $key<=278) {
+        //             }
+        //             if ($key>=265 && $key<=278) {
                   
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>14,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>14,"unity_id"=>2,"description"=>$value[10]]);
         
              
                
-                    }
+        //             }
 
-                    if ($key>=280 && $key<=312) {
+        //             if ($key>=280 && $key<=312) {
                
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>4,"second"=>16,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>4,"second"=>16,"unity_id"=>2,"description"=>$value[10]]);
         
             
                
-                    }
+        //             }
 
-                    if ($key>=314 && $key<=320) {
+        //             if ($key>=314 && $key<=320) {
                      
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>15,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>15,"unity_id"=>2,"description"=>$value[10]]);
         
               
                
-                    }
+        //             }
 
-                    if ($key>=322 && $key<=366) {
+        //             if ($key>=322 && $key<=366) {
                   
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>3,"second"=>17,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>3,"second"=>17,"unity_id"=>2,"description"=>$value[10]]);
         
                 
                
-                    }
+        //             }
 
            
-                    if ($key>=368 && $key<=397) {
+        //             if ($key>=368 && $key<=397) {
          
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>17,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>2,"second"=>17,"unity_id"=>2,"description"=>$value[10]]);
         
            
                
-                    }
+        //             }
 
                    
 
-                    if ($key>=399 && $key<=420) {
+        //             if ($key>=399 && $key<=420) {
                   
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>5,"second"=>19,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>5,"second"=>19,"unity_id"=>2,"description"=>$value[10]]);
         
                  
                
-                    }
+        //             }
                     
 
-                    if ($key>=422 && $key<=431) {
+        //             if ($key>=422 && $key<=431) {
                      
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>5,"second"=>20,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>5,"second"=>20,"unity_id"=>2,"description"=>$value[10]]);
         
                
-                    }
+        //             }
 
-                    if ($key>=433 && $key<=444) {
+        //             if ($key>=433 && $key<=444) {
                   
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>5,"second"=>21,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>5,"second"=>21,"unity_id"=>2,"description"=>$value[10]]);
         
                 
                
-                    }
+        //             }
 
-                    if ($key>=464 && $key<=474) {
+        //             if ($key>=464 && $key<=474) {
                     
-                            ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>7,"second"=>22,"unity_id"=>2,"description"=>$value[10]]);
+        //                     ItemsModel::create(["name"=>$value[10],"bodily"=>1,"first"=>7,"second"=>22,"unity_id"=>2,"description"=>$value[10]]);
         
                
-                    }
+        //             }
                   
 
 

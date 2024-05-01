@@ -107,7 +107,8 @@ class RektorController extends Controller
             $sum=$sum+$value->cost_of_per*$value->count_of_item;
         }
         $taked=GiveItemModel::where('status',2)->get()->count();
-        $dis_taked=GiveItemModel::get()->count();
+        $dis_taked=GiveItemModel::get()->count()==0 ? 1:GiveItemModel::get()->count();
+        
         $protsent=(int)(($taked/$dis_taked)*100);
         $worker=User::where('level_id',6)->get()->count();
         $table_prixods=PrixodModel::with('get_item_name','get_cargo_name')->orderBy('id', 'DESC')->get()->unique('item_id');
