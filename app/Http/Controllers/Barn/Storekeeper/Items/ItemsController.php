@@ -99,13 +99,13 @@ class ItemsController extends Controller
         //               $request->file('file_xlsx'));
                       $rows = Excel::toArray(new ImportItems, $request->file('file_xlsx')); 
         // ProcessPodcast::dispatch($path);
-        // dd($rows[0][169]);
+        // dd($rows[0][277]);
         foreach($rows[0] as $key => $value){
-        //     dd(($value));
+           
             $key=$key+1;
         //      dd($key);
-            if ( $key==171) {
-
+            if ( $key>=175 && $key<=278) {
+                // dd(($value));
                     ItemsModel::create(["name"=>$value[1],"bodily"=>1,"first"=>8,"second"=>24,"unity_id"=>1,"description"=>$value[2]]);
 
             }
