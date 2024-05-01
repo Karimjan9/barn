@@ -104,9 +104,9 @@ class ItemsController extends Controller
             // dd(($value));
             $key=$key+1;
         //      dd($key);
-            if ( $key==169) {
+            if ( $key==170) {
 
-                    ItemsModel::create(["name"=>$value[1],"bodily"=>1,"first"=>8,"second"=>24,"unity_id"=>2,"description"=>$value[2]]);
+                    ItemsModel::create(["name"=>$value[1],"bodily"=>1,"first"=>8,"second"=>24,"unity_id"=>1,"description"=>$value[2]]);
 
             }
         //     if ($key>=21 && $key<=41) {
