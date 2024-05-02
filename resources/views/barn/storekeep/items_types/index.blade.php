@@ -101,7 +101,7 @@ nav ul li ul li a:hover {
                                     <th class="fixed_header2 align-middle">#</th>
                                     <th class="fixed_header2 align-middle">Jihoz turi nomi</th>
                                     <th class="fixed_header2 align-middle">O'zgartirish</th>
-                                    <th class="fixed_header2 align-middle">O'chirish</th>
+                                    {{-- <th class="fixed_header2 align-middle">O'chirish</th> --}}
 
 
                                 </tr>
@@ -121,13 +121,13 @@ nav ul li ul li a:hover {
                                             </form>
                                         </td> --}}
                                   <td> <a href="{{ route('storekeeper_role.type_item_take.edit',['type_item_take'=>$type->id]) }}" class="btn btn-sm btn-warning text-white me-2"></i>O'zgaritish</a></td>
-                                  <td>
+                                  {{-- <td>
                                     <form action="{{ route('storekeeper_role.type_item_take.destroy',['type_item_take'=>$type->id]) }}" method="post">
                                       @csrf
                                       @method("DELETE")
                                       <input class="btn btn-sm btn-danger confirm-button"  type="submit" value="O'chirish" onclick="return confirm('Are you sure to delete this ?');" >
                                   </form>
-                                  </td>
+                                  </td> --}}
                                 </tr>
                             @endforeach
                       
