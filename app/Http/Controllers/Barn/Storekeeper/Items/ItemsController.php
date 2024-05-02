@@ -59,7 +59,9 @@ class ItemsController extends Controller
 
         $unitys=ItemUnityModel::all();
 
-        return view('barn.storekeep.items_actions.edit',compact('bodilys','item','second_types','unitys'));
+        $firsts_types=TypeOfItem::all();
+
+        return view('barn.storekeep.items_actions.edit',compact('bodilys','item','second_types','unitys','firsts_types'));
     }
 
    
@@ -99,14 +101,13 @@ class ItemsController extends Controller
         //               $request->file('file_xlsx'));
                       $rows = Excel::toArray(new ImportItems, $request->file('file_xlsx')); 
         // ProcessPodcast::dispatch($path);
-        // dd($rows[0][277]);
+        // dd($rows[0][17]);
         foreach($rows[0] as $key => $value){
            
             $key=$key+1;
-        //      dd($key);
-            if ( $key>=175 && $key<=278) {
+            if ( $key>=18 && $key<=40) {
                 // dd(($value));
-                    ItemsModel::create(["name"=>$value[1],"bodily"=>1,"first"=>8,"second"=>24,"unity_id"=>1,"description"=>$value[2]]);
+                    ItemsModel::create(["name"=>$value[3],"bodily"=>1,"first"=>7,"second"=>23,"unity_id"=>2,"description"=>$value[3]]);
 
             }
         //     if ($key>=21 && $key<=41) {

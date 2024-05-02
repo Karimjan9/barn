@@ -81,12 +81,12 @@
                                             </select> 
                             </div>
                             
-                            {{-- <div class="col-md-8 mb-3">
+                            <div class="col-md-8 mb-3">
                                 <label for="first_type" class="form-label">Jihoz turi</label>
             
                                         <select name="first" id='first_type' class="form-select form-select-lg mb-3">
 
-                                        @foreach ($first_types as $key=>$first_type)
+                                        @foreach ($firsts_types as $key=>$first_type)
                                 
                                             
                                         <option value="{{ $first_type->id }}" 
@@ -98,7 +98,7 @@
                                         @endforeach
 
                                         </select> 
-                        </div> --}}
+                        </div>
                         <div class="col-md-8 mb-3">
                             {{-- <input type="number"     id="" value="0.0"> --}}
                             <label for="second_type" class="form-label">Jihoz nomi</label>

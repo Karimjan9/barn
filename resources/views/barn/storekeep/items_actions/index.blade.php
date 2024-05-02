@@ -79,7 +79,7 @@ nav ul li ul li a:hover {
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{ route('storekeeper_role.actions.index') }}"><i class="bx bx-home-alt"></i></a>
+                        <li class="breadcrumb-item"><a href="{{ route('storekeeper_role.items.index') }}"><i class="bx bx-home-alt"></i></a>
                         </li>
                     </ol>
                 </nav>
