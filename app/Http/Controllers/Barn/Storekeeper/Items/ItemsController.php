@@ -105,9 +105,9 @@ class ItemsController extends Controller
         foreach($rows[0] as $key => $value){
            
             $key=$key+1;
-            if ( $key>=6 && $key<=84) {
+            if ( $key>=18 && $key<=98) {
                 // dd(($value));
-                    ItemsModel::create(["name"=>$value[2],"bodily"=>1,"first"=>7,"second"=>23,"unity_id"=>2,"description"=>$value[2]]);
+                    ItemsModel::create(["name"=>$value[3],"bodily"=>1,"first"=>7,"second"=>23,"unity_id"=>2,"description"=>$value[3]]);
 
             }
         //     if ($key>=21 && $key<=41) {
