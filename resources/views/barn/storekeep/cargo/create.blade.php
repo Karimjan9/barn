@@ -67,6 +67,16 @@
                                     <input type="date" name="come_date" class="form-control" id="date">
                                
                             </div>
+                            <div class="col-md-8">
+                                <label for="level_id" class="form-label">Jo'natuvchi</label>
+                                <select class="form-select mb-3" id="level_id" name="sender_id" aria-label="Default select example">
+                                    <option value="">null</option>
+                                    @foreach ($providers as $provider)
+                                        <option value="{{ $provider->id }}">{{($provider->name ) }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                           
                            {{-- @dd($bodilys) --}}
        
                         <div class="col-md-12">

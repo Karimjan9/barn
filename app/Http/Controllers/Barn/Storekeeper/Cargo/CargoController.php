@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Barn\Storekeeper\Cargo;
 
 use App\Http\Controllers\Controller;
 use App\Models\CargoModel;
+use App\Models\ProviderModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
@@ -12,20 +13,24 @@ class CargoController extends Controller
    
     public function index()
     {
-        $cargos=CargoModel::paginate(10);
+        $cargos=CargoModel::with('get_provider')->orderBy('created_at', 'DESC')->paginate(10);
+        // dd($cargos);
         return view('barn.storekeep.cargo.index',compact('cargos'));
     }
 
     public function create()
     {
-        return  view('barn.storekeep.cargo.create');
+
+        $providers=ProviderModel::all();
+        // dd($providers);
+        return  view('barn.storekeep.cargo.create',compact('providers'));
     }
 
     
     public function store(Request $request)
     {
 
-        $time=Carbon::now();
+        // $time=Carbon::now();
         $data=$request->all();
         // $data['name']=$data['name'].'_'."$time->day".'_'."$time->month".'_'."$time->year";
         // dd($data['name']);

@@ -49,9 +49,18 @@
             <div class="col-xl-10 mx-auto">
                 <h6 class="mb-0 text-uppercase">Jo'natma</h6>
                 <hr>
-                <div class="card border-top border-0 border-4 border-primary">
+                <div class="card border-top border-0 border-4 border-primary ">
                     <div class="card-body p-5">
-
+                        <div class="col-md-8 mb-3 ">
+                            <form action="{{ route('storekeeper_role.prixod_search_items') }}" method="GET">
+                                <div class="input-group">
+                                    <input type="text"  name="search" class="form-control rounded " placeholder="Tovar ismi" aria-label="Search" aria-describedby="search-addon" />
+                                    <input type="submit" class="btn btn-outline-primary" value="Qidiruv">
+                                  </div>
+                            </form> 
+                         
+                        </div>
+                        <br>
                         <form class="row g-3" method="post" action="{{ route('storekeeper_role.prixod.store')}}">
                             @csrf
                           

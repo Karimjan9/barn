@@ -71,7 +71,7 @@
                                     <label for="first_type" class="form-label">Cargo</label>
                 
                                             <select name="cargo" id='cargo' class="form-select form-select-lg mb-3">
-        
+                                               
                                             @foreach ($cargos as $key=>$cargo)
                                     
                                                 
@@ -84,9 +84,10 @@
                             </div>
                                 <div class="col-md-8 mb-3">
                                     <label for="first_type" class="form-label">Yetkazuvchi</label>
-                
+                                    
                                             <select name="curer" id='curer' class="form-select form-select-lg mb-3">
-        
+                                                <option value="" 
+                                                                     >Null</option>
                                             @foreach ($curers as $key=>$curer)
                                     
                                                 

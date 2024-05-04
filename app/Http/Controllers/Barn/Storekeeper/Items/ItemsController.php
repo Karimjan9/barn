@@ -18,7 +18,7 @@ class ItemsController extends Controller
     public function index()
     {
         
-        $items=ItemsModel::with(['get_bodily','get_second','get_unity'])->paginate(20);
+        $items=ItemsModel::with(['get_bodily','get_second','get_unity'])->paginate(40);
         // dd($items);
         return view('barn.storekeep.items_actions.index',compact('items'));
     }
@@ -78,7 +78,9 @@ class ItemsController extends Controller
    
     public function destroy($id)
     {
-        
+        $item=ItemsModel::findOrFail($id)->delete();
+        return to_route('storekeeper_role.items.index');
+
     }
 
     public function get_second_types(Request $request){
@@ -99,13 +101,13 @@ class ItemsController extends Controller
         $path = storage_path('app').'/'.$path1;
         // $excel=Excel::import(new ImportItems, 
         //               $request->file('file_xlsx'));
-                      $rows = Excel::toArray(new ImportItems, $request->file('file_xlsx')); 
+        $rows = Excel::toArray(new ImportItems, $request->file('file_xlsx')); 
         // ProcessPodcast::dispatch($path);
         // dd($rows[0]);
         foreach($rows[0] as $key => $value){
            
             $key=$key+1;
-            if ( $key>=18 && $key<=98) {
+            if ( $key>=1 && $key<=98) {
                 // dd(($value));
                     ItemsModel::create(["name"=>$value[3],"bodily"=>1,"first"=>7,"second"=>23,"unity_id"=>2,"description"=>$value[3]]);
 

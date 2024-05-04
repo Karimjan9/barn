@@ -160,6 +160,7 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::post('/store_all',[PrixodController::class,'store_all'])->name('store_all');
 
+                Route::get('/prixod_search_items',[PrixodController::class,'prixod_search_items'])->name('prixod_search_items');
 
             }); 
         });

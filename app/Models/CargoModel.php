@@ -21,4 +21,9 @@ class CargoModel extends Model
     protected $casts = [
         'come_date' => 'datetime'
     ];
+
+
+    public function get_provider(){
+        return $this->hasOne(ProviderModel::class, 'id', 'sender_id');   
+    }
 }

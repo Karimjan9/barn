@@ -104,6 +104,7 @@ nav ul li ul li a:hover {
                                    
                                     <th class="fixed_header2 align-middle">Cargo sanasi</th>
                                     
+                                    <th class="fixed_header2 align-middle">Jo'natuvchi</th>
                                    
                                     <th class="fixed_header2 align-middle" >Mulohaza</th>
 
@@ -120,8 +121,13 @@ nav ul li ul li a:hover {
                                 <tr>
                             
                                 <td>{{ $key+1 }}</td>
+
                                 <td>{{ $cargo->name }}</td>
+
                                 <td>{{ $cargo->come_date!=null ? $cargo->come_date->format('d-m-Y') :"date" }}</td>
+
+                                <td>{{ $cargo->sender_id ?? "Berilmagan" }}</td>
+
                                 <td >{{ $cargo->description}}</td>
 
                                 {{-- <td class="d-flex align-items-center">

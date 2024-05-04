@@ -87,7 +87,7 @@
                             <td>{{ $cargo->name }}</td>
                             <td>{{ $all_inf[$key][0] }}</td>
                             <td>{{ $all_inf[$key][1]}}</td>
-                            <td>{{ $all_inf[$key][2]->name}}</td>
+                            <td>{{ $all_inf[$key][2]->name ?? "kiritilmagan"}}</td>
                             <td>{{ $cargo->description}}</td>
                                 
 

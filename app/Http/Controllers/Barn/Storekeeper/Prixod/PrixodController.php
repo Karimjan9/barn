@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Barn\Storekeeper\Prixod;
 
+use App\Http\Controllers\Barn\Storekeeper\Items\ItemsController;
 use App\Models\CargoModel;
 use App\Models\ItemsModel;
 use App\Models\TypeOfItem;
@@ -20,18 +21,19 @@ class PrixodController extends Controller
 
     public function index()
     {
-        $cargos=CargoModel::paginate(10);
+        $cargos=CargoModel::orderBy('id', 'DESC')->paginate(10);
             // dd($cargos);
             $all_inf=[];
             foreach ($cargos as $key => $cargo) {
                 $prixod_num=0;
                 $prixod_cost=0;
                 $inf=[];
+                $prixod_curer=[];
                 $prixods=PrixodModel::where('cargo_id',$cargo->id)->get();
                 foreach ($prixods as $key => $prixod) {
                       $prixod_num+=$prixod->count_of_item; 
                       $prixod_cost+=$prixod->cost_of_per;
-                      $prixod_curer=ProviderModel::where('id',$prixod->curer_id)->first();
+                      $prixod_curer=ProviderModel::where('id',$prixod->curer_id)->first() ?? [];
                  
                 }
                 $inf[]=$prixod_cost;
@@ -40,9 +42,12 @@ class PrixodController extends Controller
 
                 $all_inf[]=$inf;
             }
+
             // $prixods=PrixodModel::where('cargo_id',2)->get();
+
             // dd($all_inf);
-            // dd($prixods);
+
+            // dd($cargos);
         return view('barn.storekeep.prixod.index',compact('cargos','all_inf'));
     }
 
@@ -74,9 +79,18 @@ class PrixodController extends Controller
     $cargos=CargoModel::all();
     return view('barn.storekeep.prixod.index_for_prixod',compact('prixods','curers','lists','cargos'));
    }
+
+   public function prixod_search_items(Request $request){
+        // dd($request->search);
+        $items=ItemsModel::where('name','LIKE',"%$request->search%")->get();
+        dd($items);
+   }
+
+
     public function create($prixods=null)
     {
         // $tovars=SecondTypeOfItem::all();
+        // dd(1);
         $types=TypeOfItem::all();
       
         
