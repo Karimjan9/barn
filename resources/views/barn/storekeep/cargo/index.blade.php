@@ -188,9 +188,7 @@ $(".sub-menu a").click(function () {
 
 </script>
 <script>
-  // var key=['flexSwitchCheckChecked', {{ $key }}].join('');
-  // var key_id=["#",key].join('');
-    // console.log(key_id);
+ 
   function switch_cargo(id) {
    
   $.ajax('{{ route('storekeeper_role.cargo_switch') }}', {
@@ -202,7 +200,7 @@ $(".sub-menu a").click(function () {
           
       },
       success : function (data, status){
-          console.log(data.responses);
+          // console.log(data.responses);
 
           // $('#second_filter').html('')
 
