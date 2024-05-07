@@ -112,7 +112,7 @@ nav ul li ul li a:hover {
 
                                     <th class="fixed_header2 align-middle">Kiritish , chiqarish</th>
 
-                                    {{-- <th class="fixed_header2 align-middle">O'chirish</th> --}}
+                                    <th class="fixed_header2 align-middle">O'chirish</th>
 
 
                                 </tr>
@@ -152,13 +152,13 @@ nav ul li ul li a:hover {
                                           </div>
                                         </td>
                                  
-                                  {{-- <td>
+                                  <td>
                                     <form action="{{ route('storekeeper_role.cargo.destroy',['cargo'=>$cargo->id]) }}" method="post">
                                       @csrf
                                       @method("DELETE")
                                       <input class="btn btn-sm btn-danger confirm-button"  type="submit" value="Delete cargo" onclick="return confirm('Are you sure to delete this ?');" >
                                   </form>
-                                  </td> --}}
+                                  </td>
                                 </tr>
                             @endforeach
                                 
