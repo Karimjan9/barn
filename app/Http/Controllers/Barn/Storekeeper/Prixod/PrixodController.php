@@ -76,7 +76,7 @@ class PrixodController extends Controller
 
    
     $curers=ProviderModel::all();
-    $cargos=CargoModel::all();
+    $cargos=CargoModel::where('active_status','=',1)->get();
     return view('barn.storekeep.prixod.index_for_prixod',compact('prixods','curers','lists','cargos'));
    }
 
