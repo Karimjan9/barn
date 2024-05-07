@@ -81,5 +81,10 @@ class CargoController extends Controller
     ]);
     }
 
+    public function destroy($id){
+        $cargo=CargoModel::find($id)->delete();
+        return to_route('storekeeper_role.cargo.index');
+    }
+
     
 }
