@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Barn\Kadr\Search;
 
 use App\Models\User;
 use App\Models\ItemsModel;
+use App\Models\TypeOfItem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Barn\Kadr\Search\SearchRequest;
 use App\Http\Requests\Barn\Kadr\Search\ItemSearchRequest;
+use App\Models\SecondTypeOfItem;
 
 class SearchController extends Controller
 {
@@ -28,11 +30,30 @@ class SearchController extends Controller
 
  public function search_item(ItemSearchRequest $request){
 //   dd($request->search);
-    $items=ItemsModel::where('name','LIKE',"%$request->search%")->with(['get_bodily','get_second','get_unity'])->paginate(20);;
+    $items=ItemsModel::where('name','LIKE',"%$request->search%")->with(['get_bodily','get_second','get_unity'])->paginate(20);
    //  dd($items);
     
     
     return view('barn.storekeep.items_actions.index',compact('items'));
  
  }
+
+ public function prixod_search_items(Request $request){
+    // dd($request->search);
+    $items=ItemsModel::where('name','LIKE',"%$request->search%")->paginate(20);
+    // dd($items);
+
+    return view('barn.storekeep.item_serach.index',compact('items'));
+}
+
+public function selected_item_prixod($selected_id){
+    // dd($selected_id);
+    $item=ItemsModel::where('id','=',$selected_id)->first();
+    //  dd($item);
+    $types=TypeOfItem::where('id','=',$item->first)->first();
+
+    $second=SecondTypeOfItem::where('id','=',$item->second)->first(); 
+        
+    return view('barn.storekeep.item_serach.index_2',compact('types','item','second'));
+}
 }

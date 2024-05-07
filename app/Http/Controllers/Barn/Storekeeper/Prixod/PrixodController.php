@@ -32,7 +32,7 @@ class PrixodController extends Controller
                 $prixods=PrixodModel::where('cargo_id',$cargo->id)->get();
                 foreach ($prixods as $key => $prixod) {
                       $prixod_num+=$prixod->count_of_item; 
-                      $prixod_cost+=$prixod->cost_of_per;
+                      $prixod_cost+=$prixod->cost_of_per*$prixod->count_of_item;
                       $prixod_curer=ProviderModel::where('id',$prixod->curer_id)->first() ?? [];
                  
                 }
@@ -45,7 +45,7 @@ class PrixodController extends Controller
 
             // $prixods=PrixodModel::where('cargo_id',2)->get();
 
-            // dd($all_inf);
+            // dd($prixods);
 
             // dd($cargos);
         return view('barn.storekeep.prixod.index',compact('cargos','all_inf'));
@@ -80,11 +80,7 @@ class PrixodController extends Controller
     return view('barn.storekeep.prixod.index_for_prixod',compact('prixods','curers','lists','cargos'));
    }
 
-   public function prixod_search_items(Request $request){
-        // dd($request->search);
-        $items=ItemsModel::where('name','LIKE',"%$request->search%")->get();
-        dd($items);
-   }
+ 
 
 
     public function create($prixods=null)
@@ -100,7 +96,7 @@ class PrixodController extends Controller
   
     public function store(Request $request)
     {
-        
+        // dd($request->cost);
         $prixods=[];
         $data=['second'=>$request->second,'type'=>$request->type,'item'=>$request->item,'number'=>$request->number,'cost'=>$request->cost];
      

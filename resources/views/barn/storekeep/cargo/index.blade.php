@@ -110,7 +110,7 @@ nav ul li ul li a:hover {
 
                                     <th class="fixed_header2 align-middle">O'zgartirish</th>
 
-                                    {{-- <th class="fixed_header2 align-middle">Delete</th> --}}
+                                    <th class="fixed_header2 align-middle">Kiritish , chiqarish</th>
 
 
                                 </tr>
@@ -130,7 +130,10 @@ nav ul li ul li a:hover {
 
                                 <td >{{ $cargo->description}}</td>
 
-                                {{-- <td class="d-flex align-items-center">
+                             
+                                  <td> <a href="{{ route('storekeeper_role.cargo.edit',['cargo'=>$cargo->id]) }}" class="btn btn-sm btn-warning text-white me-2"></i>Cargo o'zgartirish</a></td>
+                                 
+                                    {{-- <td class="d-flex align-items-center">
                                            
                                             <form action="" method="post">
                                                 @csrf
@@ -138,7 +141,15 @@ nav ul li ul li a:hover {
                                                 <input class="btn btn-sm btn-danger confirm-button" type="submit" value="Bo'shatish">
                                             </form>
                                         </td> --}}
-                                  <td> <a href="{{ route('storekeeper_role.cargo.edit',['cargo'=>$cargo->id]) }}" class="btn btn-sm btn-warning text-white me-2"></i>Cargo o'zgartirish</a></td>
+                                        <td>
+                                          <div class="form-check form-switch">
+                                            <input class="form-check-input"  onchange   = "switch_cargo({{ $cargo->id }});" style="width:75%;height:25px;margin:0px 0px 0px 0px ;" value="{{ $cargo->id }}" type="checkbox" id={{ "flexSwitchCheckChecked"."$key" }} @if ($cargo->active_status==1)
+                                            checked  
+                                            @endif >
+                                            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                          </div>
+                                        </td>
+                                 
                                   {{-- <td>
                                     <form action="{{ route('storekeeper_role.type_item_take.destroy',['type_item_take'=>$item->id]) }}" method="post">
                                       @csrf
@@ -175,5 +186,53 @@ $(".sub-menu a").click(function () {
   $(this).find(".right").toggleClass("fa-caret-up fa-caret-down");
 });
 
+</script>
+<script>
+  // var key=['flexSwitchCheckChecked', {{ $key }}].join('');
+  // var key_id=["#",key].join('');
+    // console.log(key_id);
+  function switch_cargo(id) {
+   
+  $.ajax('{{ route('storekeeper_role.cargo_switch') }}', {
+      type : "GET",
+      data : {
+      
+          'id' : id,
+
+          
+      },
+      success : function (data, status){
+          console.log(data.responses);
+
+          // $('#second_filter').html('')
+
+          // let html_row = '';
+         
+          // let count=1;
+          // html_row += `
+          //           <option value=""></option>
+                   
+          //           `
+          // for (const iterator of data.responses) {
+         
+  
+              
+          //     html_row += `
+          //           <option value="${iterator.id}">${iterator.name}</option>
+                   
+          //           `
+
+        
+            
+          // }
+         
+          // $('#second_filter').html(html_row)
+      }
+  })
+}
+
+// $(('.form-check-input')).change( function () {
+//   switch_cargo();
+// });
 </script>
 @endsection

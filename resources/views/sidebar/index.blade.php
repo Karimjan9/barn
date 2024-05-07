@@ -44,30 +44,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="">
-                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
-                        <div class="parent-icon">
-                            <i class='bx bx-home-circle'></i>
-                        </div>
-                        <div class="menu-title">Buyruqlar</div>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="#" onclick="redrect('{{ route('kadr_role.command.index') }}')">
-                                <i class="bx bx-right-arrow-alt"></i>
-                                <div style="margin-right: 5px;">Lavozim buyruqlari</div>
-                                <span class="badge bg-warning text-dark"></span>
-                            </a>
-                        </li>
-                        {{-- <li>
-                            <a href="#" onclick="redrect('{{ route('kadr_role.command.index',['order_id'=>2]) }}')">
-                                <i class="bx bx-right-arrow-alt"></i>
-                                <div style="margin-right: 5px;">Mansab buyrug'lari</div>
-                                <span class="badge bg-warning text-dark"></span>
-                            </a>
-                        </li> --}}
-                    </ul>
-                </li>
+               
                 <li class="">
                     <a href="javascript:;" class="has-arrow" aria-expanded="false">
                         <div class="parent-icon">
@@ -139,6 +116,30 @@
                         </li>
                     </ul>
                 </li>
+                {{-- <li class="">
+                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                        <div class="parent-icon">
+                            <i class='bx bx-home-circle'></i>
+                        </div>
+                        <div class="menu-title">Buyruqlar</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#" onclick="redrect('{{ route('kadr_role.command.index') }}')">
+                                <i class="bx bx-right-arrow-alt"></i>
+                                <div style="margin-right: 5px;">Lavozim buyruqlari</div>
+                                <span class="badge bg-warning text-dark"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick="redrect('{{ route('kadr_role.command.index',['order_id'=>2]) }}')">
+                                <i class="bx bx-right-arrow-alt"></i>
+                                <div style="margin-right: 5px;">Mansab buyrug'lari</div>
+                                <span class="badge bg-warning text-dark"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li> --}}
         @endrole
         @role('storekeeper')
         {{-- <li class="">

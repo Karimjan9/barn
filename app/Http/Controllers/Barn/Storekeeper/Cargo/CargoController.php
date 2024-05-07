@@ -67,8 +67,19 @@ class CargoController extends Controller
     }
 
     
-    public function destroy($id)
+    public function switch_cargo(Request $request)
     {
+       $cargo=CargoModel::where('id','=',$request->id)->first();
+       if ($cargo->active_status==1) {
+            $cargo_update=CargoModel::find($request->id)->update(['active_status'=>0]);
+       } else {
+            $cargo_update=CargoModel::find($request->id)->update(['active_status'=>1]);
+       }
         
+       return response()->json([
+        'responses' => 1,
+    ]);
     }
+
+    
 }

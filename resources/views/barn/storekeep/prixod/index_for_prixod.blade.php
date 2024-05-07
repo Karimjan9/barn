@@ -129,7 +129,7 @@
                                                                 <td>{{ $p_key+1 }}</td>
                                                                 <td>{{  $list->name }}</td>
                                                                 <td>{{ $list->get_second->name}}</td>
-                                                                <td>{{ $list->bodily==1?"Bo'linadi":"Bo'linmaydi"  }}</td>
+                                                                <td>{{ $list->bodily==1?"Moddiy":"Bo'linmaydi"  }}</td>
                                                                 <td>{{$prixods[$p_key]["number"]}}</td>
                                                                 <td>{{$prixods[$p_key]["cost"] ?? 0}} so'm</td>
                                                             
