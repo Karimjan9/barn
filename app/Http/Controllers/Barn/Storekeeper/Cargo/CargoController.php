@@ -13,7 +13,7 @@ class CargoController extends Controller
    
     public function index()
     {
-        $cargos=CargoModel::with('get_provider')->orderBy('created_at', 'DESC')->paginate(10);
+        $cargos=CargoModel::with('get_provider')->orderBy('created_at', 'DESC')->paginate(15);
         // dd($cargos);
         return view('barn.storekeep.cargo.index',compact('cargos'));
     }
