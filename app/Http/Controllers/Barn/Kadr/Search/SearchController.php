@@ -37,7 +37,7 @@ class SearchController extends Controller
  }
 
  public function prixod_search_items(Request $request){
-    $items=ItemsModel::where('name','LIKE',"%$request->search%")->paginate(20);
+    $items=ItemsModel::where('name','LIKE',"%$request->search%")->with('get_unity')->paginate(20);
 
     return view('barn.storekeep.item_serach.index',compact('items'));
 }

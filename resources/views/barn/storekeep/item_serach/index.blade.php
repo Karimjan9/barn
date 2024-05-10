@@ -126,8 +126,8 @@ nav ul li ul li a:hover {
                                 <tr>
                                     <th class="fixed_header2 align-middle">#</th>
                                     <th class="fixed_header2 align-middle">Jihoz modeli</th>
-                                    {{-- <th class="fixed_header2 align-middle">Moddiylik turi</th>
-                                    <th class="fixed_header2 align-middle">Jihoz birligi</th> --}}
+                                    {{-- <th class="fixed_header2 align-middle">Moddiylik turi</th> --}}
+                                    <th class="fixed_header2 align-middle">Jihoz birligi</th>
 
                                     <th class="fixed_header2 align-middle">Jihoz soni</th>
 
@@ -151,7 +151,7 @@ nav ul li ul li a:hover {
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $item->name }}</td>
                                 {{-- <td>{{ $item->get_bodily->name   }}</td> --}}
-                                {{-- <td>{{ $item->get_unity->name ?? "birlik"   }}</td> --}}
+                                <td>{{ $item->get_unity->name ?? "birlik"   }}</td>
 
                                 <td>{{ $item->extant-$item->absent}}</td>
 
