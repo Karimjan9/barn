@@ -116,7 +116,7 @@
                             <td><span class="badge bg-gradient-quepal text-white shadow-sm w-100">Paid</span></td>
                             <td>{{ $table->count_of_item }} ta</td>
                             <td>{{ $table->cost_of_per }} so'm</td>
-                            <td>{{ $table->updated_at->format('d M Y') }}</td>
+                            <td>{{ $table->get_cargo_name->come_date->format('d-m-Y') }}</td>
                             <td><div class="progress" style="height: 5px;">
                                   <div class="progress-bar bg-gradient-quepal" role="progressbar" style="width: 100%"></div>
                                 </div></td>

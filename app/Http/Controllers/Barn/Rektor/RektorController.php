@@ -111,7 +111,7 @@ class RektorController extends Controller
         
         $protsent=(int)(($taked/$dis_taked)*100);
         $worker=User::where('level_id',6)->get()->count();
-        $table_prixods=PrixodModel::with('get_item_name','get_cargo_name')->orderBy('id', 'DESC')->get()->unique('item_id');
+        $table_prixods=PrixodModel::with('get_item_name','get_cargo_name')->orderBy('id', 'DESC')->limit(10)->get()->unique('item_id');
         // dd($table_prixods);
         $array=[];
         $names=[];

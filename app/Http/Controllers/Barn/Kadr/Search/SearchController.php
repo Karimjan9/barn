@@ -29,9 +29,7 @@ class SearchController extends Controller
  }
 
  public function search_item(ItemSearchRequest $request){
-//   dd($request->search);
     $items=ItemsModel::where('name','LIKE',"%$request->search%")->with(['get_bodily','get_second','get_unity'])->paginate(20);
-   //  dd($items);
     
     
     return view('barn.storekeep.items_actions.index',compact('items'));
@@ -39,17 +37,13 @@ class SearchController extends Controller
  }
 
  public function prixod_search_items(Request $request){
-    // dd($request->search);
     $items=ItemsModel::where('name','LIKE',"%$request->search%")->paginate(20);
-    // dd($items);
 
     return view('barn.storekeep.item_serach.index',compact('items'));
 }
 
 public function selected_item_prixod($selected_id){
-    // dd($selected_id);
     $item=ItemsModel::where('id','=',$selected_id)->first();
-    //  dd($item);
     $types=TypeOfItem::where('id','=',$item->first)->first();
 
     $second=SecondTypeOfItem::where('id','=',$item->second)->first(); 

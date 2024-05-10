@@ -43,11 +43,6 @@ class PrixodController extends Controller
                 $all_inf[]=$inf;
             }
 
-            // $prixods=PrixodModel::where('cargo_id',2)->get();
-
-            // dd($prixods);
-
-            // dd($cargos);
         return view('barn.storekeep.prixod.index',compact('cargos','all_inf'));
     }
 
