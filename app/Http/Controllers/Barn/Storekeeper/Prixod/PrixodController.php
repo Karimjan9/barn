@@ -21,7 +21,7 @@ class PrixodController extends Controller
 
     public function index()
     {
-        $cargos=CargoModel::orderBy('id', 'DESC')->paginate(10);
+        $cargos=CargoModel::orderBy('id', 'DESC')->paginate(15);
             // dd($cargos);
             $all_inf=[];
             foreach ($cargos as $key => $cargo) {
@@ -111,7 +111,7 @@ class PrixodController extends Controller
     public function show($id)
     {
        
-        $prixods=PrixodModel::where('cargo_id',$id)->paginate(10);
+        $prixods=PrixodModel::where('cargo_id',$id)->paginate(15);
 
         return view('barn.storekeep.prixod.show',compact('prixods'));
         
