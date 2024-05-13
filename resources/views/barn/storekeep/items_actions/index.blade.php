@@ -123,7 +123,7 @@ nav ul li ul li a:hover {
                             <thead class="table-light">
                                 <tr>
                                     <th class="fixed_header2 align-middle">#</th>
-                                    <th class="fixed_header2 align-middle">Jihoz modeli</th>
+                                    <th class="fixed_header2 align-middle">Jihoz modeli11</th>
                                     <th class="fixed_header2 align-middle">Moddiylik turi</th>
                                     <th class="fixed_header2 align-middle">Jihoz birligi</th>
 
