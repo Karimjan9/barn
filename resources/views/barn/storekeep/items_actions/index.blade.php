@@ -150,7 +150,7 @@ nav ul li ul li a:hover {
                                 <td>{{ $item->id }}</td>
 
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->get_bodily->name   }}</td>
+                                <td>{{ $item->id  }}</td>
                                 <td>{{ $item->get_unity->name ?? "birlik"   }}</td>
 
                                 <td>{{ $item->extant-$item->absent}}</td>
