@@ -30,6 +30,7 @@ use App\Http\Controllers\Barn\Storekeeper\Provider\ProviderController;
 use App\Http\Controllers\Barn\Storekeeper\TypeOfItems\TypeOFItemsController;
 use App\Http\Controllers\Barn\Storekeeper\TypeOfItems\SecondTypeOfItemsController;
 use App\Http\Controllers\SuperAdmin\EmployeeController as SuperAdminEmployeeController;
+use App\Models\GiveItemModel;
 use App\Models\SecondTypeOfItem;
 
 /*
@@ -274,7 +275,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/clear_cache', function () {
 
             // dd(Artisan::call('migrate'));
-            Artisan::call('migrate');
+            // Artisan::call('migrate');
+            // GiveItemModel::where('')
 
             // Artisan::call('db:seed --class=UnityItemsSeeder');
 

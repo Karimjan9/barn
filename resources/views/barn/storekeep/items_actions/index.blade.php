@@ -146,7 +146,9 @@ nav ul li ul li a:hover {
                                 @foreach ($items as $key=>$item)
                                 <tr>
                                  
-                                <td>{{ $key+1 }}</td>
+                                {{-- <td>{{ $key+1 }}</td> --}}
+                                <td>{{ $item->id }}</td>
+
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->get_bodily->name   }}</td>
                                 <td>{{ $item->get_unity->name ?? "birlik"   }}</td>
