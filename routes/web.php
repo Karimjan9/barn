@@ -31,6 +31,7 @@ use App\Http\Controllers\Barn\Storekeeper\TypeOfItems\TypeOFItemsController;
 use App\Http\Controllers\Barn\Storekeeper\TypeOfItems\SecondTypeOfItemsController;
 use App\Http\Controllers\SuperAdmin\EmployeeController as SuperAdminEmployeeController;
 use App\Models\GiveItemModel;
+use App\Models\ItemsModel;
 use App\Models\SecondTypeOfItem;
 
 /*
@@ -278,17 +279,30 @@ Route::middleware(['auth'])->group(function () {
             // Artisan::call('migrate');
             // GiveItemModel::where('item_id',1)->take(69)->delete();
 
-            GiveItemModel::where('item_id',1)->take(69)->delete();
+            ItemsModel::where('id',1)->update(['extant'=>69]);
 
-            GiveItemModel::where('item_id',2)->take(1128)->delete();
+            ItemsModel::where('id',2)->update(['extant'=>1128]);
 
-            GiveItemModel::where('item_id',15)->take(1)->delete();
+            ItemsModel::where('id',15)->update(['extant'=>1]);
 
-            GiveItemModel::where('item_id',16)->take(5)->delete();
+            ItemsModel::where('id',16)->update(['extant'=>5]);
 
-            GiveItemModel::where('item_id',14)->take(4)->delete();
+            ItemsModel::where('id',14)->update(['extant'=>4]);
 
-            GiveItemModel::where('item_id',17)->take(9696)->delete();
+            ItemsModel::where('id',17)->update(['extant'=>0]);
+
+
+
+
+            // GiveItemModel::where('item_id',2)->take(1128)->delete();
+
+            // GiveItemModel::where('item_id',15)->take(1)->delete();
+
+            // GiveItemModel::where('item_id',16)->take(5)->delete();
+
+            // GiveItemModel::where('item_id',14)->take(4)->delete();
+
+            // GiveItemModel::where('item_id',17)->take(9696)->delete();
 
 
 
@@ -310,7 +324,7 @@ Route::middleware(['auth'])->group(function () {
             // Artisan::call('route:clear');
 
             // Artisan::call('route:cache');
-            return 1;
+            return 2;
             // return redirect()->route('login');
             
 
