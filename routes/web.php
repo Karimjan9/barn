@@ -276,7 +276,21 @@ Route::middleware(['auth'])->group(function () {
 
             // dd(Artisan::call('migrate'));
             // Artisan::call('migrate');
-            // GiveItemModel::where('')
+            // GiveItemModel::where('item_id',1)->take(69)->delete();
+
+            GiveItemModel::where('item_id',1)->take(69)->delete();
+
+            GiveItemModel::where('item_id',2)->take(1128)->delete();
+
+            GiveItemModel::where('item_id',15)->take(1)->delete();
+
+            GiveItemModel::where('item_id',16)->take(5)->delete();
+
+            GiveItemModel::where('item_id',14)->take(4)->delete();
+
+            GiveItemModel::where('item_id',17)->take(9696)->delete();
+
+
 
             // Artisan::call('db:seed --class=UnityItemsSeeder');
 
@@ -296,8 +310,10 @@ Route::middleware(['auth'])->group(function () {
             // Artisan::call('route:clear');
 
             // Artisan::call('route:cache');
+            return 1;
+            // return redirect()->route('login');
+            
 
-            return redirect()->route('login');
         });
 });
 
