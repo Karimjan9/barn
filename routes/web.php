@@ -277,7 +277,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/clear_cache', function () {
 
             // dd(Artisan::call('migrate'));
+
             // Artisan::call('migrate');
+            
             // ItemsModel::where('id',17)->update(['extant'=>0]);
           
 
@@ -305,7 +307,7 @@ Route::middleware(['auth'])->group(function () {
 
             // PrixodModel::where('item_id',14)->delete();
 
-            PrixodModel::where('item_id',17)->delete();
+            // PrixodModel::where('item_id',17)->delete();
 
 
 
