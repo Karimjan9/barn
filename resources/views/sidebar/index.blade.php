@@ -18,7 +18,7 @@
                         <div class="parent-icon">
                             <i class='bx bx-home-circle'></i>
                         </div>
-                        <div class="menu-title">Foydalanuvchilar5</div>
+                        <div class="menu-title">Foydalanuvchilar6</div>
                     </a>
                     <ul>
                         <li>

@@ -278,46 +278,51 @@ Route::middleware(['auth'])->group(function () {
 
             // dd(Artisan::call('migrate'));
             // Artisan::call('migrate');
+            // ItemsModel::where('id',17)->update(['extant'=>0]);
           
 
-            ItemsModel::where('id',1)->update(['extant'=>0]);
+            // ItemsModel::where('id',1)->update(['extant'=>0]);
 
-            ItemsModel::where('id',2)->update(['extant'=>0]);
+            // ItemsModel::where('id',2)->update(['extant'=>0]);
 
-            ItemsModel::where('id',15)->update(['extant'=>0]);
+            // ItemsModel::where('id',15)->update(['extant'=>0]);
 
-            ItemsModel::where('id',16)->update(['extant'=>0]);
+            // ItemsModel::where('id',16)->update(['extant'=>0]);
 
-            ItemsModel::where('id',14)->update(['extant'=>0]);
-
-            // ItemsModel::where('id',17)->update(['extant'=>0]);
-
-
-
-
-            PrixodModel::where('item_id',1)->delete();
-            
-            PrixodModel::where('item_id',2)->delete();
-
-            PrixodModel::where('item_id',15)->delete();
-
-            PrixodModel::where('item_id',16)->delete();
-
-            PrixodModel::where('item_id',14)->delete();
+            // ItemsModel::where('id',14)->update(['extant'=>0]);
 
 
 
 
 
-            GiveItemModel::where('item_id',1)->take(69)->delete();
+            // PrixodModel::where('item_id',1)->delete();
 
-            GiveItemModel::where('item_id',2)->take(1128)->delete();
+            // PrixodModel::where('item_id',2)->delete();
 
-            GiveItemModel::where('item_id',15)->take(1)->delete();
+            // PrixodModel::where('item_id',15)->delete();
 
-            GiveItemModel::where('item_id',16)->take(5)->delete();
+            // PrixodModel::where('item_id',16)->delete();
 
-            GiveItemModel::where('item_id',14)->take(4)->delete();
+            // PrixodModel::where('item_id',14)->delete();
+
+            PrixodModel::where('item_id',17)->delete();
+
+
+
+
+
+
+            // GiveItemModel::where('item_id',1)->take(69)->delete();
+
+            // GiveItemModel::where('item_id',2)->take(1128)->delete();
+
+            // GiveItemModel::where('item_id',15)->take(1)->delete();
+
+            // GiveItemModel::where('item_id',16)->take(5)->delete();
+
+            // GiveItemModel::where('item_id',14)->take(4)->delete();
+
+
 
             // GiveItemModel::where('item_id',17)->take(9696)->delete();
 
@@ -341,8 +346,8 @@ Route::middleware(['auth'])->group(function () {
             // Artisan::call('route:clear');
 
             // Artisan::call('route:cache');
-            return 2;
-            // return redirect()->route('login');
+            // return 2;
+            return redirect()->route('login');
             
 
         });
