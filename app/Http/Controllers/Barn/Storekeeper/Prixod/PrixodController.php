@@ -180,9 +180,16 @@ class PrixodController extends Controller
             if ($get->bodily==1) {
                 for ($i=0; $i < $prixod->number ; $i++) { 
                     GiveItemModel::create([ 'item_id'=>$prixod->item]);
-                    if($i%3000==0){
-                        echo("created 3000K ");
+                    if($i==3000){
+                        echo("created 3000K");
+                    }elseif ($i==6000) {
+                        echo("created 6000K");
+                    }elseif ($i==9000) {
+                        echo("created 9000K");
+                    }elseif ($i==12000) {
+                        echo("created 12000K");
                     }
+                
                 }
             }
            
