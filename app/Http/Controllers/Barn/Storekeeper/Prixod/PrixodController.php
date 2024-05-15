@@ -177,12 +177,15 @@ class PrixodController extends Controller
             $get=ItemsModel::where('id',$items[$key][0]->id)->first();
           
             $update=ItemsModel::where('id',$items[$key][0]->id)->update(['extant'=>$get->extant+$prixod->number]);
-            for ($i=0; $i < $prixod->number ; $i++) { 
-                GiveItemModel::create([ 'item_id'=>$prixod->item]);
-                if($i%3000==0){
-                    echo("created 3000K ");
+            if ($get->bodily==1) {
+                for ($i=0; $i < $prixod->number ; $i++) { 
+                    GiveItemModel::create([ 'item_id'=>$prixod->item]);
+                    if($i%3000==0){
+                        echo("created 3000K ");
+                    }
                 }
             }
+           
         }
         // dd(1);
         if(Session::has('prixods')){
