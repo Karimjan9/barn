@@ -179,8 +179,8 @@ class PrixodController extends Controller
             $update=ItemsModel::where('id',$items[$key][0]->id)->update(['extant'=>$get->extant+$prixod->number]);
             for ($i=0; $i < $prixod->number ; $i++) { 
                 GiveItemModel::create([ 'item_id'=>$prixod->item]);
-                if($i==3000){
-                    echo("created 3000");
+                if($i%3000==0){
+                    echo("created 3000K ");
                 }
             }
         }
