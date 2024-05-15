@@ -289,17 +289,17 @@ Route::middleware(['auth'])->group(function () {
 
             // ItemsModel::where('id',15)->update(['extant'=>0]);
 
-            // ItemsModel::where('id',16)->update(['extant'=>0]);
+            ItemsModel::where('id',409)->update(['extant'=>0]);
 
-            // ItemsModel::where('id',14)->update(['extant'=>0]);
-
-
+            ItemsModel::where('id',406)->update(['extant'=>0]);
 
 
 
-            // PrixodModel::where('item_id',1)->delete();
 
-            // PrixodModel::where('item_id',2)->delete();
+
+            PrixodModel::where('item_id',409)->delete();
+
+            PrixodModel::where('item_id',406)->delete();
 
             // PrixodModel::where('item_id',15)->delete();
 
@@ -314,9 +314,9 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-            // GiveItemModel::where('item_id',1)->take(69)->delete();
+            GiveItemModel::where('item_id',409)->delete();
 
-            // GiveItemModel::where('item_id',2)->take(1128)->delete();
+            GiveItemModel::where('item_id',406)->delete();
 
             // GiveItemModel::where('item_id',15)->take(1)->delete();
 
