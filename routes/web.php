@@ -25,6 +25,7 @@ use App\Http\Controllers\Barn\Storekeeper\Prixod\PrixodController;
 use App\Http\Controllers\Barn\Admin_Barn\AcceptedEquipmentController;
 use App\Http\Controllers\Barn\Kadr\CareerUpdateController;
 use App\Http\Controllers\Barn\Kadr\DepartamentUpdateController;
+use App\Http\Controllers\Barn\Rektor\RektorPrixodController;
 use App\Http\Controllers\Barn\Storekeeper\Items\ItemsUnityController;
 use App\Http\Controllers\Barn\Storekeeper\Provider\ProviderController;
 use App\Http\Controllers\Barn\Storekeeper\TypeOfItems\TypeOFItemsController;
@@ -64,6 +65,8 @@ Route::middleware(['auth'])->group(function () {
             Route::name('rektor_role.')->group(function () {
 
                 Route::resource('/rektor_actions', RektorController::class);
+
+                Route::resource('/prixod_show',RektorPrixodController::class)->only('index','show');
 
                 Route::get('/{app_id}/deny_application',[RektorController::class,'deny_application'])->name('deny.application');
 
