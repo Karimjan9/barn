@@ -17,6 +17,7 @@ class PrixodModel extends Model
         'count_of_item',
         'cost_of_per',
         'curer_id',
+        'currency_id',
     ];
     public function get_item_name(){
         return $this->belongsTo(ItemsModel::class, 'item_id', 'id'); 
@@ -25,4 +26,9 @@ class PrixodModel extends Model
     public function get_cargo_name(){
         return $this->belongsTo(CargoModel::class, 'cargo_id', 'id'); 
     }
+
+    public function get_currency(){
+        return $this->belongsTo(CurrencyModel::class, 'currency_id', 'id'); 
+    }
+    
 }

@@ -49,6 +49,7 @@
                     </nav>
                 </div>
             </div>
+            {{-- @dd($prixods) --}}
             <div class="row">
                 <div class="col-xl-10 mx-auto">
                     <h6 class="mb-0 text-uppercase">Jo'natma qismi</h6>
@@ -60,7 +61,7 @@
                                     <a href="{{ route('storekeeper_role.prixod.create') }}" class="btn btn-primary px-3"><i class="bx bx-plus"></i>Jo'natma qo'shish</a>
                                 </div>
                             </div>
-                
+               
                             <form class="row g-3" method="post" action="{{ route('storekeeper_role.store_all')}}">
                                 @csrf
                             
@@ -153,7 +154,7 @@
                                                     </table>
                                                     <br>
                                                     <h4>Jo'natmalar narxi: <span id="totalPrice">0 </span> so'm : Jo'natmalar soni : <span id="totalItem">0 </span> ta  </h4>
-                                                
+                                                    <h4>Valyuta bo'yicha: <span id="totalCurrency">0 </span> birlik  </h4>
 
                                                     <br>
                                                 </div>
@@ -180,20 +181,34 @@
 @section('scripte_include_end_body')
 <script>
     var app = @json($prixods);
-    
+    // console.log(app);
     var sum_cost=0;
     var sum_item=0;
+    var sum_currency_total=0;
     for (const iterator of app) {
          
-               sum2=parseInt(iterator.number)*parseInt(iterator.cost);
-              sum_cost=sum_cost+parseInt(sum2)
-         
-               sum_item+=parseInt(iterator.number);
+        sum2=parseInt(iterator.number)*(iterator.cost)*parseInt(iterator.currency_value);
+
+        sum_cost=sum_cost+parseInt(sum2);
+
+        sum_currency=parseInt(iterator.number)*parseInt(iterator.cost);
+
+        sum_currency_total=sum_currency_total+sum_currency;
+
+        sum_item+=parseInt(iterator.number);
              
                 }
+
+    // console.log(sum_currency_total);
+
+
     document.getElementById("totalPrice").innerHTML = sum_cost;
     
     document.getElementById("totalItem").innerHTML = sum_item;
+
+    document.getElementById("totalCurrency").innerHTML = sum_currency_total;
+
+   
 </script>
 
 

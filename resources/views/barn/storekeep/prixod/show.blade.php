@@ -63,6 +63,7 @@
                             <tr>
                                 <th class="fixed_header2 align-middle">#</th>
                                 <th class="fixed_header2 align-middle">Jihoz nomi</th>
+                                <th class="fixed_header2 align-middle">Valyuta</th>
                                 <th class="fixed_header2 align-middle">Har birining narxi</th>
                                 <th class="fixed_header2 align-middle">Jihoz soni</th>
                                 <th class="fixed_header2 align-middle">Hammasining narxi</th>
@@ -80,15 +81,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                        {{-- @dd($all_inf) --}}
                             @foreach ($prixods as $key=>$prixod)
+                            {{-- @dd($prixod->get_currency) --}}
+
                             <tr>
                         
                             <td>{{ $key+1 }}</td>
                             <td>{{ $prixod->get_item_name->name }} </td>
-                            <td>{{ $prixod->cost_of_per}} so'm</td>
+                            <td>{{  $prixod->get_currency->name }} </td>
+                            <td>{{ $prixod->cost_of_per}} {{ $prixod->get_currency->name }}</td>
                             <td>{{ $prixod->count_of_item}} ta</td>
-                            <td>{{ $prixod->count_of_item * $prixod->cost_of_per}} so'm</td>
+                            <td>{{ $prixod->count_of_item * $prixod->cost_of_per*$prixod->get_currency->value}} so'm</td>
 
                          
                                 

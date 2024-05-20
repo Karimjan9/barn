@@ -281,8 +281,10 @@ Route::middleware(['auth'])->group(function () {
 
             // dd(Artisan::call('migrate'));
 
-            // Artisan::call('migrate');
+            Artisan::call('migrate');
             
+            Artisan::call('db:seed --class=CurrencySeeder');
+
             // ItemsModel::where('id',17)->update(['extant'=>0]);
           
 

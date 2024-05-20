@@ -6,10 +6,11 @@ use App\Models\User;
 use App\Models\ItemsModel;
 use App\Models\TypeOfItem;
 use Illuminate\Http\Request;
+use App\Models\CurrencyModel;
+use App\Models\SecondTypeOfItem;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Barn\Kadr\Search\SearchRequest;
 use App\Http\Requests\Barn\Kadr\Search\ItemSearchRequest;
-use App\Models\SecondTypeOfItem;
 
 class SearchController extends Controller
 {
@@ -47,7 +48,8 @@ public function selected_item_prixod($selected_id){
     $types=TypeOfItem::where('id','=',$item->first)->first();
 
     $second=SecondTypeOfItem::where('id','=',$item->second)->first(); 
-        
-    return view('barn.storekeep.item_serach.index_2',compact('types','item','second'));
+    $currencys=CurrencyModel::get();
+    // dd($currencys);
+    return view('barn.storekeep.item_serach.index_2',compact('types','item','second','currencys'));
 }
 }

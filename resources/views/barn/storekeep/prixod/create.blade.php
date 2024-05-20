@@ -52,8 +52,12 @@
                 <div class="card border-top border-0 border-4 border-primary ">
                     <div class="card-body p-5">
                         <div class="col-md-8 mb-3 ">
+
                             <form action="{{ route('storekeeper_role.prixod_search_items') }}" method="GET">
+                                <label for="first_type_2" class="form-label">Qidiruv qismi</label>
+
                                 <div class="input-group">
+                                    
                                     <input type="text"  name="search" class="form-control rounded " placeholder="Tovar ismi" aria-label="Search" aria-describedby="search-addon" />
                                     <input type="submit" class="btn btn-outline-primary" value="Qidiruv">
                                   </div>
@@ -61,9 +65,25 @@
                          
                         </div>
                         <br>
+                      
                         <form class="row g-3" method="post" action="{{ route('storekeeper_role.prixod.store')}}">
                             @csrf
+                            <label for="first_type_2" class="form-label">Qidiruv qismi</label>
+                            @foreach ($currencys as $key=>$currency)
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="{{ $currency->value }}"  name="radio" id="flexRadioDefault1"
+                                @if ($key==0)
+                                checked
+                                @endif >
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                  {{ $currency->name }}
+                                </label>
+                              </div>
+                            @endforeach
+
+                                  <br>
                           
+                           
                             <div class="col-md-8 mb-3">
                                 <label for="first_type" class="form-label">Jihoz turi</label>
             
@@ -106,7 +126,7 @@
                                 <input  type="number" min="1" step="any" name="cost" class="form-control" id="cost" oninput="myFunctionCalc()">
                              </div>
                              <br>
-                             <h4> <span id="totalPrice">0 </span>so'm </h4>
+                             <h4> <span id="totalPrice">0 </span>so'm  </h4>
                              <br>
                             <div class="col-12 mb-3">
                                 <button type="submit" class="btn btn-primary px-5">Store</button>
@@ -124,17 +144,30 @@
 @endsection
 
 @section('scripte_include_end_body')
-
+{{-- <script>
+  
+    function my_radio() {
+        var currency=$("input[type='radio'][name='flexRadioDefault']:checked").val();
+         console.log(currency);
+       
+         
+    }
+</script> --}}
 <script>
+  
     function myFunctionCalc() {
+        var currency=$("input[type='radio'][name='radio']:checked").val();
+       
         var price = document.getElementById("cost").value;
         var count = document.getElementById("count").value;
 
-        var total = price * count;
-        document.getElementById("totalPrice").innerHTML = total;
+        var total = (price * count*currency);
+        document.getElementById("totalPrice").innerHTML = Math.floor(total);
          
     }
 </script>
+
+
 <script>
 
 function get_second_type() {

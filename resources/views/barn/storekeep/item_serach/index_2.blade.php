@@ -63,7 +63,18 @@
                         <br>
                         <form class="row g-3" method="post" action="{{ route('storekeeper_role.prixod.store')}}">
                             @csrf
-                          
+                            @foreach ($currencys as $key=>$currency)
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="{{ $currency->value }}"  name="radio" id="flexRadioDefault1"
+                                @if ($key==0)
+                                checked
+                                @endif >
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                  {{ $currency->name }}
+                                </label>
+                              </div>
+                            @endforeach
+                              <br>
                             <div class="col-md-8 mb-3">
                                 <label for="first_type" class="form-label">Jihoz turi</label>
             
@@ -139,12 +150,14 @@
 @section('scripte_include_end_body')
 
 <script>
-    function myFunctionCalc() {
+   function myFunctionCalc() {
+        var currency=$("input[type='radio'][name='radio']:checked").val();
+        //  console.log(currency);
         var price = document.getElementById("cost").value;
         var count = document.getElementById("count").value;
 
-        var total = price * count;
-        document.getElementById("totalPrice").innerHTML = total;
+        var total = price * count*currency;
+        document.getElementById("totalPrice").innerHTML = Math.floor(total);
          
     }
 </script>

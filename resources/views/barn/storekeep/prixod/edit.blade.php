@@ -57,6 +57,25 @@
                         <form class="row g-3" method="post" action="{{ route('storekeeper_role.prixod.update',['prixod'=>$id])}}">
                             @csrf
                             @method('PUT')
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="{{ 1 }}"  name="radio" id="flexRadioDefault1" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                  SO'M
+                                </label>
+                              </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="{{ 150 }}"  name="radio" id="flexRadioDefault2" >
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                  RUBL
+                                </label>
+                              </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="{{ 12500 }}"  name="radio" id="flexRadioDefault2" >
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                  USD
+                                </label>
+                              </div>
+                              <br>
                             <div class="col-md-8 mb-3">
                                 {{-- <input type="number"     id="" value="0.0"> --}}
                                 <label for="first_type" class="form-label">Jihoz turi:</label>
@@ -121,7 +140,7 @@
                                 <input  value="{{ $edit_prixod['cost'] }}" type="number" min="1" step="any" name="cost" class="form-control" id="cost" oninput="myFunctionCalc()">
                              </div>
                              <br>
-                             <h4>Total Price: <span id="totalPrice">0 </span>so'm </h4>
+                             <h4>Total Price: <span id="totalPrice">0 </span>so'm</h4>
                              <br>
                             <div class="col-12 mb-3">
                                 <button type="submit" class="btn btn-primary px-5">O'zgartirish</button>
@@ -157,13 +176,14 @@
 </script>
 <script>
 
-    function myFunctionCalc() {
+function myFunctionCalc() {
+        var currency=$("input[type='radio'][name='radio']:checked").val();
+       
         var price = document.getElementById("cost").value;
         var count = document.getElementById("count").value;
 
-        var total = price * count;
-        $('#totalPrice').html('')
-        document.getElementById("totalPrice").innerHTML = total;
+        var total = price * count*currency;
+        document.getElementById("totalPrice").innerHTML = (Math.floor(total));
          
     }
 </script>

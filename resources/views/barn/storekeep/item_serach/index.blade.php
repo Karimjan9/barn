@@ -133,7 +133,7 @@ nav ul li ul li a:hover {
 
                                     {{-- <th class="fixed_header2 align-middle">Jihoz nomi</th> --}}
                                    
-                                    <th class="fixed_header2 align-middle" >Tasnif</th>
+                                    <th class="fixed_header2 align-middle" >Moddiylik</th>
 
                                     <th class="fixed_header2 align-middle">Tanlash</th>
 
@@ -157,7 +157,7 @@ nav ul li ul li a:hover {
 
                                 {{-- <td>{{ $item->get_second->name}}</td> --}}
                               
-                                <td >{{ $item->description}}</td>
+                                <td >{{ $item->get_bodily->name}}</td>
 
                                 {{-- <td class="d-flex align-items-center">
                                            

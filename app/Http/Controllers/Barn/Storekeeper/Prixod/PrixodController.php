@@ -12,6 +12,7 @@ use App\Models\ProviderModel;
 use App\Models\SecondTypeOfItem;
 use App\Models\SecondUsersModel;
 use App\Http\Controllers\Controller;
+use App\Models\CurrencyModel;
 use App\Models\GiveItemModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -29,20 +30,20 @@ class PrixodController extends Controller
                 $prixod_cost=0;
                 $inf=[];
                 $prixod_curer=[];
-                $prixods=PrixodModel::where('cargo_id',$cargo->id)->get();
+                $prixods=PrixodModel::with(['get_currency'])->where('cargo_id',$cargo->id)->get();
                 foreach ($prixods as $key => $prixod) {
                       $prixod_num+=$prixod->count_of_item; 
-                      $prixod_cost+=$prixod->cost_of_per*$prixod->count_of_item;
+                      $prixod_cost+=$prixod->cost_of_per*$prixod->count_of_item*$prixod->get_currency->value;
                       $prixod_curer=ProviderModel::where('id',$prixod->curer_id)->first() ?? [];
                  
                 }
-                $inf[]=$prixod_cost;
+                $inf[]=(int)$prixod_cost;
                 $inf[]=$prixod_num;
                 $inf[]=$prixod_curer;
 
                 $all_inf[]=$inf;
             }
-
+      
         return view('barn.storekeep.prixod.index',compact('cargos','all_inf'));
     }
 
@@ -70,6 +71,7 @@ class PrixodController extends Controller
     }
     $curers=ProviderModel::all();
     $cargos=CargoModel::where('active_status','=',1)->get();
+    
     return view('barn.storekeep.prixod.index_for_prixod',compact('prixods','curers','lists','cargos'));
    }
 
@@ -81,17 +83,20 @@ class PrixodController extends Controller
         // $tovars=SecondTypeOfItem::all();
         // dd(1);
         $types=TypeOfItem::all();
-      
-        
-        return view('barn.storekeep.prixod.create',compact('prixods','types'));
+        $currencys=CurrencyModel::get();
+        // dd($currencys);
+        return view('barn.storekeep.prixod.create',compact('prixods','types','currencys'));
     }
 
   
     public function store(Request $request)
     {
-        // dd($request->cost);
+        // dd($request->radio);
         $prixods=[];
-        $data=['second'=>$request->second,'type'=>$request->type,'item'=>$request->item,'number'=>$request->number,'cost'=>$request->cost];
+       
+        $currency=CurrencyModel::where('value',$request->radio)->first();
+        // dd($currency);
+        $data=['second'=>$request->second,'type'=>$request->type,'item'=>$request->item,'number'=>$request->number,'cost'=>$request->cost,'currency_id'=>$currency->id,'currency_value'=>$request->radio];
      
         if(Session::has('prixods')){
          
@@ -111,8 +116,8 @@ class PrixodController extends Controller
     public function show($id)
     {
        
-        $prixods=PrixodModel::where('cargo_id',$id)->paginate(15);
-
+        $prixods=PrixodModel::with('get_currency')->where('cargo_id',$id)->paginate(15);
+        // dd(1);
         return view('barn.storekeep.prixod.show',compact('prixods'));
         
     }
@@ -136,7 +141,7 @@ class PrixodController extends Controller
     {
         $old = Session::get('prixods');
 
-        $data=['second'=>$request->second,'type'=>$request->type,'item'=>$request->item,'number'=>$request->number,'cost'=>$request->cost];
+        $data=['second'=>$request->second,'type'=>$request->type,'item'=>$request->item,'number'=>$request->number,'cost'=>$request->cost,'currency'=>$request->radio];
         $old[$id]=$data;
         session(['prixods' => $old]);
         return to_route('storekeeper_role.prixod_list');
@@ -169,11 +174,18 @@ class PrixodController extends Controller
     }
 
     public function store_all(Request $request){
-       
+   
         $items=json_decode($request->lists);
         ini_set('max_execution_time', 120 ) ;
         foreach (json_decode($request->prixods) as $key => $prixod) {
-            $create=PrixodModel::create(['item_id'=>$prixod->item,'cargo_id'=>$request->cargo, 'count_of_item'=>$prixod->number, 'cost_of_per'=>$prixod->cost,'curer_id'=>$request->curer]);
+            // dd($prixod->currency_id);
+            $create=PrixodModel::create(['item_id'=>$prixod->item,
+            'cargo_id'=>$request->cargo,
+            'count_of_item'=>$prixod->number,
+            'cost_of_per'=>$prixod->cost,
+            'curer_id'=>$request->curer,
+            'currency_id'=>$prixod->currency_id,
+        ]);
             $get=ItemsModel::where('id',$items[$key][0]->id)->first();
           
             $update=ItemsModel::where('id',$items[$key][0]->id)->update(['extant'=>$get->extant+$prixod->number]);
