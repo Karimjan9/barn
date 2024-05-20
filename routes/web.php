@@ -279,84 +279,16 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/clear_cache', function () {
 
-            dd(Artisan::call('db:seed --class=CurrencySeeder'));
+            // dd(Artisan::call('db:seed --class=CurrencySeeder'));
 
             // Artisan::call('migrate:rollback --step=1');
 
 
-            // Artisan::call('migrate');
+            Artisan::call('migrate');
             
             // Artisan::call('db:seed --class=CurrencySeeder');
 
-            // ItemsModel::where('id',17)->update(['extant'=>0]);
-          
-
-            // ItemsModel::where('id',1)->update(['extant'=>0]);
-
-            // ItemsModel::where('id',2)->update(['extant'=>0]);
-
-            // ItemsModel::where('id',15)->update(['extant'=>0]);
-
-            ItemsModel::where('id',409)->update(['extant'=>0]);
-
-            ItemsModel::where('id',406)->update(['extant'=>0]);
-
-
-
-
-
-            PrixodModel::where('item_id',409)->delete();
-
-            PrixodModel::where('item_id',406)->delete();
-
-            // PrixodModel::where('item_id',15)->delete();
-
-            // PrixodModel::where('item_id',16)->delete();
-
-            // PrixodModel::where('item_id',14)->delete();
-
-            // PrixodModel::where('item_id',17)->delete();
-
-
-
-
-
-
-            GiveItemModel::where('item_id',409)->delete();
-
-            GiveItemModel::where('item_id',406)->delete();
-
-            // GiveItemModel::where('item_id',15)->take(1)->delete();
-
-            // GiveItemModel::where('item_id',16)->take(5)->delete();
-
-            // GiveItemModel::where('item_id',14)->take(4)->delete();
-
-
-
-            // GiveItemModel::where('item_id',17)->take(9696)->delete();
-
-
-
-            // Artisan::call('db:seed --class=UnityItemsSeeder');
-
-            // Artisan::call('db:seed --class=FirstSeeder');
-
-            // Artisan::call('db:seed --class=SecondSeeder');
-
-
-            // Artisan::call('config:clear');
-
-            // Artisan::call('config:cache');
             
-            // Artisan::call('view:clear');
-
-            // Artisan::call('view:cache');
-
-            // Artisan::call('route:clear');
-
-            // Artisan::call('route:cache');
-            // return 2;
             return redirect()->route('login');
             
 

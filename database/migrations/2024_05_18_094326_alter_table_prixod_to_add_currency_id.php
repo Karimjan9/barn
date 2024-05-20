@@ -22,3 +22,5 @@ return new class extends Migration
         });
     }
 };
+// $table->foreign('currency_id')->references('id')->on('currency');
+// $table->dropForeign('prixod_currency_id_foreign');
