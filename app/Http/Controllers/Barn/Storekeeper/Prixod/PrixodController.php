@@ -91,7 +91,7 @@ class PrixodController extends Controller
   
     public function store(Request $request)
     {
-        // dd($request->radio);
+        // dd($request->cost);
         $prixods=[];
        
         $currency=CurrencyModel::where('value',$request->radio)->first();

@@ -191,7 +191,7 @@
 
         sum_cost=sum_cost+parseInt(sum2);
 
-        sum_currency=parseInt(iterator.number)*parseInt(iterator.cost);
+        sum_currency=parseInt(iterator.number)*(iterator.cost);
 
         sum_currency_total=sum_currency_total+sum_currency;
 
@@ -206,7 +206,7 @@
     
     document.getElementById("totalItem").innerHTML = sum_item;
 
-    document.getElementById("totalCurrency").innerHTML = sum_currency_total;
+    document.getElementById("totalCurrency").innerHTML = sum_currency_total.toFixed(2);
 
    
 </script>
