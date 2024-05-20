@@ -279,9 +279,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/clear_cache', function () {
 
-            // dd(Artisan::call('migrate'));
+            dd(Artisan::call('db:seed --class=CurrencySeeder'));
 
-            Artisan::call('migrate:rollback --step=1');
+            // Artisan::call('migrate:rollback --step=1');
 
 
             // Artisan::call('migrate');
