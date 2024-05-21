@@ -120,7 +120,7 @@ class PrixodController extends Controller
     public function show($id)
     {
        
-        $prixods=PrixodModel::with('get_currency')->where('cargo_id',$id)->paginate(15);
+        $prixods=PrixodModel::with('get_currency')->where('cargo_id',$id)->paginate(40);
         // dd(1);
         return view('barn.storekeep.prixod.show',compact('prixods'));
         
