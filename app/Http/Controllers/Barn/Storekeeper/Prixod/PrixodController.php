@@ -28,6 +28,7 @@ class PrixodController extends Controller
             foreach ($cargos as $key => $cargo) {
                 $prixod_num=0;
                 $prixod_cost=0;
+                $prixod_currency_cost_all=0;
                 $inf=[];
                 $prixod_curer=[];
                 $prixods=PrixodModel::with(['get_currency'])->where('cargo_id',$cargo->id)->get();
@@ -35,6 +36,7 @@ class PrixodController extends Controller
                       $prixod_num+=$prixod->count_of_item; 
                       $prixod_cost+=$prixod->cost_of_per*$prixod->count_of_item*$prixod->currency_value;
                       $prixod_currency_cost=$prixod->cost_of_per*$prixod->count_of_item;
+                      $prixod_currency_cost_all=$prixod_currency_cost_all+$prixod_currency_cost;
                       $prixod_curer=ProviderModel::where('id',$prixod->curer_id)->first() ?? [];
                  
                 }
