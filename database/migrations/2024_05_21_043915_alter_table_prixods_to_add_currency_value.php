@@ -6,31 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::table('prixod', function (Blueprint $table) {
-
-        $table->foreign('currency_id')->references('id')->on('currency');
-       
-    });
+            $table->double('currency_value', 15, 2)->nullable()->default(1)->after('currency_id');
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+ 
     public function down()
     {
         Schema::table('prixod', function (Blueprint $table) {
-            
-            $table->dropForeign('prixod_currency_id_foreign');
-            
+            $table->dropColumn('currency_value');
         });
     }
 };

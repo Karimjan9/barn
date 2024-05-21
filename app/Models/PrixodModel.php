@@ -18,6 +18,7 @@ class PrixodModel extends Model
         'cost_of_per',
         'curer_id',
         'currency_id',
+        'currency_value',
     ];
     public function get_item_name(){
         return $this->belongsTo(ItemsModel::class, 'item_id', 'id'); 

@@ -33,13 +33,15 @@ class PrixodController extends Controller
                 $prixods=PrixodModel::with(['get_currency'])->where('cargo_id',$cargo->id)->get();
                 foreach ($prixods as $key => $prixod) {
                       $prixod_num+=$prixod->count_of_item; 
-                      $prixod_cost+=$prixod->cost_of_per*$prixod->count_of_item*$prixod->get_currency->value;
+                      $prixod_cost+=$prixod->cost_of_per*$prixod->count_of_item*$prixod->currency_value;
+                      $prixod_currency_cost=$prixod->cost_of_per*$prixod->count_of_item;
                       $prixod_curer=ProviderModel::where('id',$prixod->curer_id)->first() ?? [];
                  
                 }
                 $inf[]=(int)$prixod_cost;
                 $inf[]=$prixod_num;
                 $inf[]=$prixod_curer;
+                $inf[]=$prixod_currency_cost??0;
 
                 $all_inf[]=$inf;
             }
@@ -178,13 +180,14 @@ class PrixodController extends Controller
         $items=json_decode($request->lists);
         ini_set('max_execution_time', 120 ) ;
         foreach (json_decode($request->prixods) as $key => $prixod) {
-            // dd($prixod->currency_id);
+            // dd($prixod);
             $create=PrixodModel::create(['item_id'=>$prixod->item,
             'cargo_id'=>$request->cargo,
             'count_of_item'=>$prixod->number,
             'cost_of_per'=>$prixod->cost,
             'curer_id'=>$request->curer,
             'currency_id'=>$prixod->currency_id,
+            'currency_value'=>$prixod->currency_value,
         ]);
             $get=ItemsModel::where('id',$items[$key][0]->id)->first();
           
