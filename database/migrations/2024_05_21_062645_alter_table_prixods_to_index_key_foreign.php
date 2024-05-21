@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('prixod', function (Blueprint $table) {
-            $table->foreign('currency_id')->references('id')->on('currency');
+            // $table->foreign('currency_id')->references('id')->on('currency');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('prixod', function (Blueprint $table) {
-            $table->dropColumn('currency_value');
+            // $table->dropColumn('currency_value');
         });
     }
 };
