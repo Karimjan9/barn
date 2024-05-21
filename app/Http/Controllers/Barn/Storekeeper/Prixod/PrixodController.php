@@ -43,7 +43,7 @@ class PrixodController extends Controller
                 $inf[]=(int)$prixod_cost;
                 $inf[]=$prixod_num;
                 $inf[]=$prixod_curer;
-                $inf[]=$prixod_currency_cost??0;
+                $inf[]=$prixod_currency_cost_all??0;
 
                 $all_inf[]=$inf;
             }
