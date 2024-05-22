@@ -126,8 +126,8 @@
                                 <input type="number" name="number" class="form-control" id="count" oninput="myFunctionCalc()">
                              </div>
                              <div class="col-md-8 mb-3" >
-                                <label for="full_name" class="form-label">Narxi</label>
-                                <input  type="number" min="1" step="any" name="cost" class="form-control" id="cost" oninput="myFunctionCalc()">
+                                <label for="full_name" class="form-label">Narxi11</label>
+                                <input  type="number" min="0.01" step="0.01" name="cost" class="form-control" id="cost" oninput="myFunctionCalc()">
                              </div>
                              <br>
                              <h4> <span id="totalPrice">0 </span>so'm </h4>
