@@ -187,9 +187,9 @@
     var sum_currency_total=0;
     for (const iterator of app) {
          
-        sum2=parseInt(iterator.number)*(iterator.cost)*parseInt(iterator.currency_value);
+        sum2=parseInt(iterator.number)*(iterator.cost)*(iterator.currency_value);
 
-        sum_cost=sum_cost+parseInt(sum2);
+        sum_cost=sum_cost+(sum2);
 
         sum_currency=parseInt(iterator.number)*(iterator.cost);
 
@@ -199,7 +199,7 @@
              
                 }
 
-    // console.log(sum_currency_total);
+    console.log(sum_currency_total);
 
 
     document.getElementById("totalPrice").innerHTML = sum_cost;
