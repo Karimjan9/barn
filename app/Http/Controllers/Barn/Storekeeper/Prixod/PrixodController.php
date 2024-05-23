@@ -220,4 +220,12 @@ class PrixodController extends Controller
         }
       
     }
+    public function clear_session(){
+        if(Session::has('prixods')){
+            Session::forget('prixods');}
+
+
+    
+    return redirect()->route('login');
+    }
 }

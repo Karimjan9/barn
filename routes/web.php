@@ -277,6 +277,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::any('/destroy', [AuthenticatedSessionController::class, 'destroy'])->name('destroy');
 
+        Route::get('/change_session', [PrixodController::class, 'clear_session'])->name('clear_session');
+
         Route::get('/clear_cache', function () {
 
             // Artisan::call('db:seed --class=CurrencySeeder');
