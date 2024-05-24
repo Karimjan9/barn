@@ -35,7 +35,7 @@
 
 
 <div class="page-wrapper">
-                
+    <meta name="csrf-token" content="{{ csrf_token() }}">  
             <div class="page-content">
             <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
                 <div class="breadcrumb-title pe-3">Jo'natma qo'shish</div>
@@ -139,11 +139,12 @@
                                                             
                                                                 <td> <a href="{{ route('storekeeper_role.prixod.edit',['prixod'=>$p_key]) }}" class="btn btn-sm btn-warning text-white me-2"></i>O'zgartirish</a></td>
                                                                 <td>
-                                                                    <form action="{{ route('storekeeper_role.prixod.destroy',['prixod'=>$p_key]) }}" method="post">
-                                                                        @csrf
+                                                                    {{-- <form action="{{ route('storekeeper_role.prixod.destroy',['prixod'=>$p_key]) }}" method="post">
                                                                         @method("DELETE")
-                                                                    <input class="btn btn-sm btn-danger confirm-button"  type="submit" value="O'chirish" onclick="return confirm('Are you sure to delete this ?');" >
-                                                                    </form>
+                                                                        @csrf --}}
+                                                                       
+                                                                    <input class="btn btn-sm btn-danger confirm-button"  type="button" value="O'chirish" onclick="check({{ $p_key }})" >
+                                                                    {{-- </form> --}}
                                                                 </td>
                                                                 </tr>
                                                             @endforeach
@@ -199,7 +200,7 @@
              
                 }
 
-    console.log(sum_currency_total);
+    // console.log(sum_currency_total);
 
 
     document.getElementById("totalPrice").innerHTML = sum_cost;
@@ -210,8 +211,40 @@
 
    
 </script>
-
-
+ <script>
+    function check(key){
+        var check = confirm("Are you sure you want to leave?");
+        if (check == true) {
+            return delete_function(key);
+        }
+       
+    };
+ </script>
+<script>
+   function delete_function(key){
+    $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+    $.ajax('{{ route('storekeeper_role.prixod.destroy' , ['prixod'=>'key']) }}',
+        {
+          
+            type: 'delete', // replaced from put
+            dataType: "JSON",
+            data: {
+                "id": key,
+                "_method": 'DELETE',
+                
+            },
+            success: function ()
+            {
+                // console.log("it Work");
+                location.reload();
+            }
+        });
+   }
+</script>
 @endsection
 
 

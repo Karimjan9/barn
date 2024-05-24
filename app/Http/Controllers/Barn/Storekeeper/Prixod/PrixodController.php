@@ -136,7 +136,9 @@ class PrixodController extends Controller
     $types=TypeOfItem::all();
     $seconds=SecondTypeOfItem::all();
     $items=ItemsModel::all();
-    return view('barn.storekeep.prixod.edit',compact('edit_prixod','types','seconds','items','id'));
+    $currencys=CurrencyModel::get();
+    // dd($edit_prixod);
+    return view('barn.storekeep.prixod.edit',compact('edit_prixod','types','seconds','items','id','currencys'));
 
     }
 
@@ -144,21 +146,32 @@ class PrixodController extends Controller
     public function update(Request $request, $id)
     {
         $old = Session::get('prixods');
-
-        $data=['second'=>$request->second,'type'=>$request->type,'item'=>$request->item,'number'=>$request->number,'cost'=>$request->cost,'currency'=>$request->radio];
+        $currency=CurrencyModel::where('value',$request->radio)->first();
+        $data=['second'=>$request->second,'type'=>$request->type,'item'=>$request->item,'number'=>$request->number,'cost'=>$request->cost,'currency_id'=>$currency->id,'currency_value'=>$request->radio];
         $old[$id]=$data;
         session(['prixods' => $old]);
         return to_route('storekeeper_role.prixod_list');
     }
 
   
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        // return response()->json([
+        //     'id'=>"ok",
+        //    ]);
+       $id=$request->id;
         $old = Session::get('prixods');
         $edit_prixod=$old[$id];
         unset($old[$id]);
-        session(['prixods' => $old]);
-        return to_route('storekeeper_role.prixod_list');
+        $new=[];
+        foreach ($old as $key => $value) {
+           $new[]=$value;
+        }
+        session(['prixods' => $new]);
+        return response()->json([
+            'id'=>"ok",
+           ]);
+        // return to_route('storekeeper_role.prixod_list');
     }
 
     public function ajax_get_second_type(Request $request){
@@ -178,7 +191,7 @@ class PrixodController extends Controller
     }
 
     public function store_all(Request $request){
-   
+        // dd(1);
         $items=json_decode($request->lists);
         ini_set('max_execution_time', 120 ) ;
         foreach (json_decode($request->prixods) as $key => $prixod) {

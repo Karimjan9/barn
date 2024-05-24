@@ -130,7 +130,7 @@
                                 <input  type="number" min="0.01" step="0.01" name="cost" class="form-control" id="cost" oninput="myFunctionCalc()">
                              </div>
                              <br>
-                             <h4> <span id="totalPrice">0 </span>so'm </h4>
+                             <h4>Hammasi narxi:<span id="totalPrice">0 </span>so'm </h4>
                              <br>
                             <div class="col-12 mb-3">
                                 <button type="submit" class="btn btn-primary px-5">Store</button>
@@ -152,13 +152,13 @@
 <script>
    function myFunctionCalc() {
         var currency=$("input[type='radio'][name='radio']:checked").val();
-        //  console.log(currency);
+       
         var price = document.getElementById("cost").value;
         var count = document.getElementById("count").value;
-
+       
         var total = price * count*currency;
         document.getElementById("totalPrice").innerHTML = Math.floor(total);
-         
+        // console.log(total);
     }
 </script>
 <script>

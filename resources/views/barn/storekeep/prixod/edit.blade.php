@@ -57,24 +57,21 @@
                         <form class="row g-3" method="post" action="{{ route('storekeeper_role.prixod.update',['prixod'=>$id])}}">
                             @csrf
                             @method('PUT')
+                            @foreach ($currencys as $key=>$currency)
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="{{ 1 }}"  name="radio" id="flexRadioDefault1" checked>
+                                <input class="form-check-input" type="radio" value="{{ $currency->value }}"  name="radio" id="flexRadioDefault1"
+                                @if ($key==0)
+                                checked
+                                @endif
+                                @if ($currency->id==$edit_prixod['currency_id'  ])
+                                checked 
+                                @endif >
+                               
                                 <label class="form-check-label" for="flexRadioDefault1">
-                                  SO'M
+                                  {{ $currency->name }}
                                 </label>
                               </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" value="{{ 150 }}"  name="radio" id="flexRadioDefault2" >
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                  RUBL
-                                </label>
-                              </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" value="{{ 12500 }}"  name="radio" id="flexRadioDefault2" >
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                  USD
-                                </label>
-                              </div>
+                            @endforeach
                               <br>
                             <div class="col-md-8 mb-3">
                                 {{-- <input type="number"     id="" value="0.0"> --}}
@@ -163,8 +160,8 @@
     
     var sum_cost=0;
 
-    
-    sum2=parseInt(app.number)*parseInt(app.cost);
+    var currency=$("input[type='radio'][name='radio']:checked").val();
+    sum2=(app.number)*(app.cost)*currency;
     sum_cost=sum_cost+parseInt(sum2);
         
               
