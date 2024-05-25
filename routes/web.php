@@ -281,7 +281,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/clear_cache', function () {
 
-            Artisan::call('db:seed --class=bodily_types');
+            Artisan::call('db:seed --class=BodilySeeder');
 
             // Artisan::call('migrate:rollback --step=1');
 
