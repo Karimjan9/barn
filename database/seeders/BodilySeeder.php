@@ -16,7 +16,10 @@ class BodilySeeder extends Seeder
     protected $table = "bodily_types";
     public function run()
     {
-        BodilyTypeModel::create(['name' => "Moddiy",'bodily'=>1]);
-        BodilyTypeModel::create(['name' => "Nomodiy",'bodily'=>0]);
+        // BodilyTypeModel::create(['name' => "Moddiy",'bodily'=>1]);
+        // BodilyTypeModel::create(['name' => "Nomodiy",'bodily'=>0]);
+
+        BodilyTypeModel::create(['name' => "Xizmat turi",'bodily'=>2]);
+
     }
 }
