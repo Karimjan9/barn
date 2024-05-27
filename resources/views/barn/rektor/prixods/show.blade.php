@@ -66,6 +66,8 @@
                                 <th class="fixed_header2 align-middle">Har birining narxi</th>
                                 <th class="fixed_header2 align-middle">Jihoz soni</th>
                                 <th class="fixed_header2 align-middle">Hammasining narxi</th>
+                                <th class="fixed_header2 align-middle">Hammasining narxi So'mda</th>
+
 
 
      
@@ -86,10 +88,10 @@
                         
                             <td>{{ $key+1 }}</td>
                             <td>{{ $prixod->get_item_name->name }} </td>
-                            <td>{{ $prixod->cost_of_per}} so'm</td>
+                            <td>{{ $prixod->cost_of_per}} {{ $prixod->get_currency->name }}</td>
                             <td>{{ $prixod->count_of_item}} ta</td>
-                            <td>{{ $prixod->count_of_item * $prixod->cost_of_per}} so'm</td>
-
+                            <td>{{ $prixod->count_of_item * $prixod->cost_of_per}} {{ $prixod->get_currency->name }}</td>
+                            <td>{{ $prixod->count_of_item * $prixod->cost_of_per*$prixod->currency_value}} so'm</td>
                          
                                 
 

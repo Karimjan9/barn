@@ -22,7 +22,7 @@ class PrixodController extends Controller
 
     public function index()
     {
-        $cargos=CargoModel::orderBy('id', 'DESC')->paginate(15);
+        $cargos=CargoModel::with(['child'])->orderBy('id', 'DESC')->paginate(30);
             // dd($cargos);
             $all_inf=[];
             foreach ($cargos as $key => $cargo) {
@@ -31,13 +31,13 @@ class PrixodController extends Controller
                 $prixod_currency_cost_all=0;
                 $inf=[];
                 $prixod_curer=[];
-                $prixods=PrixodModel::with(['get_currency'])->where('cargo_id',$cargo->id)->get();
-                foreach ($prixods as $key => $prixod) {
+                // $prixods=PrixodModel::with(['get_provider'])->where('cargo_id',$cargo->id)->get();
+                foreach ($cargo->child as $key => $prixod) {
                       $prixod_num+=$prixod->count_of_item; 
                       $prixod_cost+=$prixod->cost_of_per*$prixod->count_of_item*$prixod->currency_value;
                       $prixod_currency_cost=$prixod->cost_of_per*$prixod->count_of_item;
                       $prixod_currency_cost_all=$prixod_currency_cost_all+$prixod_currency_cost;
-                      $prixod_curer=ProviderModel::where('id',$prixod->curer_id)->first() ?? [];
+                      $prixod_curer=$prixod->get_provider->name?? "kiritilmagan";
                  
                 }
                 $inf[]=(int)$prixod_cost;
@@ -62,7 +62,7 @@ class PrixodController extends Controller
         // dd($prixods);
       
         foreach ($prixods as $key => $prixod) {
-            $obj=ItemsModel::whereIn('id',[$prixod['item']])->get();
+            $obj=ItemsModel::with(['get_prixod.get_currency'])->whereIn('id',[$prixod['item']])->get();
             array_push($lists,$obj);
             // dd($obj);
         }

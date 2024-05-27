@@ -63,6 +63,7 @@
                             <tr>
                                 <th class="fixed_header2 align-middle">#</th>
                                 <th class="fixed_header2 align-middle">Cargo nomi</th>
+                                <th class="fixed_header2 align-middle">Barcha narxi valyutada</th>
                                 <th class="fixed_header2 align-middle">Barcha narxi</th>
                                 <th class="fixed_header2 align-middle">Jihozlar soni</th>
                                 <th class="fixed_header2 align-middle">Yetkazib beruvchi</th>
@@ -85,9 +86,10 @@
                         
                             <td>{{ $key+1 }}</td>
                             <td>{{ $cargo->name }}</td>
-                            <td>{{ $all_inf[$key][0] }} so'm</td>
+                            <td>{{ $all_inf[$key][0] }} birlik</td>
+                            <td>{{ $all_inf[$key][3]}} so'm</td>
                             <td>{{ $all_inf[$key][1]}}</td>
-                            <td>{{ $all_inf[$key][2]->name ?? "kiritilmagan"}}</td>
+                            <td>{{ $all_inf[$key][2] }}</td>
                             <td>{{ $cargo->description}}</td>
                                 
 

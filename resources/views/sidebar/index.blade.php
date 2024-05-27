@@ -333,6 +333,24 @@
               
             </ul>
         </li>
+        <li class="">
+            <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                <div class="parent-icon">
+                    <i class="fadeIn animated bx bx-dollar"></i>
+                </div>
+                <div class="menu-title"> Pul birligi va valyuta </div>
+            </a>
+            <ul>
+                <li>
+                    <a href="#" onclick="redrect('{{ route('rektor_role.rektor_currency.index') }}')">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        <div style="margin-right: 5px;">Valyuta</div>
+                        <span class="badge bg-warning text-dark"></span>
+                    </a>
+                </li>
+              
+            </ul>
+        </li>
     
         @endrole
        

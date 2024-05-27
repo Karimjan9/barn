@@ -13,25 +13,30 @@ class RektorPrixodController extends Controller
   
     public function index()
     {
-        $cargos=CargoModel::orderBy('id', 'DESC')->paginate(15);
-        // dd($cargos);
+        $cargos=CargoModel::with(['child'])->orderBy('id', 'DESC')->paginate(40);
+       
         $all_inf=[];
         foreach ($cargos as $key => $cargo) {
+            // dd($cargo); 
             $prixod_num=0;
             $prixod_cost=0;
             $inf=[];
             $prixod_curer=[];
-            $prixods=PrixodModel::where('cargo_id',$cargo->id)->get();
-            foreach ($prixods as $key => $prixod) {
+            $prixod_currency_cost_all=0;
+
+           
+            foreach ($cargo->child as $key => $prixod) {
+               
                   $prixod_num+=$prixod->count_of_item; 
                   $prixod_cost+=$prixod->cost_of_per*$prixod->count_of_item;
-                  $prixod_curer=ProviderModel::where('id',$prixod->curer_id)->first() ?? [];
-             
+                  $prixod_curer=$prixod->get_provider->name?? "kiritilmagan";
+                  $prixod_currency_cost=$prixod->cost_of_per*$prixod->count_of_item*$prixod->currency_value;
+                  $prixod_currency_cost_all=$prixod_currency_cost_all+$prixod_currency_cost;
             }
             $inf[]=$prixod_cost;
             $inf[]=$prixod_num;
             $inf[]=$prixod_curer;
-
+            $inf[]=$prixod_currency_cost_all??0;
             $all_inf[]=$inf;
         }
             // dd(1);
@@ -43,7 +48,7 @@ class RektorPrixodController extends Controller
  
     public function show($id)
     {
-        $prixods=PrixodModel::where('cargo_id',$id)->paginate(15);
+        $prixods=PrixodModel::with('get_currency')->where('cargo_id',$id)->paginate(40);
 
         return view('barn.rektor.prixods.show',compact('prixods'));
     }

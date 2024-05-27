@@ -111,6 +111,8 @@
                                                                 <th class="fixed_header2 align-middle">#</th>
                                                                 <th class="fixed_header2 align-middle">Jihoz turi</th>
                                                                 <th class="fixed_header2 align-middle">Jihoz nomi</th>
+                                                                <th class="fixed_header2 align-middle">Pul birligi</th>
+
                                                                 <th class="fixed_header2 align-middle">Modillik turi</th>
                                                                 <th class="fixed_header2 align-middle">Jihoz soni</th>
                                                                 <th class="fixed_header2 align-middle">Narxi</th>
@@ -130,6 +132,7 @@
                                                                 <td>{{ $p_key+1 }}</td>
                                                                 <td>{{  $list->name }}</td>
                                                                 <td>{{ $list->get_second->name}}</td>
+                                                                <td>{{ strtoupper($list->get_prixod->get_currency->name) }}</td>
                                                                 <td>{{ $list->bodily==1?"Moddiy":"Bo'linmaydi"  }}</td>
                                                                 <td>{{$prixods[$p_key]["number"]}}</td>
                                                                 <td>{{$prixods[$p_key]["cost"] ?? 0}} so'm</td>

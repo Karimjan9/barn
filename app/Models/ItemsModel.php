@@ -36,6 +36,9 @@ class ItemsModel extends Model
     public function get_unity(){
         return $this->belongsTo(ItemUnityModel::class,'unity_id','id');
     }
+    public function get_prixod(){
+        return $this->belongsTo(PrixodModel::class,'id','item_id');
+    }
 }
 
 

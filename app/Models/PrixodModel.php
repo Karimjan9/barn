@@ -31,5 +31,14 @@ class PrixodModel extends Model
     public function get_currency(){
         return $this->belongsTo(CurrencyModel::class, 'currency_id', 'id'); 
     }
-    
+    public function get_provider(){
+        return $this->belongsTo(ProviderModel::class, 'curer_id', 'id'); 
+    }
+
+    // public function cargo()
+    // {
+    //     return $this->belongsToMany(CargoModel::class);
+    // }
+
+   
 }

@@ -27,4 +27,20 @@ class CargoModel extends Model
     public function get_provider(){
         return $this->hasOne(ProviderModel::class, 'id', 'sender_id');   
     }
+
+    public function get_prixods(){
+        return $this->hasOne(PrixodModel::class,'id', 'cargo_id');   
+    }
+
+
+
+        // public function prixod()
+        // {
+        //     return $this->belongsToMany(PrixodModel::class);
+        // }
+
+        public function child()
+        {
+            return $this->hasmany(PrixodModel::class,'cargo_id','id');
+        }
 }
