@@ -1,5 +1,118 @@
 @extends('template_2')
 
+@section('style')
+
+    <style>
+:root {
+  --accent: #007ECC;
+  --accent-2: #EC2F4B;
+  --text: #003f66;
+  --text-hover: var(--accent);
+  --text-active: #FFFFFF;
+  --border-width: 0.125em;
+}
+
+html, body {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.swip {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden-toggles {
+	position: relative;
+	border-radius: 999em;
+	overflow: hidden;
+
+	height: 2.75em;
+	width: 40em;
+
+	display: flex;
+	flex-direction: row-reverse;
+
+	> * {
+		flex: 0 0 33.33%;
+	}
+
+	&:after {
+		content: "";
+
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		border: var(--border-width) solid var(--accent);
+		border-radius: 999em;
+		pointer-events: none;
+	}
+}
+
+.hidden-toggles__input {
+	display: none;
+
+	&:checked + .hidden-toggles__label {
+		background-color: var(--accent);
+		color: var(--text-active);
+
+		&:before {
+			opacity: 1;
+		}
+		
+		&:last-of-type {
+			background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
+		}
+	}
+	
+	&:nth-of-type(1) + label { order: 3 }
+	&:nth-of-type(2) + label { order: 2 }
+	&:nth-of-type(3) + label { order: 1 }
+	
+	/* &:nth-of-type(1):checked,
+	&:nth-of-type(2):checked {
+		~ label:last-of-type {
+			margin-right: -33.33%;
+		}
+	} */
+}
+
+.hidden-toggles__label {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	position: relative;
+	cursor: pointer;
+	transition: all 0.2s ease-out;
+  color: var(--text);
+
+	&:hover {
+		color: var(--text-hover);
+	}
+
+	&:nth-of-type(2) {
+		border-left: var(--border-width) solid var(--accent);
+		border-right: var(--border-width) solid var(--accent);
+	}
+	
+	&:last-of-type {
+		border-left: var(--border-width) solid var(--accent);
+	}
+}
+
+    </style>
+
+@endsection
 @section('body')
 
 <div class="page-wrapper">
@@ -19,17 +132,22 @@
                 </div>
              </div>
            </div>
+          
+          
            <div class="col">
             <div class="card radius-10 bg-gradient-ibiza">
                <div class="card-body">
+                  
                    <div class="d-flex align-items-center">
+                    
                        <div class="me-auto">
                            <p class="mb-0 text-white">Moddiy budjet</p>
-                           <h4 class="my-1 text-white">{{ $sum }} so'm</h4>
+                           <h4 class="my-1 text-white" id="summary">{{ $sum }} so'm</h4>
                            <p class="mb-0 font-13 text-white"></p>
                        </div>
                        <div id="chart2"></div>
                    </div>
+                   
                </div>
             </div>
           </div>
@@ -62,6 +180,23 @@
             </div>
           </div> 
         </div>
+         <div class="swip">
+            <div class="hidden-toggles">
+				
+              <input name="coloration-level" type="radio" id="coloration-low" class="hidden-toggles__input" onclick="check_swip()" >
+              <label for="coloration-low" class="hidden-toggles__label">Moddiy</label>
+              
+              <input name="coloration-level" type="radio" id="coloration-medium" class="hidden-toggles__input" onclick="check_swip()" checked>
+              <label for="coloration-medium" class="hidden-toggles__label"> Hamma mablag'</label>	
+              
+              <input name="coloration-level" type="radio" id="coloration-high" class="hidden-toggles__input" onclick="check_swip()">
+              <label for="coloration-high" class="hidden-toggles__label">Nomoddiy</label>
+
+              
+            </div>
+          </div>
+
+           <br>
         <!--end row-->
 
        
@@ -344,7 +479,57 @@ var gradientStroke5 = ctx.createLinearGradient(0, 0, 0, 300);
     }
   });
 </script>
+{{-- <script>
+  (function() {
+    // INITIALIZATION OF SWIPER
+    // =======================================================
+    var vertical = new Swiper('.js-swiper-vertical', {
+      direction: 'vertical',
+      pagination: {
+        el: '.js-swiper-vertical-pagination',
+        clickable: true,
+      },
+    });
+  })()
+</script> --}}
+    
+<script>
+  // var check=getElementById('#coloration-low').prop('checked', true);
+  function check_swip() {
+ 
+    var status=0;
+    if (document.getElementById("coloration-low").checked == true) {
+      status=1;
+    }
+    if (document.getElementById("coloration-medium").checked == true) {
+      status=2;
+    }
+    if (document.getElementById("coloration-high").checked == true) {
+      status=3;
+    }
+    return ajax(status)
+  }
 
+</script>
+  
+<script>
+  function ajax(status) {
+      // console.log(status);
+      $.ajax('{{ route('rektor_role.ajax_rektor_statistic') }}', {
+            type : "GET",
+            data : {
+                'status' : status,
+              
+            },
+            success : function (data){
+                // console.log(document.getElementById('summary').innerHTML);
+                let soum = document.getElementById('summary').innerHTML = data.data+"  "+"so'm";
+    
+            
+            }
+        })
+  }
+</script>
 @endsection
 
 

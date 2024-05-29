@@ -229,7 +229,7 @@ $(".sub-menu a").click(function () {
               
             },
             success : function (data, status){
-                console.log(data.responses);
+                // console.log(data.responses);
     
                 $('#table_app').html('')
     

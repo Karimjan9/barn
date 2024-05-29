@@ -32,9 +32,6 @@ class RektorController extends Controller
         return view('barn.rektor.asks.index',compact('asks','filters'));
     }
 
-        
-
-
 
 
     public function deny_application(Request $request,$id){
@@ -98,14 +95,19 @@ class RektorController extends Controller
      }
 
      public function show_statistic(){
+        
         $id=Auth::user()->id;
         $user=User::find($id);
         $orders=OrderToBarnModel::get()->count();
         $prixods=PrixodModel::get();
         $sum=0;
         foreach ($prixods as $key => $value) {
-            $sum=$sum+$value->cost_of_per*$value->count_of_item;
+            $sum=$sum+($value->cost_of_per*$value->count_of_item*$value->currency_value);
         }
+        // dd($sum);
+        
+        $sum=number_format($sum,2,","," ");
+        // dd($sum);
         $taked=GiveItemModel::where('status',2)->get()->count();
         $dis_taked=GiveItemModel::get()->count()==0 ? 1:GiveItemModel::get()->count();
         
@@ -124,5 +126,34 @@ class RektorController extends Controller
         // dd($names_1);
         // dd($first->get_item->sum('extant'));
         return view('barn.rektor.statistic.index',compact('user','orders','sum','protsent','worker','table_prixods','array','names','names_1','taked','dis_taked'));
+     }
+
+     function rektor_filter(Request $request){
+       
+        $sum=0;
+       
+        if (  $request->status==1) {
+            $prixods=PrixodModel::whereHas('get_item_name', function ($query) {
+                return $query->where('bodily', '=', 1);
+            })->get();
+           
+            foreach ($prixods as $key => $value) {
+                $sum=$sum+($value->cost_of_per*$value->count_of_item*$value->currency_value);
+            }
+        }elseif (  $request->status==2) {
+            $prixods=PrixodModel::get();
+            foreach ($prixods as $key => $value) {
+                $sum=$sum+($value->cost_of_per*$value->count_of_item*$value->currency_value);
+            }
+        }elseif (  $request->status==3) {
+            $prixods=PrixodModel::whereHas('get_item_name', function ($query) {
+                return $query->where('bodily', '=', 2);
+            })->get();
+            foreach ($prixods as $key => $value) {
+                $sum=$sum+($value->cost_of_per*$value->count_of_item*$value->currency_value);
+            }
+        }
+        $sum=number_format($sum,2,","," ");
+        return response()->json(['data'=>$sum]);
      }
 }

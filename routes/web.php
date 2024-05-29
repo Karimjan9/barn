@@ -88,6 +88,8 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/ajax_get_second_types',[RektorController::class,'ajax_get_second_types'])->name('ajax_get_second_types');
 
 
+                Route::get('/ajax_get_rektor_filter',[RektorController::class,'rektor_filter'])->name('ajax_rektor_statistic');
+
             });
         });
     });
