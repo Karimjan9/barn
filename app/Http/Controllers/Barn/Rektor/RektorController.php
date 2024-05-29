@@ -152,6 +152,13 @@ class RektorController extends Controller
             foreach ($prixods as $key => $value) {
                 $sum=$sum+($value->cost_of_per*$value->count_of_item*$value->currency_value);
             }
+        }elseif (  $request->status==4) {
+            $prixods=PrixodModel::whereHas('get_item_name', function ($query) {
+                return $query->where('bodily', '=', 3);
+            })->get();
+            foreach ($prixods as $key => $value) {
+                $sum=$sum+($value->cost_of_per*$value->count_of_item*$value->currency_value);
+            }
         }
         $sum=number_format($sum,2,","," ");
         return response()->json(['data'=>$sum]);

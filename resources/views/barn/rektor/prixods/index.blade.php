@@ -86,8 +86,8 @@
                         
                             <td>{{ $key+1 }}</td>
                             <td>{{ $cargo->name }}</td>
-                            <td>{{ $all_inf[$key][0] }} birlik</td>
-                            <td>{{ $all_inf[$key][3]}} so'm</td>
+                            <td>{{  number_format($all_inf[$key][0],2,","," ")}} birlik</td>
+                            <td>{{ number_format($all_inf[$key][3],2,","," ")}} so'm</td>
                             <td>{{ $all_inf[$key][1]}}</td>
                             <td>{{ $all_inf[$key][2] }}</td>
                             <td>{{ $cargo->description}}</td>

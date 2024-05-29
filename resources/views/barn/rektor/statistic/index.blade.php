@@ -73,17 +73,20 @@ html, body {
 			background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
 		}
 	}
-	
-	&:nth-of-type(1) + label { order: 3 }
+	&:nth-of-type(1) + label { order: 4 }
+	&:nth-of-type(2) + label { order: 3 }
+	&:nth-of-type(3) + label { order: 2 }
+	&:nth-of-type(4) + label { order: 1 }
+	/*&:nth-of-type(1) + label { order: 3 }
 	&:nth-of-type(2) + label { order: 2 }
 	&:nth-of-type(3) + label { order: 1 }
-	
-	/* &:nth-of-type(1):checked,
+*/	
+	&:nth-of-type(1):checked,
 	&:nth-of-type(2):checked {
 		~ label:last-of-type {
 			margin-right: -33.33%;
 		}
-	} */
+	}
 }
 
 .hidden-toggles__label {
@@ -192,6 +195,9 @@ html, body {
               <input name="coloration-level" type="radio" id="coloration-high" class="hidden-toggles__input" onclick="check_swip()">
               <label for="coloration-high" class="hidden-toggles__label">Nomoddiy</label>
 
+              <input name="coloration-level" type="radio" id="coloration-striking" class="hidden-toggles__input" onclick="check_swip()">
+              <label for="coloration-striking" class="hidden-toggles__label">Xizmatlar qismi</label>
+              
               
             </div>
           </div>
@@ -507,6 +513,11 @@ var gradientStroke5 = ctx.createLinearGradient(0, 0, 0, 300);
     if (document.getElementById("coloration-high").checked == true) {
       status=3;
     }
+    if (document.getElementById("coloration-striking").checked == true) {
+      status=4;
+    }
+
+  
     return ajax(status)
   }
 

@@ -132,7 +132,7 @@
                                                                 <td>{{ $p_key+1 }}</td>
                                                                 <td>{{  $list->name }}</td>
                                                                 <td>{{ $list->get_second->name}}</td>
-                                                                <td>{{ strtoupper($list->get_prixod->get_currency->name) }}</td>
+                                                                <td>{{ strtoupper($prixods[$p_key]["currency_name"])?? "so'm" }}</td>
                                                                 <td>{{ $list->bodily==1?"Moddiy":"Bo'linmaydi"  }}</td>
                                                                 <td>{{$prixods[$p_key]["number"]}}</td>
                                                                 <td>{{$prixods[$p_key]["cost"] ?? 0}} so'm</td>

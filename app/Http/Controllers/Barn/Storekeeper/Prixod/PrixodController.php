@@ -75,7 +75,7 @@ class PrixodController extends Controller
     }
     $curers=ProviderModel::all();
     $cargos=CargoModel::where('active_status','=',1)->get();
-    
+    // dd($lists);
     return view('barn.storekeep.prixod.index_for_prixod',compact('prixods','curers','lists','cargos'));
    }
 
@@ -100,7 +100,7 @@ class PrixodController extends Controller
        
         $currency=CurrencyModel::where('value',$request->radio)->first();
         // dd($currency);
-        $data=['second'=>$request->second,'type'=>$request->type,'item'=>$request->item,'number'=>$request->number,'cost'=>$request->cost,'currency_id'=>$currency->id,'currency_value'=>$request->radio];
+        $data=['second'=>$request->second,'type'=>$request->type,'item'=>$request->item,'number'=>$request->number,'cost'=>$request->cost,'currency_id'=>$currency->id,'currency_value'=>$request->radio,'currency_name'=>$currency->name];
      
         if(Session::has('prixods')){
          
@@ -113,6 +113,7 @@ class PrixodController extends Controller
             array_push($prixods,$data);
             session(['prixods' => $prixods]);
         }
+
         return redirect()->route('storekeeper_role.prixod_list');
     }
 
