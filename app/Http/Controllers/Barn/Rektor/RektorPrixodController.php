@@ -30,6 +30,7 @@ class RektorPrixodController extends Controller
                   $prixod_num+=$prixod->count_of_item; 
                   $prixod_cost+=$prixod->cost_of_per*$prixod->count_of_item;
                   $prixod_curer=$prixod->get_provider->name?? "kiritilmagan";
+                  dd($prixod->get_provider->name);
                   $prixod_currency_cost=$prixod->cost_of_per*$prixod->count_of_item*$prixod->currency_value;
                   $prixod_currency_cost_all=$prixod_currency_cost_all+$prixod_currency_cost;
             }
