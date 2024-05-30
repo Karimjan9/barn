@@ -83,6 +83,7 @@
                      
                             @foreach ($cargos as $key=>$cargo)
                             <tr>
+                                @dd($all_inf[$key][2])
                         
                             <td>{{ $key+1 }}</td>
                             <td>{{ $cargo->name }}</td>

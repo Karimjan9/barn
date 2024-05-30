@@ -36,6 +36,7 @@ class RektorPrixodController extends Controller
             $inf[]=$prixod_cost;
             $inf[]=$prixod_num;
             $inf[]=$prixod_curer;
+            dd($prixod_curer);
             $inf[]=$prixod_currency_cost_all??0;
             $all_inf[]=$inf;
         }
