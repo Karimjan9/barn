@@ -17,7 +17,7 @@ class RektorPrixodController extends Controller
        
         $all_inf=[];
         foreach ($cargos as $key => $cargo) {
-            // dd($cargo); 
+            dd($cargo); 
             $prixod_num=0;
             $prixod_cost=0;
             $inf=[];
