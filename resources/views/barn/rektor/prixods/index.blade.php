@@ -83,14 +83,14 @@
                      
                             @foreach ($cargos as $key=>$cargo)
                             <tr>
-                                @dd($all_inf[$key][2])
+                                {{-- @dd($all_inf[$key][2]) --}}
                         
                             <td>{{ $key+1 }}</td>
                             <td>{{ $cargo->name }}</td>
                             <td>{{  number_format($all_inf[$key][0],2,","," ")}} birlik</td>
                             <td>{{ number_format($all_inf[$key][3],2,","," ")}} so'm</td>
                             <td>{{ $all_inf[$key][1]}}</td>
-                            <td>{{ $all_inf[$key][2] }}</td>
+                            <td>{{ $all_inf[$key][2]?? "kiritilmagan"}}</td>
                             <td>{{ $cargo->description}}</td>
                                 
 
