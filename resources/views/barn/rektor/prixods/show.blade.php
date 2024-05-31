@@ -26,6 +26,7 @@
 @section('script_include_header')
 
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/super-build/ckeditor.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 @endsection
 
@@ -58,7 +59,7 @@
             <div class="card-body">
 
                 <div class="">
-                    <table class="table table-bordered align-middle mb-0">
+                    <table class="table table-bordered align-middle mb-0 table table-responsive table-hover" >
                         <thead class="table-light">
                             <tr>
                                 <th class="fixed_header2 align-middle">#</th>
@@ -67,16 +68,10 @@
                                 <th class="fixed_header2 align-middle">Jihoz soni</th>
                                 <th class="fixed_header2 align-middle">Hammasining narxi</th>
                                 <th class="fixed_header2 align-middle">Hammasining narxi So'mda</th>
+                                <th class="fixed_header2 align-middle">Harakatlar</th>
 
 
-
-     
-                      
-
-
-                              
-
-                                {{-- <th class="fixed_header2 align-middle">Delete</th> --}}
+                                  {{-- <th class="fixed_header2 align-middle">Delete</th> --}}
 
 
                             </tr>
@@ -84,23 +79,57 @@
                         <tbody>
                         {{-- @dd($all_inf) --}}
                             @foreach ($prixods as $key=>$prixod)
-                            <tr>
+                            {{-- @dd($prixod) --}}
+                            <tr data-toggle="collapse" id="table1" data-target=".table1">
                         
                             <td>{{ $key+1 }}</td>
                             <td>{{ $prixod->get_item_name->name }} </td>
-                            <td>{{ $prixod->cost_of_per}} {{ $prixod->get_currency->name }}</td>
+                            <td>{{ number_format($prixod->cost_of_per ,2,","," ")}} {{ $prixod->get_currency->name }}</td>
                             <td>{{ $prixod->count_of_item}} ta</td>
-                            <td>{{ $prixod->count_of_item * $prixod->cost_of_per}} {{ $prixod->get_currency->name }}</td>
-                            <td>{{ $prixod->count_of_item * $prixod->cost_of_per*$prixod->currency_value}} so'm</td>
-                         
+                            <td>{{  number_format($prixod->count_of_item * $prixod->cost_of_per ,2,","," ")}} {{ $prixod->get_currency->name }}</td>
+                            <td>{{  number_format($prixod->count_of_item * $prixod->cost_of_per*$prixod->currency_value ,2,","," ")}} so'm</td>
+                            <td><button class="btn btn-default btn-sm">View More</button></td>
                                 
 
                             </tr>
+                               
+                                <tr class="collapse table1">
+                                    <td colspan="999">
+                                      <div>
+                                        <table class="table table-striped">
+                                          <thead>
+                                            <tr>
+                                                <th class="fixed_header2 align-middle">#</th>
+                                                <th class="fixed_header2 align-middle">Jihoz nomi</th>
+                                                <th class="fixed_header2 align-middle">Har birining narxi</th>
+                                                <th class="fixed_header2 align-middle">Kelgan kargosi</th>
+                                                <th class="fixed_header2 align-middle">Kelgan vaqti</th>
+
+
+                                            </tr> 
+                                            @foreach ($prixod->child as $key22=>$item)
+                                            {{-- @dd($item) --}}
+                                                <tr  data-toggle="collapse" id="table1" data-target=".table1">
+                                                    <td>{{ $key22+1 }}</td>
+                                                    <td>{{ $item->get_item_name->name }}</td>  
+                                                    <td>{{ number_format($item->cost_of_per ,2,","," ")}} {{ $item->get_currency->name }}</td>
+                                                    <td>{{ $item->get_cargo_name->name }}</td>
+                                                    <td>{{ $item->created_at->format('d-m-Y') }}</td>
+                                                    
+                                                   
+                                                </tr>
+                                                
+                                            @endforeach
+                                          </thead>
+                                          <tbody>
+                                          
+                                         
+                                        </tbody>
                         @endforeach
-                  
+                              
                           
                          
-                        </tbody>
+                        
                     </table>
                     <div class="card-body">
 
@@ -116,8 +145,8 @@
 @endsection
 
 @section('scripte_include_end_body')
-
-
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 @endsection
 

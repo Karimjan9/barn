@@ -26,7 +26,7 @@
 @section('script_include_header')
 
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/super-build/ckeditor.js"></script>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 @endsection
 
 @section('body')
@@ -90,10 +90,10 @@
                             <td>{{ $key+1 }}</td>
                             <td>{{ $prixod->get_item_name->name }} </td>
                             <td>{{  $prixod->get_currency->name }} </td>
-                            <td>{{ $prixod->cost_of_per}} {{ $prixod->get_currency->name }}</td>
+                            <td>{{ number_format($prixod->cost_of_per ,2,","," ")}} {{ $prixod->get_currency->name }}</td>
                             <td>{{ $prixod->count_of_item}} ta</td>
-                            <td>{{  $prixod->count_of_item * $prixod->cost_of_per}}  {{ $prixod->get_currency->name }} </td>
-                            <td>{{ $prixod->count_of_item * $prixod->cost_of_per*$prixod->currency_value}} so'm</td>
+                            <td>{{    number_format($prixod->count_of_item * $prixod->cost_of_per ,2,","," ")}}  {{ $prixod->get_currency->name }} </td>
+                            <td>{{   number_format($prixod->count_of_item * $prixod->cost_of_per*$prixod->currency_value ,2,","," ") }} so'm</td>
 
                          
                                 
@@ -120,7 +120,7 @@
 
 @section('scripte_include_end_body')
 
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 @endsection
 

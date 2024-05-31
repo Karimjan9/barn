@@ -26,7 +26,7 @@
 @section('script_include_header')
 
     <script src="https://cdn.ckeditor.com/ckeditor5/37.1.0/super-build/ckeditor.js"></script>
-
+    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
 @endsection
 
 @section('body')
@@ -71,19 +71,13 @@
                                 <th class="fixed_header2 align-middle" >Mulohaza</th>
                                 <th class="fixed_header2 align-middle" >Harakatlar</th>
 
-
-                              
-
-                                {{-- <th class="fixed_header2 align-middle">Delete</th> --}}
-
-
                             </tr>
                         </thead>
                         <tbody>
                      
                             @foreach ($cargos as $key=>$cargo)
                             <tr>
-                                {{-- @dd($all_inf[$key][2]) --}}
+                            
                         
                             <td>{{ $key+1 }}</td>
                             <td>{{ $cargo->name }}</td>
@@ -92,29 +86,12 @@
                             <td>{{ $all_inf[$key][1]}}</td>
                             <td>{{ $all_inf[$key][2]->name ?? "kiritilmagan"}}</td>
                             <td>{{ $cargo->description}}</td>
-                                
-
-                            {{-- <td class="d-flex align-items-center">
-                                       
-                                        <form action="" method="post">
-                                            @csrf
-                                            @method("DELETE")
-                                            <input class="btn btn-sm btn-danger confirm-button" type="submit" value="Bo'shatish">
-                                        </form>
-                                    </td> --}}
+ 
                               <td> <a href="{{ route('rektor_role.prixod_show.show',['prixod_show'=>$cargo->id]) }}" class="btn btn-sm btn-primary text-white me-2"></i>  Ko'rish   </a></td>
-                              {{-- <td>
-                                <form action="{{ route('storekeeper_role.type_item_take.destroy',['type_item_take'=>$item->id]) }}" method="post">
-                                  @csrf
-                                  @method("DELETE")
-                                  <input class="btn btn-sm btn-danger confirm-button"  type="submit" value="Delete type" onclick="return confirm('Are you sure to delete this ?');" >
-                              </form>
-                              </td> --}}
+                             
                             </tr>
                         @endforeach
-                  
-                          
-                         
+
                         </tbody>
                     </table>
                   
@@ -128,12 +105,16 @@
   
 </div>
 
+  
+  
 
 @endsection
 
 @section('scripte_include_end_body')
 
 
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> --}}
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 @endsection
 

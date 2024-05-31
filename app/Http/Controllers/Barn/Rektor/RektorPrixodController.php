@@ -47,8 +47,8 @@ class RektorPrixodController extends Controller
  
     public function show($id)
     {
-        $prixods=PrixodModel::with('get_currency')->where('cargo_id',$id)->paginate(40);
-
+        $prixods=PrixodModel::with(['get_currency','child'])->where('cargo_id',$id)->paginate(40);
+        // dd($prixods[0]);
         return view('barn.rektor.prixods.show',compact('prixods'));
     }
 
