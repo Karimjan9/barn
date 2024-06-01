@@ -48,7 +48,7 @@
         </div>
         <div class="row">
             <div class="col-xl-10 mx-auto">
-                <h6 class="mb-0 text-uppercase">Foydalanuvchi qo`shish formasi</h6>
+                <h6 class="mb-0 text-uppercase">Foydalanuvchi qo`shish formasi22</h6>
                 <hr>
                 <div class="card border-top border-0 border-4 border-primary">
                     <div class="card-body p-5">
@@ -70,19 +70,19 @@
                                 @endforeach
                             </div>
 
-                            <div class="col-md-8 mb-3" >
+                            {{-- <div class="col-md-8 mb-3" >
                                 <label for="full_name" class="form-label">Familiyasi</label>
                                 <input type="text" value="{{ $user->surname }}" name="surname" class="form-control" id="full_name">
-                            </div>
+                            </div> --}}
 
                             <div class="col-md-8 mb-3" >
                                 <label for="full_name" class="form-label">Ismi</label>
                                 <input type="text" name="name" value="{{ $user->full_name }}" class="form-control" id="full_name">
                             </div>
-                            <div class="col-md-8 mb-3" >
+                            {{-- <div class="col-md-8 mb-3" >
                                 <label for="full_name" class="form-label">Otasining ismi</label>
                                 <input type="text" name="other_name" value="{{ $user->other_name  }}" class="form-control" id="other_name">
-                            </div>
+                            </div> --}}
                             {{-- <div class="col-md-6 mb-3" >
                                 <label for="full_name" class="form-label">Tug'ilgan sanasi</label>
                                 <input type="date" name="date" class="form-control" id="full_name">
@@ -107,7 +107,7 @@
                                     <label class="form-check-label"  for="inlineRadio2">Ayol</label>
                                   </div>
                             </div> --}}
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                              
                                 <label for="message_body" class="form-label">Bo'lim tanlash</label>
 
@@ -131,9 +131,9 @@
                         
                                 
                                 </select>
-                            </div>
+                            </div> --}}
 
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                              
                                 <label for="message_body" class="form-label">Mansab tanlash</label>
 
@@ -153,11 +153,11 @@
                                 
                   @endforeach
                                 </select>
-                            </div>
-                            <div class="col-md-8 mb-3" >
+                            </div> --}}
+                            {{-- <div class="col-md-8 mb-3" >
                                 <label for="full_name" class="form-label">Tel raqami:</label>
                                 <input type="number" value="{{ $user->number_phone }}" name="phone_number"  class="form-control" id="jshir">
-                            </div>
+                            </div> --}}
                             {{-- <div class="col-md-8 mb-3" >
                                 <label for="full_name" class="form-label">JShIR</label>
                                 <input type="number" name="jshir"  class="form-control" id="jshir">

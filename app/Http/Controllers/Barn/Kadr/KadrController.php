@@ -66,12 +66,11 @@ class KadrController extends Controller
     {
        
         $password=Hash::make($request->password);
-        $user=User::create(['full_name'=>$request->name,'login'=>$request->login,'level_id'=>6,'password'=>$password,'surname'=>$request->surname,'other_name'=>$request->other_name,
-        'number_phone'=>$request->phone_number]);
+        $user=User::create(['full_name'=>$request->full_name,'login'=>$request->login,'level_id'=>6,'password'=>$password,]);
 
         // departament
         // dd($request->departament);
-        $job=UserJobsModel::create(['user_id'=>$user->id,'dep_id'=>$request->departament,'career_id'=>$request->career]);
+        // $job=UserJobsModel::create(['user_id'=>$user->id,'dep_id'=>$request->departament,'career_id'=>$request->career]);
         return redirect()->route('kadr_role.actions.index');
     }
 
@@ -97,9 +96,8 @@ class KadrController extends Controller
         // $department_id=User::where('id','=',$id)->first()->departament_id;
       
         
-        User::where('id','=',$id)->update(['full_name'=>$request->name,'login'=>$request->login,'password'=>$password,'surname'=>$request->surname,'other_name'=>$request->other_name,
-        'number_phone'=>$request->phone_number]);
-        $job=UserJobsModel::where('user_id','=',$id)->update(['dep_id'=>$request->departament,'career_id'=>$request->career]);
+        User::where('id','=',$id)->update(['full_name'=>$request->name,'login'=>$request->login,'password'=>$password,]);
+        // $job=UserJobsModel::where('user_id','=',$id)->update(['dep_id'=>$request->departament,'career_id'=>$request->career]);
         return redirect()->route('kadr_role.actions.index');
     }
 

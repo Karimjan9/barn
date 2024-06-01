@@ -108,7 +108,10 @@ nav ul li ul li a:hover {
                                 <tr>
                                     <th class="fixed_header2 align-middle">#</th>
                                     <th class="fixed_header2 align-middle">Bo'lim name</th>
-                                    {{-- <th class="fixed_header2 align-middle">Bo'limga qarashli</th> --}}
+                                    <th class="fixed_header2 align-middle">Javobgar shaxs</th>
+                                    <th class="fixed_header2 align-middle">Bino</th>
+
+                                    
                                     <th class="fixed_header2 align-middle">Harakatlar</th>
                                 </tr>
                             </thead>
@@ -121,6 +124,12 @@ nav ul li ul li a:hover {
                                         </td>
                                         <td>
                                             {{ $items->name }}
+                                        </td>
+                                        <td>
+                                            {{ $items->get_user->full_name??"NULL" }}
+                                        </td>
+                                        <td>
+                                            {{ $items->get_building->name }}
                                         </td>
                                         
                                         {{-- <td>

@@ -128,7 +128,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::resource('/admin_accepts', AcceptedEquipmentController::class)->only([
                     'index','update',
                 ]);
-                
+
                 Route::get('/items_for_order/{order_id}',[AdminBarnController::class,'item_for_order'])->name('item_for_order');
 
                 Route::resource('missing_equipment',MissingEquipmentController::class)->only(['index']);
@@ -286,7 +286,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('/clear_cache', function () {
 
-            Artisan::call('db:seed --class=BodilySeeder');
+            Artisan::call('migrate');
+
+            Artisan::call('db:seed --class=BuildingSeeder');
 
             // Artisan::call('migrate:rollback --step=1');
 

@@ -24,19 +24,19 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-                'name'=>['required'],
+                'full_name'=>['required'],
                 // 'jshir'=>['required','digits:14'],
 
                 'login'=>['required',],
                 'password' => ['required','confirmed','min:4'],
 
-                'surname'=>['required'],
-                'other_name'=>['required'],
+                // 'surname'=>['required'],
+                // 'other_name'=>['required'],
                 // 'date'=>['required'],
                 // 'birth_place'=> ['required'],
                 // 'nation'=>['required'],
                 // 'gender'=> ['required'],
-                'phone_number'=> ['required','digits:12'],
+                // 'phone_number'=> ['required','digits:12'],
                 
         ];
     }
@@ -44,7 +44,7 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Ism familiya kiritilmadi !',
+            'full_name.required' => 'Ism familiya kiritilmadi !',
             // 'jshir.required'=>"JSHIR kiritilmadi !",
             // 'jshir.digits'=>"JSHIR 14 ta raqam bo'lishi kerak !",
             // 'branch.required'=>"Bo'lim tanlanmadi kiritilmadi !",
@@ -54,13 +54,13 @@ class UserRequest extends FormRequest
             'password.confirmed'=>"Parollar mos kelmadi  !",
             'password.min'=>"Parol 4 ta simvoldan kam bo'lishi mumkin emas !",
 
-            'surname.required'=>'Familiya kiritilmadi!',
-            'other_name.required'=>'Otasining ismi kiritilmadi!',
+            // 'surname.required'=>'Familiya kiritilmadi!',
+            // 'other_name.required'=>'Otasining ismi kiritilmadi!',
             // 'date.required'=>"Tug'ilgan sana kiritilmadi!",
             // 'nation.required'=>"Millati berilmadi!",
             // 'gender.required'=>"Jinsi belgilanmadi!",
-            'phone_number.required'=>"Telefon raqam berilmadi!",
-            'phone_number.digits'=>"Telefon raqam formati to'liq emas!",
+            // 'phone_number.required'=>"Telefon raqam berilmadi!",
+            // 'phone_number.digits'=>"Telefon raqam formati to'liq emas!",
             // 'birth_place.required'=>"Tug'ilgan joyi manzili kiritilmadis!"
 
             

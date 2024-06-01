@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Barn\Kadr;
 
 use App\Http\Controllers\Controller;
+use App\Models\BuildingModel;
 use App\Models\DepartamentUpdatedModel;
+use App\Models\DepartmentKafedraModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DepartamentUpdateController extends Controller
@@ -11,7 +14,7 @@ class DepartamentUpdateController extends Controller
    
     public function index()
     {
-        $departaments=DepartamentUpdatedModel::get();
+        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->get();
         // dd($departaments);
         return view('barn.departament_update.index',compact('departaments'));
     }
@@ -19,12 +22,17 @@ class DepartamentUpdateController extends Controller
     
     public function create()
     {
-        return view('barn.departament_update.create',);
+        $users=User::where('level_id',6)->get();
+        // dd($users);
+        $buildings=BuildingModel::get();
+        // dd($buildings);
+        return view('barn.departament_update.create',compact('users','buildings'));
     }
 
     public function store(Request $request)
     {
-        DepartamentUpdatedModel::create($request->all());
+        DepartmentKafedraModel::create($request->all());
+
         return to_route('kadr_role.department_update.index');
    
     }

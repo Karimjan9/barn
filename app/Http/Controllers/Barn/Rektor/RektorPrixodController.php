@@ -51,6 +51,15 @@ class RektorPrixodController extends Controller
         // dd($prixods[0]);
         return view('barn.rektor.prixods.show',compact('prixods'));
     }
+//     <tr  data-toggle="collapse" id="table1" data-target=".table1">
+//     <td>{{ $key22+1 }}</td>
+//     <td>{{ $item->get_item_name->name }}</td>  
+//     <td>{{ number_format($item->cost_of_per ,2,","," ")}} {{ $item->get_currency->name }}</td>
+//     <td>{{ $item->get_cargo_name->name }}</td>
+//     <td>{{ $item->created_at->format('d-m-Y') }}</td>
+
+   
+// </tr>
 
   
     

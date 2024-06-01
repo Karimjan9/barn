@@ -73,6 +73,8 @@
                                       
                             @endforeach
                       @endforeach --}}
+
+
                             <div class="col-md-12">
                                 <label for="message_body" class="form-label">Bo'lim nomi</label>
                                 <input type="text" name="name" class="form-control" id="message_body">
@@ -80,6 +82,42 @@
                             <br>
                           
                           
+
+                            <div class="col-md-12">
+                             
+                                <label for="message_body" class="form-label">Javogar shaxs</label>
+
+                                <select name="res_person" id="res_person" class="form-select form-select-lg mb-3">
+                                    <option value="" >Null </option>
+                                      @foreach ($users as $key=>$user)
+                                        
+                                                  
+                                                        <option value="{{ $user->id }}" >{{ $user->full_name }} </option>
+                               
+                                                    
+                                      @endforeach
+                        
+                                
+                                </select>
+                            </div>
+
+                            <div class="col-md-12">
+                             
+                                <label for="message_body" class="form-label">Bino tanlash</label>
+
+                                <select name="building_id" id="building_id" class="form-select form-select-lg mb-3">
+                                   
+                                      @foreach ($buildings as $key=>$building)
+                                        
+                                                  
+                                                        <option value="{{ $building->id }}" >{{ $building->name }} </option>
+                               
+                                                    
+                                      @endforeach
+                        
+                                
+                                </select>
+                            </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary px-5">Yuborish</button>
                             </div>

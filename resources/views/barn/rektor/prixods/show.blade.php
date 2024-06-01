@@ -80,7 +80,7 @@
                         {{-- @dd($all_inf) --}}
                             @foreach ($prixods as $key=>$prixod)
                             {{-- @dd($prixod) --}}
-                            <tr data-toggle="collapse" id="table1" data-target=".table1">
+                            <tr class="clickable" data-toggle="collapse" id="table2" data-target=".table2">
                         
                             <td>{{ $key+1 }}</td>
                             <td>{{ $prixod->get_item_name->name }} </td>
@@ -92,44 +92,23 @@
                                 
 
                             </tr>
-                               
-                                <tr class="collapse table1">
-                                    <td colspan="999">
-                                      <div>
-                                        <table class="table table-striped">
-                                          <thead>
-                                            <tr>
-                                                <th class="fixed_header2 align-middle">#</th>
-                                                <th class="fixed_header2 align-middle">Jihoz nomi</th>
-                                                <th class="fixed_header2 align-middle">Har birining narxi</th>
-                                                <th class="fixed_header2 align-middle">Kelgan kargosi</th>
-                                                <th class="fixed_header2 align-middle">Kelgan vaqti</th>
-
-
-                                            </tr> 
-                                            @foreach ($prixod->child as $key22=>$item)
-                                            {{-- @dd($item) --}}
-                                                <tr  data-toggle="collapse" id="table1" data-target=".table1">
-                                                    <td>{{ $key22+1 }}</td>
-                                                    <td>{{ $item->get_item_name->name }}</td>  
-                                                    <td>{{ number_format($item->cost_of_per ,2,","," ")}} {{ $item->get_currency->name }}</td>
-                                                    <td>{{ $item->get_cargo_name->name }}</td>
-                                                    <td>{{ $item->created_at->format('d-m-Y') }}</td>
-                                                    
-                                                   
-                                                </tr>
-                                                
-                                            @endforeach
-                                          </thead>
-                                          <tbody>
-                                          
-                                         
-                                        </tbody>
+                                @foreach ($prixod->child as $key22=>$item)
+                                {{-- @dd($item) --}}
+                                    <tr class="collapse table2">
+                                        <td>{{ $key22+1 }}</td>
+                                        <td>{{ $item->get_item_name->name }}</td>  
+                                        <td>{{ number_format($item->cost_of_per ,2,","," ")}} {{ $item->get_currency->name }}</td>
+                                        <td>{{ $item->created_at->format('m-d-Y') }}</td>
+                                        
+                                    
+                                    </tr>
+                                @endforeach
+                         
                         @endforeach
                               
                           
                          
-                        
+                        </tbody>
                     </table>
                     <div class="card-body">
 
