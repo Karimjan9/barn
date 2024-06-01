@@ -45,17 +45,19 @@ class DepartamentUpdateController extends Controller
   
     public function edit($id)
     {
-        $departament=DepartamentUpdatedModel::where('id','=',$id)->first();
+        $departament=DepartmentKafedraModel::where('id','=',$id)->first();
         // dd($departament);
-
-        return view('barn.departament_update.edit',compact('departament'));
+        $users=User::where('level_id',6)->get();
+        // dd($users);
+        $buildings=BuildingModel::get();
+        return view('barn.departament_update.edit',compact('departament','users','buildings'));
     }
 
  
     public function update(Request $request, $id)
     {
        
-        $post = DepartamentUpdatedModel::find($id); 
+        $post = DepartmentKafedraModel::find($id); 
 
         $post->fill($request->all())->save();
         

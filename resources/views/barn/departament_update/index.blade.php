@@ -157,11 +157,11 @@ nav ul li ul li a:hover {
                                                 
                                         <td class="d-flex align-items-center">
                                             <a href="{{ route('kadr_role.department_update.edit',['department_update'=>$items->id]) }}" class="btn btn-sm btn-warning text-white me-2"></i>O'zgartirish</a>
-                                            <form action="{{ route('kadr_role.department_update.destroy',['department_update'=>$items->id]) }}" method="post">
+                                            {{-- <form action="{{ route('kadr_role.department_update.destroy',['department_update'=>$items->id]) }}" method="post">
                                                 @csrf
                                                 @method("DELETE")
                                                 <input class="btn btn-sm btn-danger confirm-button" type="submit" value="O'chirish" onclick="return confirm('Are you sure to delete this ?');" >
-                                            </form>
+                                            </form> --}}
                                         </td>
                                     </tr>
                                 @endforeach
