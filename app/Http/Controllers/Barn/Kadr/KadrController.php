@@ -33,7 +33,7 @@ class KadrController extends Controller
   
     public function index()
     {
-        $users=User::with(['user_job.user_career','user_job.user_dep'])->where('level_id','=',6)->paginate(10);
+        $users=User::with(['user_job.user_career','user_job.user_dep'])->where('level_id','=',6)->paginate(20);
         // dd($users);
         // $search=0;
       
