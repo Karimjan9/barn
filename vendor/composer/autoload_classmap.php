@@ -287,6 +287,7 @@ return array(
     'Database\\Seeders\\AcademicDegreeSeeder' => $baseDir . '/database/seeders/AcademicDegreeSeeder.php',
     'Database\\Seeders\\AcademicTitleSeeder' => $baseDir . '/database/seeders/AcademicTitleSeeder.php',
     'Database\\Seeders\\BodilySeeder' => $baseDir . '/database/seeders/BodilySeeder.php',
+    'Database\\Seeders\\BuildingSeeder' => $baseDir . '/database/seeders/BuildingSeeder.php',
     'Database\\Seeders\\CareerSeeder' => $baseDir . '/database/seeders/CareerSeeder.php',
     'Database\\Seeders\\CurrencySeeder' => $baseDir . '/database/seeders/CurrencySeeder.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',

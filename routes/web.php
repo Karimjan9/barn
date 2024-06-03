@@ -171,11 +171,22 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::post('/store_all',[PrixodController::class,'store_all'])->name('store_all');
 
+                Route::post('/store_all_items',[CareerUpdateController::class,'store_all_items'])->name('store_all_items');
+
+
                 Route::get('/prixod_search_items',[SearchController::class,'prixod_search_items'])->name('prixod_search_items');
+
+                Route::get('/departament_search_items',[SearchController::class,'departament_search_items'])->name('departament_search_items');
 
                 Route::get('/selected_item_prixod/{selected_id}',[SearchController::class,'selected_item_prixod'])->name('selected_item_prixod');
 
                 Route::get('/switch_cargo',[CargoController::class , 'switch_cargo'])->name('cargo_switch');
+
+                Route::get('/switch_departament',[DepartamentUpdateController::class , 'switch_departament'])->name('dep_kaf_switch');
+
+                Route::get('/selected_item_departament/{selected_id}',[SearchController::class,'selected_item_departament'])->name('selected_item_departament');
+
+                
 
             }); 
         });
@@ -237,7 +248,7 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::get('/type_job/filter_rate/change_career', [GetJobContoller::class, 'filter_rate_for_change'])->name('get_job_rate.filter_rate.change_career');
                 
-    
+                Route::get('/departament_list',[CareerUpdateController::class,'departament_list'])->name('departament_list');
         
             
             });
@@ -288,7 +299,7 @@ Route::middleware(['auth'])->group(function () {
 
             Artisan::call('migrate');
 
-            Artisan::call('db:seed --class=BuildingSeeder');
+            // Artisan::call('db:seed --class=BuildingSeeder');
 
             // Artisan::call('migrate:rollback --step=1');
 

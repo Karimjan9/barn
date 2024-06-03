@@ -194,7 +194,7 @@ class PrixodController extends Controller
     public function store_all(Request $request){
         // dd(1);
         $items=json_decode($request->lists);
-        ini_set('max_execution_time', 120 ) ;
+        // ini_set('max_execution_time', 120 ) ;
         foreach (json_decode($request->prixods) as $key => $prixod) {
             // dd($prixod);
             $create=PrixodModel::create(['item_id'=>$prixod->item,

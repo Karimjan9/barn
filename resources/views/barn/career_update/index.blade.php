@@ -5,7 +5,7 @@
 <div class="page-wrapper">
     <div class="page-content">
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Lavozimlar</div>
+            <div class="breadcrumb-title pe-3">Bo'limlar</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
@@ -17,12 +17,12 @@
         </div>
 
         <div class="d-flex align-items-center">
-            <h6 class="mb-0 text-uppercase">Barcha lavozimlar</h6>
+            <h6 class="mb-0 text-uppercase">Bo'limlarga jihozlar berish</h6>
         </div>
 
         <div class="d-flex align-items-center">
             <div class="ms-auto">
-                <a href="{{ route('kadr_role.career_update.create') }}" class="btn btn-primary px-3"><i class="bx bx-plus"></i>Yangi mansab qo`shish</a>
+                <a href="{{ route('kadr_role.departament_list') }}" class="btn btn-primary px-3"><i class="bx bx-plus"></i>Jihozlar berish!</a>
             </div>
         </div>
 

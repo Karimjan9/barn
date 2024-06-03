@@ -52,4 +52,23 @@ public function selected_item_prixod($selected_id){
     // dd($currencys);
     return view('barn.storekeep.item_serach.index_2',compact('types','item','second','currencys'));
 }
+
+
+public function departament_search_items(ItemSearchRequest $request){
+    $items=ItemsModel::where('name','LIKE',"%$request->search%")->with(['get_bodily','get_second','get_unity'])->paginate(20);
+    
+    // dd($items);
+    return view('barn.rektor.dep_and_kafedra.index_search_result',compact('items'));
+ 
+ }
+
+ public function selected_item_departament($selected_id){
+    $item=ItemsModel::where('id','=',$selected_id)->first();
+    $types=TypeOfItem::where('id','=',$item->first)->first();
+
+    $second=SecondTypeOfItem::where('id','=',$item->second)->first(); 
+    $currencys=CurrencyModel::get();
+    // dd($currencys);
+    return view('barn.rektor.dep_and_kafedra.item_result',compact('types','item','second','currencys'));
+}
 }

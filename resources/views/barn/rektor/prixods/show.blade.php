@@ -49,7 +49,7 @@
         </div>
         <div class="d-flex align-items-center">
             <div class="ms-auto">
-                <a href="{{ route('storekeeper_role.prixod.index') }}" class="btn btn-primary px-3"></i>Orqaga</a>
+                <a href="{{ route('rektor_role.prixod_show.index') }}" class="btn btn-primary px-3"></i>Orqaga</a>
             </div>
         </div>
 
@@ -59,57 +59,61 @@
             <div class="card-body">
 
                 <div class="">
-                    <table class="table table-bordered align-middle mb-0 table table-responsive table-hover" >
-                        <thead class="table-light">
-                            <tr>
-                                <th class="fixed_header2 align-middle">#</th>
-                                <th class="fixed_header2 align-middle">Jihoz nomi</th>
-                                <th class="fixed_header2 align-middle">Har birining narxi</th>
-                                <th class="fixed_header2 align-middle">Jihoz soni</th>
-                                <th class="fixed_header2 align-middle">Hammasining narxi</th>
-                                <th class="fixed_header2 align-middle">Hammasining narxi So'mda</th>
-                                <th class="fixed_header2 align-middle">Harakatlar</th>
-
-
-                                  {{-- <th class="fixed_header2 align-middle">Delete</th> --}}
-
-
-                            </tr>
+                    <table class="table table-bordered align-middle mb-0 table table-hover">
+                        <thead>
+                          <tr>
+                            <th class="fixed_header2 align-middle">#</th>
+                            <th class="fixed_header2 align-middle">Jihoz nomi</th>
+                            <th class="fixed_header2 align-middle">Har birining narxi</th>
+                            <th class="fixed_header2 align-middle">Jihoz soni</th>
+                            <th class="fixed_header2 align-middle">Hammasining narxi</th>
+                            <th class="fixed_header2 align-middle">Hammasining narxi So'mda</th>
+                            <th class="fixed_header2 align-middle">Harakatlar</th>
+                
+                          </tr> 
                         </thead>
                         <tbody>
-                        {{-- @dd($all_inf) --}}
-                            @foreach ($prixods as $key=>$prixod)
-                            {{-- @dd($prixod) --}}
-                            <tr class="clickable" data-toggle="collapse" id="table2" data-target=".table2">
-                        
+                        @foreach ($prixods as $key=>$prixod)
+                          <tr data-toggle="collapse" id="{{ 'table1'.$key }}" data-target="{{ '.table1'.$key }}">
                             <td>{{ $key+1 }}</td>
-                            <td>{{ $prixod->get_item_name->name }} </td>
-                            <td>{{ number_format($prixod->cost_of_per ,2,","," ")}} {{ $prixod->get_currency->name }}</td>
-                            <td>{{ $prixod->count_of_item}} ta</td>
-                            <td>{{  number_format($prixod->count_of_item * $prixod->cost_of_per ,2,","," ")}} {{ $prixod->get_currency->name }}</td>
-                            <td>{{  number_format($prixod->count_of_item * $prixod->cost_of_per*$prixod->currency_value ,2,","," ")}} so'm</td>
-                            <td><button class="btn btn-default btn-sm">View More</button></td>
-                                
-
-                            </tr>
-                                @foreach ($prixod->child as $key22=>$item)
-                                {{-- @dd($item) --}}
-                                    <tr class="collapse table2">
+                                <td>{{ $prixod->get_item_name->name }} </td>
+                                <td>{{ number_format($prixod->cost_of_per ,2,","," ")}} {{ $prixod->get_currency->name }}</td>
+                                <td>{{ $prixod->count_of_item}} ta</td>
+                                <td>{{  number_format($prixod->count_of_item * $prixod->cost_of_per ,2,","," ")}} {{ $prixod->get_currency->name }}</td>
+                                <td>{{  number_format($prixod->count_of_item * $prixod->cost_of_per*$prixod->currency_value ,2,","," ")}} so'm</td>
+                                <td><button class="btn btn-default btn-sm">Ma'lumot olish</button></td>
+                          </tr>
+                      
+                          <tr class="{{ 'collapse table1'.$key }}">
+                            <td colspan="999">
+                              <div>
+                                <table class="table table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th>N</th>
+                                      <th>Jihoz nomi</th>
+                                      <th>Har birining narxi</th>
+                                      <th>Sanasi</th>
+                
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach ($prixod->child as $key22=>$item)
+                                    <tr>
                                         <td>{{ $key22+1 }}</td>
                                         <td>{{ $item->get_item_name->name }}</td>  
                                         <td>{{ number_format($item->cost_of_per ,2,","," ")}} {{ $item->get_currency->name }}</td>
                                         <td>{{ $item->created_at->format('m-d-Y') }}</td>
-                                        
-                                    
                                     </tr>
+                                    @endforeach
+                                         
+                                  
+
+                                  </tbody>
+                                  
+                                </table>
                                 @endforeach
-                         
-                        @endforeach
-                              
-                          
-                         
-                        </tbody>
-                    </table>
+                              </div>
                     <div class="card-body">
 
                         {{ $prixods->links() }}
@@ -117,7 +121,79 @@
                 </div>
              </div>
         </div>
-  
+        {{-- <div class="card radius-10">
+          <div class="card-body">
+
+             <div class="">
+                 <table class="table table-bordered align-middle mb-0 table table-hover">
+                     <thead class="table-light">
+                         <tr>
+                          <th class="fixed_header2 align-middle">#</th>
+                          <th class="fixed_header2 align-middle">Jihoz nomi</th>
+                          <th class="fixed_header2 align-middle">Har birining narxi</th>
+                          <th class="fixed_header2 align-middle">Jihoz soni</th>
+                          <th class="fixed_header2 align-middle">Hammasining narxi</th>
+                          <th class="fixed_header2 align-middle">Hammasining narxi So'mda</th>
+                          <th class="fixed_header2 align-middle">Harakatlar</th>
+                          
+
+                         </tr>
+                     </thead>
+                     <tbody>
+
+                      @foreach ($prixods as $key=>$prixod)
+                      <tr data-toggle="collapse" id="table1" data-target=".table1">
+                        <td>{{ $key+1 }}</td>
+                            <td>{{ $prixod->get_item_name->name }} </td>
+                            <td>{{ number_format($prixod->cost_of_per ,2,","," ")}} {{ $prixod->get_currency->name }}</td>
+                            <td>{{ $prixod->count_of_item}} ta</td>
+                            <td>{{  number_format($prixod->count_of_item * $prixod->cost_of_per ,2,","," ")}} {{ $prixod->get_currency->name }}</td>
+                            <td>{{  number_format($prixod->count_of_item * $prixod->cost_of_per*$prixod->currency_value ,2,","," ")}} so'm</td>
+                            <td><button class="btn btn-default btn-sm">View More</button></td>
+                  
+                             </tr>
+                         @endforeach
+                         <tr class="collapse table1">
+                          <td colspan="999">
+                            <div>
+                              <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>Column 1</th>
+                                    <th>Column 2</th>
+                                    <th>Column 3</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Column 1</td>
+                                    <td>Column 2</td>
+                                    <td>Column 3</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Column 1</td>
+                                    <td>Column 2</td>
+                                    <td>Column 3</td>
+                                  </tr>
+                                  <tr>
+                                    <td>Column 1</td>
+                                    <td>Column 2</td>
+                                    <td>Column 3</td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </td>
+                        </tr>
+                     </tbody>
+                 </table>
+                 <div class="card-body">
+
+                     {{ $prixods->links() }}
+                 </div>
+             </div> --}}
+          </div>
+     </div>
 </div>
 
 

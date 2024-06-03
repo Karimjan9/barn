@@ -1,3 +1,5 @@
+        
+
 @extends('template')
 
 @section('style')
@@ -38,7 +40,7 @@
                 <div class="ps-3">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-0 p-0">
-                            <li class="breadcrumb-item"><a href="{{ route('kadr_role.career_update.create') }}"><i class="bx bx-home-alt"></i></a>
+                            <li class="breadcrumb-item"><a href="{{ route('storekeeper_role.actions.index') }}"><i class="bx bx-home-alt"></i></a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">Yangi jo'natma</li>
                         </ol>
@@ -54,32 +56,32 @@
                         <div class="card-body p-5">
                             <div class="d-flex align-items-center">
                                 <div class="ms-auto">
-                                    <a href="{{ route('storekeeper_role.prixod.create') }}" class="btn btn-primary px-3"><i class="bx bx-plus"></i>Jo'natma qo'shish</a>
+                                    <a href="{{ route('kadr_role.career_update.create') }}" class="btn btn-primary px-3"><i class="bx bx-plus"></i>Jo'natma qo'shish</a>
                                 </div>
                             </div>
-               
-                            <form class="row g-3" method="post" action="{{ route('storekeeper_role.store_all')}}">
+               {{-- @dd($departaments) --}}
+                            <form class="row g-3" method="post" action="{{ route('storekeeper_role.store_all_items')}}">
                                 @csrf
                             
                                 <input type="hidden" name="lists" value="{{ json_encode($lists) }}">
-                                <input type="hidden" name="prixods" value="{{ json_encode($prixods) }}">
+                                <input type="hidden" name="prixods" value="{{ json_encode($departaments) }}">
 
                                 <div class="col-md-8 mb-3">
                                     <label for="first_type" class="form-label">Cargo</label>
                 
-                                            <select name="cargo" id='cargo' class="form-select form-select-lg mb-3">
+                                            <select name="dep_kaf" id='dep_kaf' class="form-select form-select-lg mb-3">
                                                
-                                            @foreach ($cargos as $key=>$cargo)
+                                            @foreach ($dep_kafs as $key=>$dep_kaf)
                                     
                                                 
-                                            <option value="{{ $cargo->id }}" 
-                                                >{{ $cargo->name }} </option>
+                                            <option value="{{ $dep_kaf->id }}" 
+                                                >{{ $dep_kaf->name }} </option>
                     
                                             @endforeach
         
                                             </select> 
                             </div>
-                                <div class="col-md-8 mb-3">
+                                {{-- <div class="col-md-8 mb-3">
                                     <label for="first_type" class="form-label">Yetkazuvchi</label>
                                     
                                             <select name="curer" id='curer' class="form-select form-select-lg mb-3">
@@ -94,7 +96,7 @@
                                             @endforeach
         
                                             </select> 
-                            </div>
+                            </div> --}}
                         
                             
                         
@@ -107,11 +109,9 @@
                                                                 <th class="fixed_header2 align-middle">#</th>
                                                                 <th class="fixed_header2 align-middle">Jihoz turi</th>
                                                                 <th class="fixed_header2 align-middle">Jihoz nomi</th>
-                                                                <th class="fixed_header2 align-middle">Pul birligi</th>
+                           
 
-                                                                <th class="fixed_header2 align-middle">Modillik turi</th>
-                                                                <th class="fixed_header2 align-middle">Jihoz soni</th>
-                                                                <th class="fixed_header2 align-middle">Narxi</th>
+                                                            
                                                                 <th class="fixed_header2 align-middle" >Harakatlar</th>
                                                                 <th class="fixed_header2 align-middle" >O'chirish</th>
 
@@ -127,16 +127,16 @@
                                                         
                                                                 <td>{{ $p_key+1 }}</td>
                                                                 <td>{{  $list->name }}</td>
-                                                                <td>{{ $list->get_second->name}}</td>
-                                                                <td>{{ strtoupper($prixods[$p_key]["currency_name"])?? "so'm" }}</td>
-                                                                <td>{{ $list->bodily==1?"Moddiy":"Bo'linmaydi"  }}</td>
-                                                                <td>{{$prixods[$p_key]["number"]}}</td>
-                                                                <td>{{$prixods[$p_key]["cost"] ?? 0}} so'm</td>
+                                                                {{-- <td>{{ $list->get_second->name}}</td> --}}
+                                                                {{-- <td>{{ strtoupper($prixods[$p_key]["currency_name"])?? "so'm" }}</td> --}}
+                                                                {{-- <td>{{ $list->bodily==1?"Moddiy":"Bo'linmaydi"  }}</td> --}}
+                                                                <td>{{$departaments[$p_key]["number"]}}</td>
+                                                       
                                                             
                                                                     
                                     
                                                             
-                                                                <td> <a href="{{ route('storekeeper_role.prixod.edit',['prixod'=>$p_key]) }}" class="btn btn-sm btn-warning text-white me-2"></i>O'zgartirish</a></td>
+                                                                <td> <a href="{{ route('kadr_role.career_update.edit',['career_update'=>$p_key]) }}" class="btn btn-sm btn-warning text-white me-2"></i>O'zgartirish</a></td>
                                                                 <td>
                                                                     {{-- <form action="{{ route('storekeeper_role.prixod.destroy',['prixod'=>$p_key]) }}" method="post">
                                                                         @method("DELETE")
@@ -153,8 +153,8 @@
                                                         </tbody>
                                                     </table>
                                                     <br>
-                                                    <h4>Jo'natmalar narxi: <span id="totalPrice">0 </span> so'm : Jo'natmalar soni : <span id="totalItem">0 </span> ta  </h4>
-                                                    <h4>Valyuta bo'yicha: <span id="totalCurrency">0 </span> birlik  </h4>
+                                                    <h4>  Jo'natmalar soni : <span id="totalItem">0 </span> ta  </h4>
+                                                    {{-- <h4>Valyuta bo'yicha: <span id="totalCurrency">0 </span> birlik  </h4> --}}
 
                                                     <br>
                                                 </div>
@@ -180,20 +180,20 @@
 
 @section('scripte_include_end_body')
 <script>
-    var app = @json($prixods);
+    var app = @json($departaments);
     // console.log(app);
-    var sum_cost=0;
+
     var sum_item=0;
-    var sum_currency_total=0;
+ 
     for (const iterator of app) {
          
-        sum2=parseInt(iterator.number)*(iterator.cost)*(iterator.currency_value);
+        // sum2=parseInt(iterator.number)*(iterator.cost)*(iterator.currency_value);
 
-        sum_cost=sum_cost+(sum2);
+        // sum_cost=sum_cost+(sum2);
 
-        sum_currency=parseInt(iterator.number)*(iterator.cost);
+        // sum_currency=parseInt(iterator.number)*(iterator.cost);
 
-        sum_currency_total=sum_currency_total+sum_currency;
+        // sum_currency_total=sum_currency_total+sum_currency;
 
         sum_item+=parseInt(iterator.number);
              
@@ -202,11 +202,11 @@
     // console.log(sum_currency_total);
 
 
-    document.getElementById("totalPrice").innerHTML = sum_cost;
+    // document.getElementById("totalPrice").innerHTML = sum_cost;
     
     document.getElementById("totalItem").innerHTML = sum_item;
 
-    document.getElementById("totalCurrency").innerHTML = sum_currency_total.toFixed(2);
+    // document.getElementById("totalCurrency").innerHTML = sum_currency_total.toFixed(2);
 
    
 </script>
@@ -226,7 +226,7 @@
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
 });
-    $.ajax('{{ route('storekeeper_role.prixod.destroy' , ['prixod'=>'key']) }}',
+    $.ajax('{{ route('kadr_role.career_update.destroy' , ['career_update'=>'key']) }}',
         {
           
             type: 'delete', // replaced from put
@@ -245,3 +245,6 @@
    }
 </script>
 @endsection
+
+
+

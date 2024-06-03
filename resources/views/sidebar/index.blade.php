@@ -38,7 +38,7 @@
                         <li>
                             <a href="#" onclick="redrect('{{ route('kadr_role.career_update.index') }}')">
                                 <i class="bx bx-right-arrow-alt"></i>
-                                <div style="margin-right: 5px;">Lavozimlar  </div>
+                                <div style="margin-right: 5px;">Bo'im va Jihozlar  </div>
                                 <span class="badge bg-warning text-dark"></span>
                             </a>
                         </li>

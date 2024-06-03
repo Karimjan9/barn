@@ -113,6 +113,8 @@ nav ul li ul li a:hover {
 
                                     
                                     <th class="fixed_header2 align-middle">Harakatlar</th>
+                                    <th class="fixed_header2 align-middle">Kiritish va chiqarish</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -163,6 +165,14 @@ nav ul li ul li a:hover {
                                                 <input class="btn btn-sm btn-danger confirm-button" type="submit" value="O'chirish" onclick="return confirm('Are you sure to delete this ?');" >
                                             </form> --}}
                                         </td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                              <input class="form-check-input"  onchange   = "switch_cargo({{ $items->id }});" style="width:50%;height:25px;margin:0px 0px 0px 0px ;" value="{{ $items->id }}" type="checkbox" id={{ "flexSwitchCheckChecked"."$i" }} @if ($items->active_status==1)
+                                              checked  
+                                              @endif >
+                                              <label class="form-check-label" for="flexSwitchCheckChecked"></label>
+                                            </div>
+                                          </td>
                                     </tr>
                                 @endforeach
                               
@@ -170,10 +180,10 @@ nav ul li ul li a:hover {
                             </tbody>
                         </table>
                       
-                        {{-- <div class="card-body">
+                        <div class="card-body">
 
-                            {{ $careers->links() }}
-                        </div> --}}
+                            {{ $departaments->links() }}
+                        </div>
                     </div>
                  </div>
             </div>
@@ -192,4 +202,50 @@ $(".sub-menu a").click(function () {
 });
 
 </script>
+<script>
+ 
+    function switch_cargo(id) {
+    //  console.log(id);
+    $.ajax('{{ route('storekeeper_role.dep_kaf_switch') }}', {
+        type : "GET",
+        data : {
+        
+            'id' : id,
+  
+            
+        },
+        success : function (data, status){
+            console.log(data.responses);
+  
+            // $('#second_filter').html('')
+  
+            // let html_row = '';
+           
+            // let count=1;
+            // html_row += `
+            //           <option value=""></option>
+                     
+            //           `
+            // for (const iterator of data.responses) {
+           
+    
+                
+            //     html_row += `
+            //           <option value="${iterator.id}">${iterator.name}</option>
+                     
+            //           `
+  
+          
+              
+            // }
+           
+            // $('#second_filter').html(html_row)
+        }
+    })
+  }
+  
+  // $(('.form-check-input')).change( function () {
+  //   switch_cargo();
+  // });
+  </script>
 @endsection

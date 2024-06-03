@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\Barn\Kadr;
 
-use App\Http\Controllers\Controller;
-use App\Models\BuildingModel;
-use App\Models\DepartamentUpdatedModel;
-use App\Models\DepartmentKafedraModel;
 use App\Models\User;
+use App\Models\ItemsModel;
 use Illuminate\Http\Request;
+use App\Models\BuildingModel;
+use App\Http\Controllers\Controller;
+use App\Models\DepartmentKafedraModel;
+use App\Models\DepartamentUpdatedModel;
+use Illuminate\Support\Facades\Session;
 
 class DepartamentUpdateController extends Controller
 {
    
     public function index()
     {
-        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->get();
+        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->paginate(15);
         // dd($departaments);
         return view('barn.departament_update.index',compact('departaments'));
     }
@@ -75,4 +77,20 @@ class DepartamentUpdateController extends Controller
         return to_route('kadr_role.department_update.index');
 
     }
+    
+    public function switch_departament(Request $request)
+    {
+       $dep=DepartmentKafedraModel::where('id','=',$request->id)->first();
+       if ($dep->active_status==1) {
+        $dep=DepartmentKafedraModel::find($request->id)->update(['active_status'=>0]);
+       } else {
+        $dep=DepartmentKafedraModel::find($request->id)->update(['active_status'=>1]);
+       }
+        
+       return response()->json([
+        'responses' => $dep,
+    ]);
+    }
+
+    
 }

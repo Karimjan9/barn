@@ -32,98 +32,108 @@
 @section('body')
 
 <div class="page-wrapper">
-    {{-- @dd(1) --}}
     <div class="page-content">
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Jo'natma o'zgartirish</div>
+            <div class="breadcrumb-title pe-3">Jihoz qo'shish formasi</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ route('storekeeper_role.actions.index') }}"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">O'zgartirish</li>
+                        <li class="breadcrumb-item active" aria-current="page">Yangi jo'natma</li>
                     </ol>
                 </nav>
             </div>
         </div>
-        {{-- @dd($types) --}}
         <div class="row">
             <div class="col-xl-10 mx-auto">
                 <h6 class="mb-0 text-uppercase">Jo'natma</h6>
                 <hr>
-                <div class="card border-top border-0 border-4 border-primary">
+                <div class="card border-top border-0 border-4 border-primary ">
                     <div class="card-body p-5">
-                 
-                        <form class="row g-3" method="post" action="{{ route('kadr_role.career_update.update',['career_update'=>$id])}}">
+                        <div class="col-md-8 mb-3 ">
+                            <form action="{{ route('storekeeper_role.prixod_search_items') }}" method="GET">
+                                <div class="input-group">
+                                    <input type="text" value="{{ $item->name ?? "" }}"  name="search" class="form-control rounded " placeholder="Tovar ismi" aria-label="Search" aria-describedby="search-addon" />
+                                    <input type="submit" class="btn btn-outline-primary" value="Qidiruv">
+                                  </div>
+                            </form> 
+                         
+                        </div>
+                        <br>
+                        <form class="row g-3" method="post" action="{{ route('kadr_role.career_update.store')}}">
                             @csrf
-                            @method('PUT')
-                           
+                            {{-- @foreach ($currencys as $key=>$currency)
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="{{ $currency->value }}"  name="radio" id="flexRadioDefault1"
+                                @if ($key==0)
+                                checked
+                                @endif >
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                  {{ $currency->name }}
+                                </label>
+                              </div>
+                            @endforeach --}}
                               <br>
-                            {{-- <div class="col-md-8 mb-3">
-                                <label for="first_type" class="form-label">Jihoz turi:</label>
+                            <div class="col-md-8 mb-3">
+                                <label for="first_type" class="form-label">Jihoz turi</label>
             
                                         <select name="type" id='type' class="form-select form-select-lg mb-3">
-                                        <option value=""></option>
-                                        @foreach ($types as $key=>$type)
-                                
-                                            
-                                        <option value="{{ $type->id }}" 
-                                            @if ($type->id==$edit_prixod['type'])
-                                                @selected(true)
-                                            @endif
-                                            >{{ $type->name_of_type }} </option>
-                
-                                        @endforeach
-    
-                                        </select> 
-                            </div> --}}
-                            {{-- <div class="col-md-8 mb-3">
-                                <label for="first_type" class="form-label">Jihoz nomi:</label>
-            
-                                        <select name="second" id='second' class="form-select form-select-lg mb-3">
-                                            @foreach ($seconds as $key=>$second)
-                                    
-                                                
-                                            <option value="{{ $second->id }}" 
-                                                @if ($second->id==$edit_prixod['second'])
-                                                    @selected(true)
-                                                @endif
-                                                >{{ $second->name }} </option>
+                                      
+                                        @if ($types!=null)
+                                            <option value="{{ $types->id }}" 
+                                                >{{ $types->name_of_type }} </option>
+                                        @else
+                                            @foreach ($types as $key=>$type)
+                                            <option value=""></option>
+
+                                            <option value="{{ $type->id }}" 
+                                                >{{ $type->name_of_type }} </option>
                     
-                                            @endforeach
-        
-                                        </select> 
-                            </div> --}}
-                            <div class="col-md-8 mb-3">
-                                <label for="first_type" class="form-label">Jihoz modeli:</label>
-            
-                                        <select name="item" id='item' class="form-select form-select-lg mb-3">
+                                            @endforeach 
+                                        @endif
+                                      
     
-                                            @foreach ($items as $key=>$item)
-                                    
-                                                
-                                            <option value="{{ $item->id }}" 
-                                                @if ($item->id==$edit_prixod['item'])
-                                                    @selected(true)
-                                                @endif
-                                                >{{ $item->name }} </option>
-                    
-                                            @endforeach
                                         </select> 
                             </div>
+                            <div class="col-md-8 mb-3">
+                                <label for="first_type" class="form-label">Jihoz nomi</label>
+            
+                                        <select name="second" id='second' class="form-select form-select-lg mb-3">
+                                            @if ($second!=null)
+                                                      
+                                                    <option value="{{ $second->id }}" 
+                                                    >{{ $second->name }} </option>
+
+                                            @endif
+    
+                                        </select> 
+                            </div>
+                            <div class="col-md-8 mb-3">
+                             
+                                <label for="first_type" class="form-label">Jihoz </label>
+            
+                                        <select name="item" id='item' class="form-select form-select-lg mb-3">
+                                            @if ($item!=null)
+                                                <option value="{{  $item->id}}">{{ $item->name }}</option>
+                                            @endif
+    
+                                        </select> 
+                            </div>
+                          
                            <div class="col-md-8 mb-3" >
                                 <label for="full_name" class="form-label">Soni</label>
-                                <input type="number" value={{ $edit_prixod['number'] }} name="number" class="form-control" id="count" oninput="myFunctionCalc()">
+                                <input type="number" name="number" class="form-control" id="count" oninput="myFunctionCalc()">
                              </div>
                              {{-- <div class="col-md-8 mb-3" >
-                                <label for="full_name" class="form-label">Narxi</label>
-                                <input  value="{{ $edit_prixod['cost'] }}" type="number" min="1" step="any" name="cost" class="form-control" id="cost" oninput="myFunctionCalc()">
+                                <label for="full_name" class="form-label">Narxi11</label>
+                                <input  type="number" min="0.01" step="0.01" name="cost" class="form-control" id="cost" oninput="myFunctionCalc()">
                              </div> --}}
                              <br>
-                             <h4>Total Price: <span id="totalPrice">0 </span>so'm</h4>
+                             {{-- <h4>Hammasi narxi:<span id="totalPrice">0 </span>so'm </h4> --}}
                              <br>
                             <div class="col-12 mb-3">
-                                <button type="submit" class="btn btn-primary px-5">O'zgartirish</button>
+                                <button type="submit" class="btn btn-primary px-5">Store11</button>
                             </div>
                             
                         </form>
@@ -138,35 +148,19 @@
 @endsection
 
 @section('scripte_include_end_body')
-<script>
-    var app = @json($edit_prixod);
-    
-    var sum_cost=0;
 
-    var currency=$("input[type='radio'][name='radio']:checked").val();
-    sum2=(app.number)*(app.cost)*currency;
-    sum_cost=sum_cost+parseInt(sum2);
-        
-              
-             
-
-    document.getElementById("totalPrice").innerHTML = sum_cost;
-    
-
-</script>
-<script>
-
-function myFunctionCalc() {
+{{-- <script>
+   function myFunctionCalc() {
         var currency=$("input[type='radio'][name='radio']:checked").val();
        
         var price = document.getElementById("cost").value;
         var count = document.getElementById("count").value;
-
+       
         var total = price * count*currency;
-        document.getElementById("totalPrice").innerHTML = (Math.floor(total));
-         
+        document.getElementById("totalPrice").innerHTML = Math.floor(total);
+        // console.log(total);
     }
-</script>
+</script> --}}
 <script>
 
 function get_second_type() {

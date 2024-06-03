@@ -14,6 +14,7 @@ class DepartmentKafedraModel extends Model
         'name',
         'res_person',
         'building_id',
+        'active_status',
     ];
     public function get_user(){
         return $this->belongsTo(User::class, 'res_person', 'id'); 
