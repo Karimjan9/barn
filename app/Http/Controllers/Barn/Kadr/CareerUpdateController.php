@@ -21,7 +21,7 @@ class CareerUpdateController extends Controller
   
     public function index()
     {
-        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->withCount('get_give_item')->paginate(10);
+        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->withCount('get_give_item')->paginate(25);
        
         // dd($departament->get_give_item()->select('user_id','item_id','status')->get()->unique('item_id'));
         // dd($departaments );
