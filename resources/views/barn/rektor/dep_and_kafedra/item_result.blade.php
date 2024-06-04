@@ -51,6 +51,13 @@
                 <hr>
                 <div class="card border-top border-0 border-4 border-primary ">
                     <div class="card-body p-5">
+                        <div class="col-12">
+                            @foreach ($errors->all() as $error)
+                                <div class="alert alert-danger border-0 bg-danger alert-dismissible fade show">
+                                    <div class="text-white">{{ $error }}</div>
+                                </div>
+                            @endforeach
+                        </div>
                         <div class="col-md-8 mb-3 ">
                             <form action="{{ route('storekeeper_role.prixod_search_items') }}" method="GET">
                                 <div class="input-group">
@@ -60,6 +67,8 @@
                             </form> 
                          
                         </div>
+                        <br>
+                     
                         <br>
                         <form class="row g-3" method="post" action="{{ route('kadr_role.career_update.store')}}">
                             @csrf

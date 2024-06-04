@@ -14,15 +14,18 @@ use App\Http\Controllers\Controller;
 use App\Models\DepartmentKafedraModel;
 use App\Models\DepartamentUpdatedModel;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\Barn\Rektor\RektorDepartamentGiveItemRequest;
 
 class CareerUpdateController extends Controller
 {
   
     public function index()
     {
-        $careers=CareerUpdatedModel::with(['get_dep'])->paginate(10);
-        // dd($careers );
-        return view('barn.career_update.index',compact('careers'));
+        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->withCount('get_give_item')->paginate(10);
+       
+        // dd($departament->get_give_item()->select('user_id','item_id','status')->get()->unique('item_id'));
+        // dd($departaments );
+        return view('barn.career_update.index',compact('departaments'));
     }
 
    
@@ -51,6 +54,17 @@ class CareerUpdateController extends Controller
    
     public function show($id)
     {
+        // dd($id);
+        $departaments=GiveItemModel::with('get_item')
+        ->where('dep_id',$id)
+        ->selectRaw('(item_id) as item_id,count(item_id) as give_item')
+        ->groupBy('give_item.item_id')->paginate(20);
+        // $dep_2=GiveItemModel::with('get_item')->where('dep_id',$id)->get();
+        // dd($dep_2);
+        // dd($departaments);
+
+        return view('barn.rektor.dep_and_kafedra.show',compact('departaments'));
+
        
     }
    
@@ -147,7 +161,7 @@ class CareerUpdateController extends Controller
     return view('barn.rektor.dep_and_kafedra.index_for_give',compact('departaments','lists','dep_kafs'));
    }
 
-   public function store(Request $request)
+   public function store(RektorDepartamentGiveItemRequest $request)
     {
         // dd($request->number);
         $prixods=[];

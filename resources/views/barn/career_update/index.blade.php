@@ -1,3 +1,5 @@
+
+
 @extends('template')
 
 @section('body')
@@ -38,58 +40,53 @@
                             <thead class="table-light">
                                 <tr>
                                     <th class="fixed_header2 align-middle">#</th>
-                                    <th class="fixed_header2 align-middle">Ish nomi</th>
-                                    {{-- <th class="fixed_header2 align-middle">Stavkasi</th>
-                                    <th class="fixed_header2 align-middle">Bo'linishi</th> --}}
-                                    <th class="fixed_header2 align-middle">Bo'lim</th>
+                                    <th class="fixed_header2 align-middle">Bo'lim nomi</th>
+                                   
+                                    <th class="fixed_header2 align-middle">Berilgan jihozlar soni</th>
+
+                                    <th class="fixed_header2 align-middle">Masul shaxs</th>
+                                    <th class="fixed_header2 align-middle">Bino nomi</th>
                                     <th class="fixed_header2 align-middle">Harakatlar</th>
+                                    <th class="fixed_header2 align-middle">Tasnif</th>
+
+
                                 </tr>
                             </thead>
                             <tbody>
 
-                                @foreach ($careers as $i => $career)
+                                @foreach ($departaments as $i => $departament)
                                     <tr>
                                         <td>
                                             {{ ++$i }}
                                         </td>
                                         <td>
-                                            {{ $career->name }}
+                                            {{ $departament->name }}
                                         </td>
-                                        {{-- <td>{{  $career->rate}}</td> --}}
-                                        {{-- <td>
-                                        @if ( $career->divide==1)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio"   checked disabled>
-                                            
-                                            </label>
-                                          </div>
-                                        @else
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio"  disabled>
-                                          
-                                            </label>
-                                          </div>
-                                        @endif
-                                        </td> --}}
-                                        <td>{{ $career->get_dep->name }}</td>
+                                   
+                                        <td>{{ $departament->get_give_item_count}}</td>
+
+                                        <td>{{ $departament->get_user->full_name?? "Berilmagan" }}</td>
                             
-                                       
-                                        <td class="d-flex align-items-center">
+                                        <td>{{ $departament->get_building->name??"Berilmagan"}}</td>
+
+                                        <td>{{ $departament->get_building->name??"Berilmagan"}}</td>
+
+                                        <td> <a href="{{ route('kadr_role.career_update.show',['career_update'=>$departament->id]) }}" class="btn btn-sm btn-primary text-white me-2"></i>   Show   </a></td>
+                                        {{-- <td class="d-flex align-items-center">
                                             <a href="{{ route('kadr_role.career_update.edit',['career_update'=>$career->id]) }}" class="btn btn-sm btn-warning text-white me-2"></i>O'zgartirish</a>
-                                            {{-- <a href="" class="btn btn-danger px-1"></i>O'chirish</a> --}}
                                             <form action="{{ route('kadr_role.career_update.destroy',['career_update'=>$career->id]) }}" method="post">
                                                 @csrf
                                                 @method("DELETE")
                                                 <input class="btn btn-sm btn-danger confirm-button" type="submit" value="O'chirish" onclick="return confirm('Are you sure to delete this ?');">
                                             </form>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                         <div class="card-body">
 
-                            {{ $careers->links() }}
+                            {{ $departaments->links() }}
                         </div>
                     </div>
                  </div>

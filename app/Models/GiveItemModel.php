@@ -15,7 +15,7 @@ class GiveItemModel extends Model
         'user_id',
         'item_id',
         'status',
-        'order_id',
+        'dep_id',
         
     ];
     public function get_item(){
@@ -23,5 +23,10 @@ class GiveItemModel extends Model
     }
     public function get_user(){
         return $this->belongsTo(User::class,'user_id','id');
+    }
+
+    public function get_departament()
+    {
+        return $this->hasmany(DepartmentKafedraModel::class,'id','dep_id');
     }
 }

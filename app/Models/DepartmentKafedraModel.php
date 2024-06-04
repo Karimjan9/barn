@@ -16,11 +16,18 @@ class DepartmentKafedraModel extends Model
         'building_id',
         'active_status',
     ];
+
+    
     public function get_user(){
         return $this->belongsTo(User::class, 'res_person', 'id'); 
     }
     public function get_building(){
         return $this->belongsTo(BuildingModel::class, 'building_id', 'id'); 
+    }
+
+    public function get_give_item()
+    {
+        return $this->hasmany(GiveItemModel::class,'dep_id','id');
     }
 
 }
