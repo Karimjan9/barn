@@ -16,7 +16,7 @@ class DepartamentUpdateController extends Controller
    
     public function index()
     {
-        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->paginate(15);
+        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->paginate(25);
         // dd($departaments);
         return view('barn.departament_update.index',compact('departaments'));
     }
