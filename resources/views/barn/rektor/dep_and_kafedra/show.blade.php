@@ -76,7 +76,7 @@
 
                               
 
-                                {{-- <th class="fixed_header2 align-middle">Delete</th> --}}
+                                <th class="fixed_header2 align-middle">O'chirish</th>
 
 
                             </tr>
@@ -93,7 +93,19 @@
                          
                          
                                 
+                            <td>
+                                @if ( $departament->status==1)
+                                    <form action="{{ route('storekeeper_role.items_give_to_barn',['dep_kaf'=>$id]) }}" method="post">
+                                        @csrf
+                                        @method("DELETE")
+                                        <input type="hidden" value="{{ $departament->item_id }}" name="item">
+                                        <input type="hidden" value="{{ $departament->give_item }}" name="number">
 
+                                        <input class="btn btn-sm btn-danger confirm-button" type="submit" value="O'chirish" onclick="return confirm('Are you sure to delete this ?');" >
+                                    </form>
+                                @endif
+                                
+                            </td>
                             </tr>
                         @endforeach
                   

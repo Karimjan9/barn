@@ -87,55 +87,55 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::get('/ajax_get_second_types',[RektorController::class,'ajax_get_second_types'])->name('ajax_get_second_types');
 
-
                 Route::get('/ajax_get_rektor_filter',[RektorController::class,'rektor_filter'])->name('ajax_rektor_statistic');
 
-            });
-        });
-    });
-
-    Route::group(['middleware' => 'role:bugalter'], function() {
-        Route::prefix('bugalter_role')->group(function () {
-            Route::name('bugalter_role.')->group(function () {
-
-                Route::resource('/accountant', AccountantController::class);
-
-                Route::get('/order_to_manager/{ask_id}',[AccountantController::class,'to_manager'])->name('order.to_manager');
-
-                Route::get('/show_to_accountant',[AccountantController::class,'show_accountant'])->name('show_accountant');
-
-                Route::get('/ajax_get_accountant_without_b',[AccountantController::class,'ajax_get_without_bodily_accountant'])->name('accountant_without_bodily');
-
-                Route::get('/ajax_get_accountant_with_b',[AccountantController::class,'ajax_get_with_bodily_accountant'])->name('accountant_with_bodily');
-
-                Route::get('/ajax_acco_second_types',[AccountantController::class,'ajax_acco_second_types'])->name('ajax_acco_second_types');
-
-                Route::get('/show_orders',[AccountantController::class,'show_orders'])->name('show_orders');
-
 
             });
         });
     });
 
-    Route::group(['middleware' => 'role:admin_barn'], function() {
-        Route::prefix('admin_barn_role')->group(function () {
-            Route::name('admin_barn_role.')->group(function () {
+    // Route::group(['middleware' => 'role:bugalter'], function() {
+    //     Route::prefix('bugalter_role')->group(function () {
+    //         Route::name('bugalter_role.')->group(function () {
 
-                Route::resource('/admin_actions', AdminBarnController::class)->only([
-                    'index','update',
-                ]);
+    //             Route::resource('/accountant', AccountantController::class);
+
+    //             Route::get('/order_to_manager/{ask_id}',[AccountantController::class,'to_manager'])->name('order.to_manager');
+
+    //             Route::get('/show_to_accountant',[AccountantController::class,'show_accountant'])->name('show_accountant');
+
+    //             Route::get('/ajax_get_accountant_without_b',[AccountantController::class,'ajax_get_without_bodily_accountant'])->name('accountant_without_bodily');
+
+    //             Route::get('/ajax_get_accountant_with_b',[AccountantController::class,'ajax_get_with_bodily_accountant'])->name('accountant_with_bodily');
+
+    //             Route::get('/ajax_acco_second_types',[AccountantController::class,'ajax_acco_second_types'])->name('ajax_acco_second_types');
+
+    //             Route::get('/show_orders',[AccountantController::class,'show_orders'])->name('show_orders');
+
+
+    //         });
+    //     });
+    // });
+
+    // Route::group(['middleware' => 'role:admin_barn'], function() {
+    //     Route::prefix('admin_barn_role')->group(function () {
+    //         Route::name('admin_barn_role.')->group(function () {
+
+    //             Route::resource('/admin_actions', AdminBarnController::class)->only([
+    //                 'index','update',
+    //             ]);
                 
-                Route::resource('/admin_accepts', AcceptedEquipmentController::class)->only([
-                    'index','update',
-                ]);
+    //             Route::resource('/admin_accepts', AcceptedEquipmentController::class)->only([
+    //                 'index','update',
+    //             ]);
 
-                Route::get('/items_for_order/{order_id}',[AdminBarnController::class,'item_for_order'])->name('item_for_order');
+    //             Route::get('/items_for_order/{order_id}',[AdminBarnController::class,'item_for_order'])->name('item_for_order');
 
-                Route::resource('missing_equipment',MissingEquipmentController::class)->only(['index']);
+    //             Route::resource('missing_equipment',MissingEquipmentController::class)->only(['index']);
                 
-            });
-        });
-    });
+    //         });
+    //     });
+    // });
 
     Route::group(['middleware' => 'role:kadr'], function() {
         Route::prefix('storekeeper_role')->group(function () {
@@ -173,6 +173,7 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::post('/store_all_items',[CareerUpdateController::class,'store_all_items'])->name('store_all_items');
 
+                Route::delete('/items_give_to_barn/{dep_kaf}',[CareerUpdateController::class,'items_give_to_barn'])->name('items_give_to_barn');
 
                 Route::get('/prixod_search_items',[SearchController::class,'prixod_search_items'])->name('prixod_search_items');
 
@@ -250,6 +251,7 @@ Route::middleware(['auth'])->group(function () {
                 
                 Route::get('/departament_list',[CareerUpdateController::class,'departament_list'])->name('departament_list');
         
+
             
             });
         });

@@ -56,14 +56,15 @@ class CareerUpdateController extends Controller
     {
         // dd($id);
         $departaments=GiveItemModel::with('get_item')
-        ->where('dep_id',$id)
-        ->selectRaw('(item_id) as item_id,count(item_id) as give_item')
-        ->groupBy('give_item.item_id')->paginate(20);
+        ->where('dep_id','=',$id)
+        ->selectRaw('(item_id) as item_id,count(item_id) as give_item,(give_item.status) as status')
+        ->groupBy('give_item.item_id','give_item.status')
+        ->paginate(40);
         // $dep_2=GiveItemModel::with('get_item')->where('dep_id',$id)->get();
         // dd($dep_2);
         // dd($departaments);
 
-        return view('barn.rektor.dep_and_kafedra.show',compact('departaments'));
+        return view('barn.rektor.dep_and_kafedra.show',compact('departaments','id'));
 
        
     }
@@ -220,5 +221,17 @@ public function store_all_items(Request $request){
         return to_route('kadr_role.career_update.index');
     }
   
+}
+public function items_give_to_barn(Request $request,$id){
+    // dd($request->number);
+    $item=ItemsModel::where('id',$request->item)->first();
+    $num=$item->absent-$request->number;
+    // dd($num);
+    $item_give=GiveItemModel::where('item_id',$request->item)->where('dep_id',$id)->where('status',1)->update(['status'=>0,'dep_id'=>0]);
+  
+    $num=$item->absent-$request->number;
+    $item_change=ItemsModel::where('id',$request->item)->update(['absent'=>$num]);
+    // dd($item);
+    return to_route('kadr_role.career_update.index');
 }
 }
