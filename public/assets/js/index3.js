@@ -101,120 +101,120 @@ $(function() {
 
 
    // chart 6
-    var ctx = document.getElementById("chart6").getContext('2d');
+    // var ctx = document.getElementById("chart6").getContext('2d');
    
-      var gradientStroke3 = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke3.addColorStop(0, '#42e695');
-      gradientStroke3.addColorStop(1, '#3bb2b8');
+    //   var gradientStroke3 = ctx.createLinearGradient(0, 0, 0, 300);
+    //   gradientStroke3.addColorStop(0, '#42e695');
+    //   gradientStroke3.addColorStop(1, '#3bb2b8');
 
-      var gradientStroke4 = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke4.addColorStop(0, ' #7f00ff');
-      gradientStroke4.addColorStop(0.5, '#e100ff');
+    //   var gradientStroke4 = ctx.createLinearGradient(0, 0, 0, 300);
+    //   gradientStroke4.addColorStop(0, ' #7f00ff');
+    //   gradientStroke4.addColorStop(0.5, '#e100ff');
 
-      var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: [1, 2, 3, 4, 5, 6, 7, 8],
-          datasets: [{
-            label: 'Laptops',
-            data: [40, 30, 60, 35, 60, 25, 50, 40],
-            borderColor: gradientStroke3,
-            backgroundColor: gradientStroke3,
-            hoverBackgroundColor: gradientStroke3,
-            pointRadius: 0,
-            fill: false,
-            borderWidth: 1
-          }, {
-            label: 'Mobiles',
-            data: [50, 60, 40, 70, 35, 75, 30, 20],
-            borderColor: gradientStroke4,
-            backgroundColor: gradientStroke4,
-            hoverBackgroundColor: gradientStroke4,
-            pointRadius: 0,
-            fill: false,
-            borderWidth: 1
-          }]
-        },
-		options:{
-      maintainAspectRatio: false,
-		  legend: {
-			  position: 'bottom',
-              display: true,
-			  labels: {
-                boxWidth:12
-              }
-            },
-			tooltips: {
-			  displayColors:false,
-			},	
-		  scales: {
-			  xAxes: [{
-				barPercentage: .5
-			  }]
-		     }
-		}
-      });
+    //   var myChart = new Chart(ctx, {
+    //     type: 'bar',
+    //     data: {
+    //       labels: [1, 2, 3, 4, 5, 6, 7, 8],
+    //       datasets: [{
+    //         label: 'Laptops',
+    //         data: [40, 30, 60, 35, 60, 25, 50, 40],
+    //         borderColor: gradientStroke3,
+    //         backgroundColor: gradientStroke3,
+    //         hoverBackgroundColor: gradientStroke3,
+    //         pointRadius: 0,
+    //         fill: false,
+    //         borderWidth: 1
+    //       }, {
+    //         label: 'Mobiles',
+    //         data: [50, 60, 40, 70, 35, 75, 30, 20],
+    //         borderColor: gradientStroke4,
+    //         backgroundColor: gradientStroke4,
+    //         hoverBackgroundColor: gradientStroke4,
+    //         pointRadius: 0,
+    //         fill: false,
+    //         borderWidth: 1
+    //       }]
+    //     },
+		// options:{
+    //   maintainAspectRatio: false,
+		//   legend: {
+		// 	  position: 'bottom',
+    //           display: true,
+		// 	  labels: {
+    //             boxWidth:12
+    //           }
+    //         },
+		// 	tooltips: {
+		// 	  displayColors:false,
+		// 	},	
+		//   scales: {
+		// 	  xAxes: [{
+		// 		barPercentage: .5
+		// 	  }]
+		//      }
+		// }
+    //   });
 	  
 	  
 	  
 	  
   // chart 7
- var ctx = document.getElementById('chart7').getContext('2d');
+//  var ctx = document.getElementById('chart7').getContext('2d');
 
-  var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke1.addColorStop(0, '#ee0979');
-      gradientStroke1.addColorStop(1, '#ff6a00');
+//   var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
+//       gradientStroke1.addColorStop(0, '#ee0979');
+//       gradientStroke1.addColorStop(1, '#ff6a00');
 
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: [1, 2, 3, 4, 5, 6, 7],
-          datasets: [{
-            label: 'Views',
-            data: [3, 30, 10, 10, 22, 12, 5],
-            pointBorderWidth: 2,
-            pointHoverBackgroundColor: gradientStroke1,
-            backgroundColor: gradientStroke1,
-            borderColor: 'transparent',
-            borderWidth: 1
-          }]
-        },
-        options: {
-          maintainAspectRatio: false,
-            legend: {
-			  position: 'bottom',
-              display:false
-            },
-            tooltips: {
-			  displayColors:false,	
-              mode: 'nearest',
-              intersect: false,
-              position: 'nearest',
-              xPadding: 10,
-              yPadding: 10,
-              caretPadding: 10
-            },
-			scales: {
-			  xAxes: [{
-				ticks: {
-                    beginAtZero:true
-                },
-				gridLines: {
-				  display: true 
-				},
-			  }],
-			   yAxes: [{
-				ticks: {
-                    beginAtZero:true
-                },
-				gridLines: {
-				  display: true 
-				},
-			  }]
-		     }
+//       var myChart = new Chart(ctx, {
+//         type: 'line',
+//         data: {
+//           labels: [1, 2, 3, 4, 5, 6, 7],
+//           datasets: [{
+//             label: 'Views',
+//             data: [3, 30, 10, 10, 22, 12, 5],
+//             pointBorderWidth: 2,
+//             pointHoverBackgroundColor: gradientStroke1,
+//             backgroundColor: gradientStroke1,
+//             borderColor: 'transparent',
+//             borderWidth: 1
+//           }]
+//         },
+//         options: {
+//           maintainAspectRatio: false,
+//             legend: {
+// 			  position: 'bottom',
+//               display:false
+//             },
+//             tooltips: {
+// 			  displayColors:false,	
+//               mode: 'nearest',
+//               intersect: false,
+//               position: 'nearest',
+//               xPadding: 10,
+//               yPadding: 10,
+//               caretPadding: 10
+//             },
+// 			scales: {
+// 			  xAxes: [{
+// 				ticks: {
+//                     beginAtZero:true
+//                 },
+// 				gridLines: {
+// 				  display: true 
+// 				},
+// 			  }],
+// 			   yAxes: [{
+// 				ticks: {
+//                     beginAtZero:true
+//                 },
+// 				gridLines: {
+// 				  display: true 
+// 				},
+// 			  }]
+// 		     }
 
-         }
-      });  
+//          }
+//       });  
 	  
 	  
 	  
@@ -358,145 +358,145 @@ jQuery('#dashboard-map').vectorMap(
 	
 
   // chart 16
-  var ctx = document.getElementById("chart16").getContext('2d');
+//   var ctx = document.getElementById("chart16").getContext('2d');
 
-    var gradientStroke5 = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke5.addColorStop(0, '#7f00ff');
-      gradientStroke5.addColorStop(1, '#e100ff');
+//     var gradientStroke5 = ctx.createLinearGradient(0, 0, 0, 300);
+//       gradientStroke5.addColorStop(0, '#7f00ff');
+//       gradientStroke5.addColorStop(1, '#e100ff');
 
-      var gradientStroke6 = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke6.addColorStop(0, '#fc4a1a');
-      gradientStroke6.addColorStop(1, '#f7b733');
+//       var gradientStroke6 = ctx.createLinearGradient(0, 0, 0, 300);
+//       gradientStroke6.addColorStop(0, '#fc4a1a');
+//       gradientStroke6.addColorStop(1, '#f7b733');
 
 
-      var gradientStroke7 = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke7.addColorStop(0, '#283c86');
-      gradientStroke7.addColorStop(1, '#45a247');
+//       var gradientStroke7 = ctx.createLinearGradient(0, 0, 0, 300);
+//       gradientStroke7.addColorStop(0, '#283c86');
+//       gradientStroke7.addColorStop(1, '#45a247');
 
-      var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          labels: ["Samsung", "Apple", "Nokia"],
-          datasets: [{
-            backgroundColor: [
-              gradientStroke5,
-              gradientStroke6,
-              gradientStroke7
-            ],
+//       var myChart = new Chart(ctx, {
+//         type: 'pie',
+//         data: {
+//           labels: ["Samsung", "Apple", "Nokia"],
+//           datasets: [{
+//             backgroundColor: [
+//               gradientStroke5,
+//               gradientStroke6,
+//               gradientStroke7
+//             ],
 
-             hoverBackgroundColor: [
-              gradientStroke5,
-              gradientStroke6,
-              gradientStroke7
-            ],
+//              hoverBackgroundColor: [
+//               gradientStroke5,
+//               gradientStroke6,
+//               gradientStroke7
+//             ],
 
-            data: [50, 50, 50]
-          }]
-        },
-        options: {
-          maintainAspectRatio: false,
-            legend: {
-              display: false
-            },
-            tooltips: {
-			  displayColors:false
-            }
-        }
-      });
+//             data: [50, 50, 50]
+//           }]
+//         },
+//         options: {
+//           maintainAspectRatio: false,
+//             legend: {
+//               display: false
+//             },
+//             tooltips: {
+// 			  displayColors:false
+//             }
+//         }
+//       });
 
 
 	  
-// chart 17
-var ctx = document.getElementById("chart17").getContext('2d');
+// // chart 17
+// var ctx = document.getElementById("chart17").getContext('2d');
 
-  var gradientStroke8 = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke8.addColorStop(0, '#42e695');
-      gradientStroke8.addColorStop(1, '#3bb2b8');
+//   var gradientStroke8 = ctx.createLinearGradient(0, 0, 0, 300);
+//       gradientStroke8.addColorStop(0, '#42e695');
+//       gradientStroke8.addColorStop(1, '#3bb2b8');
 
-      var gradientStroke9 = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke9.addColorStop(0, '#4776e6');
-      gradientStroke9.addColorStop(1, '#8e54e9');
-
-
-      var gradientStroke10 = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke10.addColorStop(0, '#ee0979');
-      gradientStroke10.addColorStop(1, '#ff6a00');
-
-      var myChart = new Chart(ctx, {
-        type: 'polarArea',
-        data: {
-          labels: ["Gross Profit", "Revenue", "Expense"],
-          datasets: [{
-            backgroundColor: [
-              gradientStroke8,
-              gradientStroke9,
-              gradientStroke10
-            ],
-
-             hoverBackgroundColor: [
-              gradientStroke8,
-              gradientStroke9,
-              gradientStroke10
-            ],
-            data: [5, 8, 7]
-          }]
-        },
-        options: {
-          maintainAspectRatio: false,
-            legend: {
-              display: false
-            },
-            tooltips: {
-			  displayColors:false
-            }
-        }
-      });
+//       var gradientStroke9 = ctx.createLinearGradient(0, 0, 0, 300);
+//       gradientStroke9.addColorStop(0, '#4776e6');
+//       gradientStroke9.addColorStop(1, '#8e54e9');
 
 
-// chart 18
-var ctx = document.getElementById("chart18").getContext('2d');
+//       var gradientStroke10 = ctx.createLinearGradient(0, 0, 0, 300);
+//       gradientStroke10.addColorStop(0, '#ee0979');
+//       gradientStroke10.addColorStop(1, '#ff6a00');
 
-    var gradientStroke11 = ctx.createLinearGradient(0, 0, 0, 100);
-      gradientStroke11.addColorStop(0, '#ba8b02');
-      gradientStroke11.addColorStop(1, '#181818');
+//       var myChart = new Chart(ctx, {
+//         type: 'polarArea',
+//         data: {
+//           labels: ["Gross Profit", "Revenue", "Expense"],
+//           datasets: [{
+//             backgroundColor: [
+//               gradientStroke8,
+//               gradientStroke9,
+//               gradientStroke10
+//             ],
 
-      var gradientStroke12 = ctx.createLinearGradient(0, 0, 0, 400);
-      gradientStroke12.addColorStop(0, '#2c3e50');
-      gradientStroke12.addColorStop(1, '#fd746c');
+//              hoverBackgroundColor: [
+//               gradientStroke8,
+//               gradientStroke9,
+//               gradientStroke10
+//             ],
+//             data: [5, 8, 7]
+//           }]
+//         },
+//         options: {
+//           maintainAspectRatio: false,
+//             legend: {
+//               display: false
+//             },
+//             tooltips: {
+// 			  displayColors:false
+//             }
+//         }
+//       });
 
 
-      var gradientStroke13 = ctx.createLinearGradient(0, 0, 0, 600);
-      gradientStroke13.addColorStop(0, '#ff0099');
-      gradientStroke13.addColorStop(1, '#493240');
+// // chart 18
+// var ctx = document.getElementById("chart18").getContext('2d');
 
-      var myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          labels: ["Jeans", "T-Shirts", "Shoes"],
-          datasets: [{
-            backgroundColor: [
-              gradientStroke11,
-              gradientStroke12,
-              gradientStroke13
-            ],
-            hoverBackgroundColor: [
-              gradientStroke11,
-              gradientStroke12,
-              gradientStroke13
-            ],
-            data: [40, 40, 40]
-          }]
-        },
-        options: {
-          maintainAspectRatio: false,
-            legend: {
-              display: false
-            },
-            tooltips: {
-			  displayColors:false
-            }
-        }
-      });
+//     var gradientStroke11 = ctx.createLinearGradient(0, 0, 0, 100);
+//       gradientStroke11.addColorStop(0, '#ba8b02');
+//       gradientStroke11.addColorStop(1, '#181818');
+
+//       var gradientStroke12 = ctx.createLinearGradient(0, 0, 0, 400);
+//       gradientStroke12.addColorStop(0, '#2c3e50');
+//       gradientStroke12.addColorStop(1, '#fd746c');
+
+
+//       var gradientStroke13 = ctx.createLinearGradient(0, 0, 0, 600);
+//       gradientStroke13.addColorStop(0, '#ff0099');
+//       gradientStroke13.addColorStop(1, '#493240');
+
+//       var myChart = new Chart(ctx, {
+//         type: 'doughnut',
+//         data: {
+//           labels: ["Jeans", "T-Shirts", "Shoes"],
+//           datasets: [{
+//             backgroundColor: [
+//               gradientStroke11,
+//               gradientStroke12,
+//               gradientStroke13
+//             ],
+//             hoverBackgroundColor: [
+//               gradientStroke11,
+//               gradientStroke12,
+//               gradientStroke13
+//             ],
+//             data: [40, 40, 40]
+//           }]
+//         },
+//         options: {
+//           maintainAspectRatio: false,
+//             legend: {
+//               display: false
+//             },
+//             tooltips: {
+// 			  displayColors:false
+//             }
+//         }
+//       });
 	  
 	  
 	  

@@ -130,6 +130,7 @@ class RektorController extends Controller
         // dd($first->get_item->sum('extant'));
 
         $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->withCount('get_give_item')->get(25);
+        // dd($departaments);
         return view('barn.rektor.statistic.index',compact('user','orders','sum','protsent','worker','table_prixods','array','names','names_1','taked','dis_taked','departaments'));
      }
 

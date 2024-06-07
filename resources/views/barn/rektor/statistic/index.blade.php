@@ -121,14 +121,16 @@
                      </ul>
                  </div>
              </div>
+             {{-- @dd($departaments) --}}
           <div  class="tableWrap" >
             <table class="table align-middle mb-0">
-             <thead class="table-light">sffsfsf
+             <thead class="table-light">
               <tr>
                 <th>Bo'lim nomi</th>
             
                 <th>Bino</th>
                 <th>Jihoz soni</th>
+                <th>Mas'ul shaxs</th>
                 <th>Jihozlar</th>
                
               </tr>
@@ -144,6 +146,9 @@
 
 
                 <td>{{ $departament->get_building->name??"Berilmagan"}}</td>
+                <td>
+                  {{ $departament->get_user->full_name ?? "Berilmagan" }}
+                </td>
                 <td>{{ $departament->get_give_item_count}}</td>
                     <td>
                       <a href="{{ route('rektor_role.rektor_actions.show',['rektor_action'=>$departament->id]) }}" type="button" class="btn btn-primary">Jihozlar</a>
@@ -503,7 +508,7 @@ var gradientStroke5 = ctx.createLinearGradient(0, 0, 0, 300);
           
       },
       success : function (data, status){
-          console.log(data.responses);
+          // console.log(data.responses);
 
           $('#filter_ajax').html('')
 
@@ -513,6 +518,9 @@ var gradientStroke5 = ctx.createLinearGradient(0, 0, 0, 300);
         
          
           for (const iterator of data.responses) {
+            // let result=iterator;
+            // let result_2= (iterator.get_user.full_name !== null && iterator.get_user.full_name !== undefined) ? iterator.get_user.full_name : 1;
+            // console.log(result);
             html_row+=`<tr>`;
              let dep_id=iterator.id;
               let url = "{{ route('rektor_role.rektor_actions.show',':id') }}";
@@ -523,6 +531,7 @@ var gradientStroke5 = ctx.createLinearGradient(0, 0, 0, 300);
               html_row +=
               `<td>${iterator.name}</td>`+
               `<td>${iterator.get_building.name}</td>`+
+              `<td>${iterator.res_person!==null?iterator.get_user.full_name:"Kiritilmagan"}</td>`+
               `<td>${iterator.get_give_item_count}</td>`+
               
               `<td>

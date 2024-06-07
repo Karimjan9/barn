@@ -79,7 +79,7 @@
 	<!--notification js -->
 	<script src="{{ url('assets/plugins/notifications/js/lobibox.min.js') }}"></script>
 	<script src="{{ url('assets/plugins/notifications/js/notifications.min.js') }}"></script>
-	{{-- <script src="{{ url('assets/js/index3.js') }}"></script> --}}
+	<script src="{{ url('assets/js/index3.js') }}"></script>
 	<!--app JS-->
 	<script src="{{ url('assets/js/app.js') }}"></script>
 	@stack('scripte_include_end_body')
