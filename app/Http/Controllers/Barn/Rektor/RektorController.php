@@ -185,4 +185,13 @@ class RektorController extends Controller
         $sum=number_format($sum,2,","," ");
         return response()->json(['data'=>$sum]);
      }
+
+     
+     public function rektor_statistic(Request $request){
+        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->where('building_id',$request->id)->withCount('get_give_item')->get();
+
+        return response()->json(['responses'=>$departaments]);
+     }
+
+    
 }

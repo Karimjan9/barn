@@ -3,141 +3,10 @@
 @section('style')
 
     <style>
-:root {
-  --accent: #007ECC;
-  --accent-2: #EC2F4B;
-  --text: #003f66;
-  --text-hover: var(--accent);
-  --text-active: #FFFFFF;
-  --border-width: 0.125em;
-}
-
-html, body {
-  height: 100%;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.swip {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-weight: 500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.overflow-y-scroll{
-  max-height: 200px;
-}
-.tableWrap {
-  height: 500px;
-
-  overflow: auto;
-}
-table {
-  width: 100%;
-  font-family: sans-serif;
-}
-table td {
-  padding: 16px;
-}
-tbody tr {
-  border-bottom: 2px solid #e8e8e8;
-}
-thead {
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.85);
-}
-
-.hidden-toggles {
-	position: relative;
-	border-radius: 999em;
-	overflow: hidden;
-
-	height: 2.75em;
-	width: 40em;
-
-	display: flex;
-	flex-direction: row-reverse;
-
-	> * {
-		flex: 0 0 33.33%;
-	}
-
-	&:after {
-		content: "";
-
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-
-		border: var(--border-width) solid var(--accent);
-		border-radius: 999em;
-		pointer-events: none;
-	}
-}
-
-.hidden-toggles__input {
-	display: none;
-
-	&:checked + .hidden-toggles__label {
-		background-color: var(--accent);
-		color: var(--text-active);
-
-		&:before {
-			opacity: 1;
-		}
-		
-		&:last-of-type {
-			background: linear-gradient(90deg, var(--accent) 0%, var(--accent-2) 100%);
-		}
-	}
-	&:nth-of-type(1) + label { order: 4 }
-	&:nth-of-type(2) + label { order: 3 }
-	&:nth-of-type(3) + label { order: 2 }
-	&:nth-of-type(4) + label { order: 1 }
-	/*&:nth-of-type(1) + label { order: 3 }
-	&:nth-of-type(2) + label { order: 2 }
-	&:nth-of-type(3) + label { order: 1 }
-*/	
-	&:nth-of-type(1):checked,
-	&:nth-of-type(2):checked {
-		~ label:last-of-type {
-			margin-right: -33.33%;
-		}
-	}
-}
-
-.hidden-toggles__label {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-
-	position: relative;
-	cursor: pointer;
-	transition: all 0.2s ease-out;
-  color: var(--text);
-
-	&:hover {
-		color: var(--text-hover);
-	}
-
-	&:nth-of-type(2) {
-		border-left: var(--border-width) solid var(--accent);
-		border-right: var(--border-width) solid var(--accent);
-	}
-	
-	&:last-of-type {
-		border-left: var(--border-width) solid var(--accent);
-	}
-
-}
+   
 
     </style>
-
+    <link rel="stylesheet" href="{{ asset('assets/css/rektor/statistic.css') }}">
 @endsection
 @section('body')
 
@@ -242,21 +111,19 @@ thead {
                      <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
                      </a>
                      <ul class="dropdown-menu">
-                         <li><a class="dropdown-item" href="javascript:;">Action</a>
+                         <li><a class="dropdown-item" href="#" onClick="statistic_rektor(1); return false;">1-Bino</a>
                          </li>
-                         <li><a class="dropdown-item" href="javascript:;">Another action</a>
+                         <li><a class="dropdown-item" href="#" onClick="statistic_rektor(2); return false;">2-Bino</a>
                          </li>
-                         <li>
-                             <hr class="dropdown-divider">
-                         </li>
-                         <li><a class="dropdown-item" href="javascript:;">Something else here</a>
+                        
+                         <li><a class="dropdown-item" href="#" onClick="statistic_rektor(3); return false;">3-Bino</a>
                          </li>
                      </ul>
                  </div>
              </div>
           <div  class="tableWrap" >
             <table class="table align-middle mb-0">
-             <thead class="table-light">
+             <thead class="table-light">sffsfsf
               <tr>
                 <th>Bo'lim nomi</th>
             
@@ -266,7 +133,7 @@ thead {
                
               </tr>
               </thead>
-              <tbody>
+              <tbody id="filter_ajax">
                  @foreach ($departaments as $departament)
                  <tr>
                   <td>
@@ -467,7 +334,7 @@ thead {
       var sd_2=document.getElementById('take').value;
       var sd_1 = @json($taked);  
         var sd_2 = @json($dis_taked-$taked);
-      console.log(sd_1);
+      // console.log(sd_1);
     var gradientStroke11 = ctx.createLinearGradient(0, 0, 0, 300);
       gradientStroke11.addColorStop(0, '#ba8b02');
       gradientStroke11.addColorStop(1, '#181818');
@@ -624,6 +491,56 @@ var gradientStroke5 = ctx.createLinearGradient(0, 0, 0, 300);
             }
         })
   }
+</script>
+<script>
+  function statistic_rektor(id) {
+  // console.log(id);
+  $.ajax('{{ route('rektor_role.ajax_building_filter') }}', {
+      type : "GET",
+      data : {
+         
+        'id' : id,
+          
+      },
+      success : function (data, status){
+          console.log(data.responses);
+
+          $('#filter_ajax').html('')
+
+          let html_row = '';
+         
+          let count=1;
+        
+         
+          for (const iterator of data.responses) {
+            html_row+=`<tr>`;
+             let dep_id=iterator.id;
+              let url = "{{ route('rektor_role.rektor_actions.show',':id') }}";
+              url = url.replace(':id', dep_id);
+
+           
+              
+              html_row +=
+              `<td>${iterator.name}</td>`+
+              `<td>${iterator.get_building.name}</td>`+
+              `<td>${iterator.get_give_item_count}</td>`+
+              
+              `<td>
+                <a href="${url}" type="button" class="btn btn-primary">Jihozlar</a>
+                </td>`;
+
+        
+              html_row+=`</tr>`
+          }
+         
+          $('#filter_ajax').html(html_row)
+      }
+  })
+}
+
+// $('#second_filter').change( function () {
+// get_without_bodily();
+// });
 </script>
 @endsection
 

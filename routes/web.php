@@ -89,6 +89,9 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::get('/ajax_get_rektor_filter',[RektorController::class,'rektor_filter'])->name('ajax_rektor_statistic');
 
+                Route::get('/ajax_building_filter',[RektorController::class,'rektor_statistic'])->name('ajax_building_filter');
+
+
 
             });
         });
