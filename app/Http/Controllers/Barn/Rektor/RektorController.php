@@ -4,17 +4,18 @@ namespace App\Http\Controllers\Barn\Rektor;
 
 use App\Models\User;
 use App\Models\ItemsModel;
+use App\Models\OrderModel;
 use App\Models\TypeOfItem;
+use App\Models\PrixodModel;
 use Illuminate\Http\Request;
+use App\Models\GiveItemModel;
 use App\Models\UsersAskModel;
 use App\Models\BodilyTypeModel;
+use App\Models\OrderToBarnModel;
 use App\Models\SecondTypeOfItem;
 use App\Http\Controllers\Controller;
-use App\Models\GiveItemModel;
-use App\Models\OrderModel;
-use App\Models\OrderToBarnModel;
-use App\Models\PrixodModel;
 use Illuminate\Support\Facades\Auth;
+use App\Models\DepartmentKafedraModel;
 
 class RektorController extends Controller
 {
@@ -101,6 +102,13 @@ class RektorController extends Controller
         $orders=OrderToBarnModel::get()->count();
         $prixods=PrixodModel::get();
         $sum=0;
+        $taked=GiveItemModel::where('status',2)->count();
+        $dis_taked=GiveItemModel::count()==0 ? 1:GiveItemModel::count();
+        $table_prixods=PrixodModel::with('get_item_name','get_cargo_name')->orderBy('id', 'DESC')->limit(10)->get()->unique('item_id');
+        
+        $protsent=(int)(($taked/$dis_taked)*100);
+        $first=TypeOfItem::with('get_item')->get();
+
         foreach ($prixods as $key => $value) {
             $sum=$sum+($value->cost_of_per*$value->count_of_item*$value->currency_value);
         }
@@ -108,16 +116,11 @@ class RektorController extends Controller
         
         $sum=number_format($sum,2,","," ");
         // dd($sum);
-        $taked=GiveItemModel::where('status',2)->get()->count();
-        $dis_taked=GiveItemModel::get()->count()==0 ? 1:GiveItemModel::get()->count();
-        
-        $protsent=(int)(($taked/$dis_taked)*100);
+       
         $worker=User::where('level_id',6)->get()->count();
-        $table_prixods=PrixodModel::with('get_item_name','get_cargo_name')->orderBy('id', 'DESC')->limit(10)->get()->unique('item_id');
         // dd($table_prixods);
         $array=[];
         $names=[];
-        $first=TypeOfItem::with('get_item')->get();
         foreach ($first as $key => $value) {
             $array[]=$value->get_item->sum('extant');
             $names[]=$value->name_of_type;
@@ -125,9 +128,28 @@ class RektorController extends Controller
         $names_1=json_encode($names);
         // dd($names_1);
         // dd($first->get_item->sum('extant'));
-        return view('barn.rektor.statistic.index',compact('user','orders','sum','protsent','worker','table_prixods','array','names','names_1','taked','dis_taked'));
+
+        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->withCount('get_give_item')->get(25);
+        return view('barn.rektor.statistic.index',compact('user','orders','sum','protsent','worker','table_prixods','array','names','names_1','taked','dis_taked','departaments'));
      }
 
+
+     public function show($id)
+    {
+        // dd($id);
+        $departaments=GiveItemModel::with('get_item')
+        ->where('dep_id','=',$id)
+        ->selectRaw('(item_id) as item_id,count(item_id) as give_item,(give_item.status) as status')
+        ->groupBy('give_item.item_id','give_item.status')
+        ->paginate(40);
+        // $dep_2=GiveItemModel::with('get_item')->where('dep_id',$id)->get();
+        // dd($dep_2);
+        // dd($departaments);
+
+        return view('barn.rektor.statistic.show',compact('departaments'));
+
+       
+    }
      function rektor_filter(Request $request){
        
         $sum=0;

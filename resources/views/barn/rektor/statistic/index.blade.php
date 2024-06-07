@@ -27,6 +27,28 @@ html, body {
   justify-content: center;
   align-items: center;
 }
+.overflow-y-scroll{
+  max-height: 200px;
+}
+.tableWrap {
+  height: 500px;
+
+  overflow: auto;
+}
+table {
+  width: 100%;
+  font-family: sans-serif;
+}
+table td {
+  padding: 16px;
+}
+tbody tr {
+  border-bottom: 2px solid #e8e8e8;
+}
+thead {
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.85);
+}
 
 .hidden-toggles {
 	position: relative;
@@ -111,6 +133,7 @@ html, body {
 	&:last-of-type {
 		border-left: var(--border-width) solid var(--accent);
 	}
+
 }
 
     </style>
@@ -209,7 +232,68 @@ html, body {
         <!--end row-->
 
        
+        <div class="card radius-10" id="container">
+          <div class="card-body">
+             <div class="d-flex align-items-center">
+                 <div>
+                     <h6 class="mb-0">Bo'limlar va kafedralar</h6>
+                 </div>
+                 <div class="dropdown ms-auto">
+                     <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
+                     </a>
+                     <ul class="dropdown-menu">
+                         <li><a class="dropdown-item" href="javascript:;">Action</a>
+                         </li>
+                         <li><a class="dropdown-item" href="javascript:;">Another action</a>
+                         </li>
+                         <li>
+                             <hr class="dropdown-divider">
+                         </li>
+                         <li><a class="dropdown-item" href="javascript:;">Something else here</a>
+                         </li>
+                     </ul>
+                 </div>
+             </div>
+          <div  class="tableWrap" >
+            <table class="table align-middle mb-0">
+             <thead class="table-light">
+              <tr>
+                <th>Bo'lim nomi</th>
+            
+                <th>Bino</th>
+                <th>Jihoz soni</th>
+                <th>Jihozlar</th>
+               
+              </tr>
+              </thead>
+              <tbody>
+                 @foreach ($departaments as $departament)
+                 <tr>
+                  <td>
+                    {{ $departament->name }}
+                    </td>
            
+            
+
+
+                <td>{{ $departament->get_building->name??"Berilmagan"}}</td>
+                <td>{{ $departament->get_give_item_count}}</td>
+                    <td>
+                      <a href="{{ route('rektor_role.rektor_actions.show',['rektor_action'=>$departament->id]) }}" type="button" class="btn btn-primary">Jihozlar</a>
+                    </td>
+                    </tr>
+ 
+                 @endforeach
+                 
+             
+              
+             </tbody>
+             
+           </table>
+           </div>
+          </div>
+     </div>
+   
         <!--end row-->
 
          <div class="card radius-10">
@@ -234,7 +318,7 @@ html, body {
                             </ul>
                         </div>
                     </div>
-                 <div class="table-responsive">
+                 <div class="tableWrap">
                    <table class="table align-middle mb-0">
                     <thead class="table-light">
                      <tr>
