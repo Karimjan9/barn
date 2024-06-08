@@ -48,7 +48,7 @@
         </div>
         <div class="d-flex align-items-center">
             <div class="ms-auto">
-                <a href="{{ route('rektor_role.show_all_statistic') }}" class="btn btn-primary px-3"></i>Orqaga</a>
+                <a href="{{ route('rektor_role.show_all_items') }}" class="btn btn-primary px-3"></i>Orqaga</a>
             </div>
         </div>
 
@@ -62,11 +62,11 @@
                         <thead class="table-light">
                             <tr>
                                 <th class="fixed_header2 align-middle">#</th>
-                                <th class="fixed_header2 align-middle">Jihoz nomi</th>
+                                <th class="fixed_header2 align-middle">Bo'lim nomi</th>
                                 <th class="fixed_header2 align-middle">Jihoz soni</th>
       
 
-                                <th class="fixed_header2 align-middle">Status</th>
+                                {{-- <th class="fixed_header2 align-middle">Status</th> --}}
 
 
                             </tr>
@@ -78,12 +78,12 @@
                             <tr>
                         
                             <td>{{ $key+1 }}</td>
-                            <td>{{ $departament->get_item->name }} </td>
+                            <td>{{ $departament->get_departament_belong->name }} </td>
                             <td>{{  $departament->give_item }} </td>
                          
                          
                                 
-                            <td>
+                            {{-- <td>
                                 @if ( $departament->status==1)
                                 <button type="button" class="btn btn btn-secondary" disabled>Ko'rib chiqilmoqda</button>
                                     
@@ -92,7 +92,7 @@
                 
                                 @endif
                                 
-                            </td>
+                            </td> --}}
                             </tr>
                         @endforeach
                   

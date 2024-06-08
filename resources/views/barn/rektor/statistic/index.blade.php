@@ -218,7 +218,7 @@
                                   <div class="progress-bar bg-gradient-quepal" role="progressbar" style="width: 100%"></div>
                                 </div></td>
                            </tr>
-        
+                           
                         @endforeach
                         
                     

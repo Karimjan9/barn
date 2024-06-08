@@ -90,7 +90,7 @@ nav ul li ul li a:hover {
         <div class="col-md-8 mb-3">
           <label for="first_type" class="form-label">Jihoz turi</label>
         <select name="first_filter" id="first_filter" class="form-select form-select-lg mb-3">
-        
+          <option value="" > </option>
           @foreach ($firsts as $key=>$first)
                               
             <option value="{{ $first->id}}" >{{ $first->name_of_type }} </option>
@@ -137,9 +137,11 @@ nav ul li ul li a:hover {
                                     <th class="fixed_header2 align-middle">Modeli</th>
                                     <th class="fixed_header2 align-middle">Jihoz turi</th>
                                     <th class="fixed_header2 align-middle">Jihoz nomi</th>
-                                    <th class="fixed_header2 align-middle">Barcha soni</th>
-                                    <th class="fixed_header2 align-middle">Berilganlar soni</th>
-                                    <th class="fixed_header2 align-middle">Qoldig'i</th>
+                                    <th class="fixed_header2 align-middle">Barcha jihoz soni</th>
+                                    <th class="fixed_header2 align-middle">Berilganlar jihoz soni</th>
+                                    <th class="fixed_header2 align-middle">Qolgan jihoz soni</th>
+                                    <th class="fixed_header2 align-middle">Harakatlar</th>
+
 
 
 
@@ -148,6 +150,7 @@ nav ul li ul li a:hover {
                             <tbody id="filter_ajax">
                             
                                 @foreach ($all_items as $key=>$all_item)
+                                {{-- @dd($all_item) --}}
                                 <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $all_item->name }}</td>
@@ -156,8 +159,7 @@ nav ul li ul li a:hover {
                                 <td>{{ $all_item->extant}}</td>
                                 <td>{{ $all_item->absent}}</td>
                                 <td>{{ $all_item->extant -  $all_item->absent}}</td>
-
-
+                                <td> <a href="{{ route('rektor_role.show_stat_item',['item_id'=>$all_item->id]) }}" class="btn btn-sm btn-primary text-white me-2"></i>   Statistika   </a></td>
 
 
                               
@@ -204,7 +206,7 @@ $(".sub-menu a").click(function () {
           
       },
       success : function (data, status){
-          console.log(data.responses);
+          // console.log(data.responses);
 
           $('#second_filter').html('')
 
@@ -249,7 +251,7 @@ $('#first_filter').change( function () {
                 
             },
             success : function (data, status){
-                console.log(data.responses);
+                // console.log(data.responses);
     
                 $('#filter_ajax').html('')
     
@@ -257,9 +259,12 @@ $('#first_filter').change( function () {
                
                 let count=1;
                 for (const iterator of data.responses) {
+                  // console.log(iterator.id);
+               
                   html_row+=`<tr>`;
-                   
-
+                    let dep_id=iterator.id;
+                    let url = "{{ route('rektor_role.show_stat_item',':id') }}";
+                    url = url.replace(':id', dep_id);
 
                  
                     
@@ -270,7 +275,10 @@ $('#first_filter').change( function () {
                     `<td>${iterator.get_second.name}</td>`+
                     `<td>${iterator.extant}</td>`+
                     `<td>${iterator.absent}</td>`+
-                    `<td>${iterator.extant - iterator.absent}</td>`;
+                    `<td>${iterator.extant - iterator.absent}</td>`+
+                    `<td>
+                      <a href="${url}" type="button" class="btn btn-primary">Harakatlar</a>
+                    </td>`;
 
               
                     html_row+=`</tr>`
@@ -307,7 +315,9 @@ $('#first_filter').change( function () {
           for (const iterator of data.responses) {
             html_row+=`<tr>`;
              
-
+              let dep_id=iterator.id;
+              let url = "{{ route('rektor_role.show_stat_item',':id') }}";
+              url = url.replace(':id', dep_id);
 
            
               
@@ -318,7 +328,10 @@ $('#first_filter').change( function () {
               `<td>${iterator.get_second.name}</td>`+
               `<td>${iterator.extant}</td>`+
               `<td>${iterator.absent}</td>`+
-              `<td>${iterator.extant - iterator.absent}</td>`;
+              `<td>${iterator.extant - iterator.absent}</td>`+
+              `<td>
+                <a href="${url}" type="button" class="btn btn-primary">Harakatlar</a>
+              </td>`;
 
         
               html_row+=`</tr>`

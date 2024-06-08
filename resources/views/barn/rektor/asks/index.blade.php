@@ -239,10 +239,10 @@ $(".sub-menu a").click(function () {
                 for (const iterator of data.responses) {
                   html_row+=`<tr>`;
                   let url = "{{ route('rektor_role.accept.application',':id') }}";
-                  let url_1= "{{ route('rektor_role.deny.application',':id') }}";
+                  // let url_1= "{{ route('rektor_role.deny.application',':id') }}";
 
                   url = url.replace(':id', iterator.id);
-                  url_2=url_1.replace(':id', iterator.id);
+                  // url_2=url_1.replace(':id', iterator.id);
                 
                     
                     html_row += `

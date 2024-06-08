@@ -79,6 +79,8 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::get('/show_all_items',[RektorController::class,'show_items'])->name('show_all_items');
 
+                Route::get('/show_stat_item/{item_id}',[RektorController::class,'show_stat_item'])->name('show_stat_item');
+
                 Route::get('/show_all_statistic',[RektorController::class,'show_statistic'])->name('show_all_statistic');
 
                 Route::get('/ajax_get_fillter_without_b',[RektorController::class,'ajax_get_without_bodily'])->name('ajax_get_without_bodily');

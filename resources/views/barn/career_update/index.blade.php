@@ -47,8 +47,7 @@
                                     <th class="fixed_header2 align-middle">Masul shaxs</th>
                                     <th class="fixed_header2 align-middle">Bino nomi</th>
                                     <th class="fixed_header2 align-middle">Harakatlar</th>
-                                    <th class="fixed_header2 align-middle">Tasnif</th>
-
+                                 
 
                                 </tr>
                             </thead>
@@ -69,7 +68,7 @@
                             
                                         <td>{{ $departament->get_building->name??"Berilmagan"}}</td>
 
-                                        <td>{{ $departament->get_building->name??"Berilmagan"}}</td>
+                                
 
                                         <td> <a href="{{ route('kadr_role.career_update.show',['career_update'=>$departament->id]) }}" class="btn btn-sm btn-primary text-white me-2"></i>   Show   </a></td>
                                         {{-- <td class="d-flex align-items-center">

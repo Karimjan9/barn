@@ -24,8 +24,10 @@ class GiveItemModel extends Model
     public function get_user(){
         return $this->belongsTo(User::class,'user_id','id');
     }
-
-    public function get_departament()
+    public function get_departament_belong(){
+        return $this->belongsTo(DepartmentKafedraModel::class,'dep_id','id');
+    }
+    public function get_departament_has_many()
     {
         return $this->hasmany(DepartmentKafedraModel::class,'id','dep_id');
     }

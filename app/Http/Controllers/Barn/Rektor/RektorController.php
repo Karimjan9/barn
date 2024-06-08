@@ -71,7 +71,7 @@ class RektorController extends Controller
         // dd($all_items);
         $firsts=TypeOfItem::get();
       
-        $bodilys=BodilyTypeModel::get();
+        $bodilys=BodilyTypeModel::where('id','<',3)->get();
         return view('barn.rektor.items_show.index',compact('all_items','firsts','bodilys'));
      }
      public function ajax_get_without_bodily(Request $request){
@@ -192,6 +192,18 @@ class RektorController extends Controller
         $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->where('building_id',$request->id)->withCount('get_give_item')->get();
 
         return response()->json(['responses'=>$departaments]);
+     }
+
+     public function show_stat_item($id){
+      
+        $departaments=GiveItemModel::with('get_departament_belong')
+        ->where('item_id','=',$id)
+        ->where('status','>',0)
+        ->selectRaw('(item_id) as item_id,count(item_id) as give_item,(give_item.status) as status ,dep_id as dep_id')
+        ->groupBy('give_item.item_id','give_item.status','give_item.dep_id')
+        ->paginate(20);
+        // dd($departaments);
+        return view('barn.rektor.statistic.show_deps',compact('departaments'));
      }
 
     

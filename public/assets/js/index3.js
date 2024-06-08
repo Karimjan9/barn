@@ -50,54 +50,54 @@ $(function() {
 
   
 // chart 5
- var ctx = document.getElementById('chart5').getContext('2d');
+//  var ctx = document.getElementById('chart5').getContext('2d');
 
-      var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke1.addColorStop(0, '#17ead9');
-      gradientStroke1.addColorStop(1, '#6078ea');
+//       var gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
+//       gradientStroke1.addColorStop(0, '#17ead9');
+//       gradientStroke1.addColorStop(1, '#6078ea');
 
-      var gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
-      gradientStroke2.addColorStop(0, '#f80759');
-      gradientStroke2.addColorStop(1, '#bc4e9c');
+//       var gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
+//       gradientStroke2.addColorStop(0, '#f80759');
+//       gradientStroke2.addColorStop(1, '#bc4e9c');
 
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: [1, 2, 3, 4, 5, 6, 7, 8],
-          datasets: [{
-            label: 'Downloads',
-            data: [0, 30, 60, 25, 60, 25, 50, 0],
-            pointBorderWidth: 2,
-            pointBackgroundColor: 'transparent',
-			pointHoverBackgroundColor: gradientStroke1,
-            backgroundColor: gradientStroke1,
-            borderColor: gradientStroke1,
-            borderWidth: 2
-          }, {
-            label: 'Earnings',
-            data: [0, 60, 25, 80, 35, 75, 30, 0],
-            pointBorderWidth: 2,
-            pointBackgroundColor: 'transparent',
-			pointHoverBackgroundColor: gradientStroke2,
-            backgroundColor: gradientStroke2,
-            borderColor: gradientStroke2,
-            borderWidth: 2
-          }]
-        },
-        options: {
-          maintainAspectRatio: false,
-            legend: {
-              display: false,
-			  labels: {
-                boxWidth:40
-              }
-            },
-            tooltips: {
-			  displayColors:false
-            }
+//       var myChart = new Chart(ctx, {
+//         type: 'line',
+//         data: {
+//           labels: [1, 2, 3, 4, 5, 6, 7, 8],
+//           datasets: [{
+//             label: 'Downloads',
+//             data: [0, 30, 60, 25, 60, 25, 50, 0],
+//             pointBorderWidth: 2,
+//             pointBackgroundColor: 'transparent',
+// 			pointHoverBackgroundColor: gradientStroke1,
+//             backgroundColor: gradientStroke1,
+//             borderColor: gradientStroke1,
+//             borderWidth: 2
+//           }, {
+//             label: 'Earnings',
+//             data: [0, 60, 25, 80, 35, 75, 30, 0],
+//             pointBorderWidth: 2,
+//             pointBackgroundColor: 'transparent',
+// 			pointHoverBackgroundColor: gradientStroke2,
+//             backgroundColor: gradientStroke2,
+//             borderColor: gradientStroke2,
+//             borderWidth: 2
+//           }]
+//         },
+//         options: {
+//           maintainAspectRatio: false,
+//             legend: {
+//               display: false,
+// 			  labels: {
+//                 boxWidth:40
+//               }
+//             },
+//             tooltips: {
+// 			  displayColors:false
+//             }
 
-         }
-      });
+//          }
+//       });
 
 
    // chart 6
