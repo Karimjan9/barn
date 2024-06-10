@@ -103,7 +103,8 @@ class RektorController extends Controller
         $prixods=PrixodModel::get();
         $sum=0;
         $taked=GiveItemModel::where('status',2)->count();
-        $dis_taked=GiveItemModel::count()==0 ? 1:GiveItemModel::count();
+        $dis_taked=GiveItemModel::count();
+        $dis_taked=$dis_taked==0 ? 1:$dis_taked;
         $table_prixods=PrixodModel::with('get_item_name','get_cargo_name','get_currency')->orderBy('id', 'DESC')->limit(10)->get()->unique('item_id');
         
         $protsent=(int)(($taked/$dis_taked)*100);
