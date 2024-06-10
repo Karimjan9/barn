@@ -129,8 +129,8 @@
                 <th>Bo'lim nomi</th>
             
                 <th>Bino</th>
-                <th>Jihoz soni</th>
                 <th>Mas'ul shaxs</th>
+                <th>Jihoz soni</th>
                 <th>Jihozlar</th>
                
               </tr>
@@ -206,13 +206,14 @@
                      </thead>
                      <tbody>
                         @foreach ($table_prixods as $table)
+                        {{-- @dd($table) --}}
                         <tr>
                             <td>{{ $table->get_item_name->name }}</td>
                             
                             <td>{{ $table->get_cargo_name->name }}</td>
                             <td><span class="badge bg-gradient-quepal text-white shadow-sm w-100">Paid</span></td>
                             <td>{{ $table->count_of_item }} ta</td>
-                            <td>{{ $table->cost_of_per }} so'm</td>
+                            <td>{{ $table->cost_of_per }} {{ $table->get_currency->name }} </td>
                             <td>{{ $table->get_cargo_name->come_date->format('d-m-Y') }}</td>
                             <td><div class="progress" style="height: 5px;">
                                   <div class="progress-bar bg-gradient-quepal" role="progressbar" style="width: 100%"></div>
