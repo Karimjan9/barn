@@ -54,6 +54,10 @@
 
 
         <hr>
+        <div class="ms-auto">
+            <a href="{{ route('kadr_role.reset_func_for_dep',['dep_id'=>$id]) }}" class="btn btn-danger px-3" onclick="return confirm('Are you sure to delete this ?');"></i>Reset</a>
+        </div>
+        <br>
         <div class="row">
             <div class="card-body">
 

@@ -21,7 +21,7 @@ class CareerUpdateController extends Controller
   
     public function index()
     {
-        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->withCount('get_give_item')->paginate(25);
+        $departaments=DepartmentKafedraModel::with(['get_user','get_building'])->orderBy('created_at', 'desc')->withCount('get_give_item')->paginate(25);
        
         // dd($departament->get_give_item()->select('user_id','item_id','status')->get()->unique('item_id'));
         // dd($departaments );
@@ -225,13 +225,28 @@ public function store_all_items(Request $request){
 public function items_give_to_barn(Request $request,$id){
     // dd($request->number);
     $item=ItemsModel::where('id',$request->item)->first();
-    $num=$item->absent-$request->number;
-    // dd($num);
     $item_give=GiveItemModel::where('item_id',$request->item)->where('dep_id',$id)->where('status',1)->update(['status'=>0,'dep_id'=>0]);
   
     $num=$item->absent-$request->number;
     $item_change=ItemsModel::where('id',$request->item)->update(['absent'=>$num]);
     // dd($item);
     return to_route('kadr_role.career_update.index');
+}
+
+public function reset_for_dep($id){
+
+    $departaments=GiveItemModel::where('dep_id','=',$id)
+    ->selectRaw('(item_id) as item_id,count(item_id) as give_item,(give_item.status) as status')
+    ->groupBy('give_item.item_id','give_item.status')
+    ->get();
+    // dd($departaments);
+    foreach ($departaments as $key => $departament) {
+        $item=ItemsModel::where('id',$departament->item_id)->first();
+        $item_give=GiveItemModel::where('item_id',$departament->item_id)->where('dep_id',$id)->where('status',1)->update(['status'=>0,'dep_id'=>0]);
+        // dd($departament);
+        $num=$item->absent-$departament->give_item;
+        $item_change=ItemsModel::where('id',$departament->item_id)->update(['absent'=>$num]);
+    }
+    return to_route('kadr_role.career_update.show',['career_update'=>$id]);
 }
 }

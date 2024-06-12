@@ -71,6 +71,7 @@
                                 
 
                                         <td> <a href="{{ route('kadr_role.career_update.show',['career_update'=>$departament->id]) }}" class="btn btn-sm btn-primary text-white me-2"></i>   Show   </a></td>
+
                                         {{-- <td class="d-flex align-items-center">
                                             <a href="{{ route('kadr_role.career_update.edit',['career_update'=>$career->id]) }}" class="btn btn-sm btn-warning text-white me-2"></i>O'zgartirish</a>
                                             <form action="{{ route('kadr_role.career_update.destroy',['career_update'=>$career->id]) }}" method="post">

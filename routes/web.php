@@ -47,6 +47,8 @@ use App\Models\SecondTypeOfItem;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Route::get('/', [UserController::class, 'index'])->name('test');
 
 Route::middleware(['auth'])->group(function () {
@@ -220,6 +222,8 @@ Route::middleware(['auth'])->group(function () {
                 // Route::resource('/career_employee', CareerController::class);
 
                 Route::resource('/career_update',CareerUpdateController::class);
+
+                Route::get('/reset_func/{dep_id}',[CareerUpdateController::class,'reset_for_dep'])->name('reset_func_for_dep');
 
                 Route::get('/change_department/{user}', [KadrController::class, 'change_departament'])->name('change.departament');
 
