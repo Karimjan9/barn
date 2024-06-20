@@ -237,6 +237,8 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::get('/search_item', [SearchController::class, 'search_item'])->name('search.item');
 
+                Route::get('/see_items_give/{item_id}', [SearchController::class, 'see_items_give'])->name('search.see_items_give');
+
 
                 Route::get('/second_data/{user}', [KadrController::class, 'second_data'])->name(  'change.second_data');
 

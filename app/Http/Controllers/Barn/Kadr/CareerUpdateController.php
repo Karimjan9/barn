@@ -43,15 +43,15 @@ class CareerUpdateController extends Controller
         // dd($currencys);
         return view('barn.rektor.dep_and_kafedra.create_for_give',compact('departaments','types',));
     }
-  
     // public function store(Request $request)
     // {   
     //     // dd($request);
     //     $career=CareerUpdatedModel::create($request->all());
     //     return to_route('kadr_role.career_update.index');
-    // }
+    // }        
+    
 
-   
+    
     public function show($id)
     {
         // dd($id);

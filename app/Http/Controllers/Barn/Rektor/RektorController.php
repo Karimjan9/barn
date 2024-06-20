@@ -68,9 +68,10 @@ class RektorController extends Controller
 
      public function show_items(){
         $all_items=ItemsModel::paginate(20);
-        // dd($all_items);
+        // $items=ItemsModel::with(['get_first','get_second'])->where('first',3)->where('second',18)->get();
+        // dd($items);
         $firsts=TypeOfItem::get();
-      
+    //   dd($firsts);
         $bodilys=BodilyTypeModel::where('id','<',3)->get();
         return view('barn.rektor.items_show.index',compact('all_items','firsts','bodilys'));
      }

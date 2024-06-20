@@ -129,9 +129,11 @@ nav ul li ul li a:hover {
 
                                     <th class="fixed_header2 align-middle">Jihoz soni</th>
 
-                                    <th class="fixed_header2 align-middle">Jihoz nomi</th>
+                                    <th class="fixed_header2 align-middle">Extant</th>
                                    
-                                    <th class="fixed_header2 align-middle" >Tasnif</th>
+                                    <th class="fixed_header2 align-middle" >Absent</th>
+
+                                    <th class="fixed_header2 align-middle">Ko'rish</th>
 
                                     <th class="fixed_header2 align-middle">O'zgartirish</th>
 
@@ -155,9 +157,9 @@ nav ul li ul li a:hover {
 
                                 <td>{{ $item->extant-$item->absent}}</td>
 
-                                <td>{{ $item->get_second->name}}</td>
+                                <td>{{ $item->extant}}</td>
                               
-                                <td >{{ $item->description}}</td>
+                                <td >{{ $item->absent}}</td>
 
                                 {{-- <td class="d-flex align-items-center">
                                            
@@ -167,6 +169,8 @@ nav ul li ul li a:hover {
                                                 <input class="btn btn-sm btn-danger confirm-button" type="submit" value="Bo'shatish">
                                             </form>
                                         </td> --}}
+                                  <td> <a href="{{ route('kadr_role.search.see_items_give',['item_id'=>$item->id]) }}" class="btn btn-sm btn-primary text-white me-2">Ko'rish</i></a></td>
+
                                   <td> <a href="{{ route('storekeeper_role.items.edit',['item'=>$item->id]) }}" class="btn btn-sm btn-warning text-white me-2">O'zgartirish</i></a></td>
                                   <td>
                                     <form action="{{ route('storekeeper_role.items.destroy',['item'=>$item->id]) }}" method="post">

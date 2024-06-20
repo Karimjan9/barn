@@ -251,7 +251,7 @@ $('#first_filter').change( function () {
                 
             },
             success : function (data, status){
-                // console.log(data.responses);
+                console.log(data.responses);
     
                 $('#filter_ajax').html('')
     
@@ -265,7 +265,7 @@ $('#first_filter').change( function () {
                     let dep_id=iterator.id;
                     let url = "{{ route('rektor_role.show_stat_item',':id') }}";
                     url = url.replace(':id', dep_id);
-
+                   
                  
                     
                     html_row += `
@@ -282,6 +282,7 @@ $('#first_filter').change( function () {
 
               
                     html_row+=`</tr>`
+                    count=count+1;
                 }
                
                 $('#filter_ajax').html(html_row)

@@ -7,6 +7,7 @@ use App\Models\ItemsModel;
 use App\Models\TypeOfItem;
 use Illuminate\Http\Request;
 use App\Models\CurrencyModel;
+use App\Models\GiveItemModel;
 use App\Models\SecondTypeOfItem;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Barn\Kadr\Search\SearchRequest;
@@ -31,7 +32,7 @@ class SearchController extends Controller
 
  public function search_item(ItemSearchRequest $request){
     $items=ItemsModel::where('name','LIKE',"%$request->search%")->with(['get_bodily','get_second','get_unity'])->paginate(20);
-    
+    // dd($items);
     
     return view('barn.storekeep.items_actions.index',compact('items'));
  
@@ -70,5 +71,15 @@ public function departament_search_items(ItemSearchRequest $request){
     $currencys=CurrencyModel::get();
     // dd($currencys);
     return view('barn.rektor.dep_and_kafedra.item_result',compact('types','item','second','currencys'));
+}
+
+public function see_items_give($item_id){
+    // dd(1);
+    $departaments=GiveItemModel::where('item_id','=',$item_id)
+    ->selectRaw('(item_id) as item_id,count(item_id) as give_item,(give_item.status) as status')
+    ->groupBy('give_item.item_id','give_item.status')
+    ->paginate(40);
+    dd($departaments);
+
 }
 }
