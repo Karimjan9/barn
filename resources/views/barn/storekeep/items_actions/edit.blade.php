@@ -60,6 +60,16 @@
                                 <label for="full_name" class="form-label">Jihoz nomi</label>
                                 <input type="text" name="name" value="{{ $item->name }}" class="form-control" id="full_name">
                             </div>
+
+                            <div class="col-md-8 mb-3" >
+                                <label for="full_name" class="form-label">Jihoz Extant</label>
+                                <input type="number" name="extant" value="{{ $item->extant }}" class="form-control" id="full_name">
+                            </div>
+
+                            <div class="col-md-8 mb-3" >
+                                <label for="full_name" class="form-label">Jihoz Absent</label>
+                                <input type="number" name="absent" value="{{ $item->absent }}" class="form-control" id="full_name">
+                            </div>
                            
                             <div class="col-md-8 mb-3">
                                 {{-- <input type="number"     id="" value="0.0"> --}}
@@ -107,7 +117,7 @@
                                         @foreach ($second_types as $key=>$second_type)
                                 
                                             
-                                        <option value="{{ $second_type->id }}" 
+                                            <option value="{{ $second_type->id }}" 
                                             
                                             @if ($second_type->id==$item->second)
                                                 @selected(true)

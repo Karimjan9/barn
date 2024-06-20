@@ -171,7 +171,9 @@ nav ul li ul li a:hover {
                                         </td> --}}
                                   <td> <a href="{{ route('kadr_role.search.see_items_give',['item_id'=>$item->id]) }}" class="btn btn-sm btn-primary text-white me-2">Ko'rish</i></a></td>
 
-                                  <td> <a href="{{ route('storekeeper_role.items.edit',['item'=>$item->id]) }}" class="btn btn-sm btn-warning text-white me-2">O'zgartirish</i></a></td>
+                                  <td> <a href="{{ route('storekeeper_role.items.edit',['item'=>$item->id]) }}" class="btn btn-sm btn-warning text-white me-2">O'zgartirish</i></a>
+
+                                  </td>
                                   <td>
                                     <form action="{{ route('storekeeper_role.items.destroy',['item'=>$item->id]) }}" method="post">
                                       @csrf

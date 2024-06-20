@@ -82,4 +82,8 @@ public function see_items_give($item_id){
     dd($departaments);
 
 }
+
+    public function item_page($item_id){
+        dd($item_id);
+    }
 }

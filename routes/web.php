@@ -240,6 +240,9 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/see_items_give/{item_id}', [SearchController::class, 'see_items_give'])->name('search.see_items_give');
 
 
+                // Route::get('/item_update/{item_id}', [SearchController::class, 'item_page'])->name('search.item_update_page');
+
+
                 Route::get('/second_data/{user}', [KadrController::class, 'second_data'])->name(  'change.second_data');
 
                 Route::get('/user_functions/{user}', [KadrController::class, 'data_give'])->name(  'user.data_give');
