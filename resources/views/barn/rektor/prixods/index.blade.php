@@ -69,6 +69,8 @@
                                 <th class="fixed_header2 align-middle">Yetkazib beruvchi</th>
      
                                 <th class="fixed_header2 align-middle" >Mulohaza</th>
+                                <th class="fixed_header2 align-middle" >Biriktirilgan fayl</th>
+
                                 <th class="fixed_header2 align-middle" >Harakatlar</th>
 
                             </tr>
@@ -86,7 +88,13 @@
                             <td>{{ $all_inf[$key][1]}}</td>
                             <td>{{ $all_inf[$key][2]->name ?? "kiritilmagan"}}</td>
                             <td>{{ $cargo->description}}</td>
- 
+                            <td >
+                                @if ($cargo->file_name!=NULL)
+                                <a class="btn btn-primary" href="{{ url("storage/files/". $cargo->file_name) }}" target="_blank">Fayl</a>
+                                @else
+                                    {{ "Biriktirilmagan" }}
+                                @endif
+                              </td>
                               <td> <a href="{{ route('rektor_role.prixod_show.show',['prixod_show'=>$cargo->id]) }}" class="btn btn-sm btn-primary text-white me-2"></i>  Ko'rish   </a></td>
                              
                             </tr>

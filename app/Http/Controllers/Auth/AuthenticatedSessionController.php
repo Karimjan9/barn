@@ -21,7 +21,7 @@ class AuthenticatedSessionController extends Controller
     }
 
 
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request)
     {
         $request->authenticate();
 
@@ -49,7 +49,7 @@ class AuthenticatedSessionController extends Controller
         
         }else if($request->user()->hasRole("user")){
 
-            return redirect()->route('user_role.users_petitions.index');
+            return redirect()->route('user_role.users_invertar.index');
         }
 
     }

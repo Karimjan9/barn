@@ -53,12 +53,20 @@
                 <div class="card border-top border-0 border-4 border-primary">
                     <div class="card-body p-5">
 
-                        <form class="row g-3" method="post" action="{{ route('storekeeper_role.cargo.store')}}">
+                        <form class="row g-3" method="post" action="{{ route('storekeeper_role.cargo.store')}}" enctype="multipart/form-data">
+                            <div class="col-12">
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger border-0 bg-danger alert-dismissible fade show">
+                                        <div class="text-white">{{ $error }}</div>
+                                    </div>
+                                @endforeach
+                            </div>
                             @csrf
                             <div class="col-md-8 mb-3" >
                                 <label for="full_name" class="form-label">Cargo ismi</label>
                                 <input type="text" name="name" class="form-control" id="full_name">
                             </div>
+                           
 
                             <div class="col-md-8 mb-3" >
                                 <label for="full_name" class="form-label">Cargo sanasi</label>
@@ -66,6 +74,11 @@
                                    
                                     <input type="date" name="come_date" class="form-control" id="date">
                                
+                            </div>
+
+                            <div class="col-md-8">
+                                <label for="message_body" class="form-label">Jo'natma fayli</label>
+                                <input class="form-control" name='file_name' type="file" id="formFile" >
                             </div>
                             <div class="col-md-8">
                                 <label for="level_id" class="form-label">Jo'natuvchi</label>

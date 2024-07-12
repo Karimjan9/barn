@@ -67,6 +67,7 @@ return array(
     'App\\Http\\Requests\\Barn\\Kadr\\Search\\SearchRequest' => $baseDir . '/app/Http/Requests/Barn/Kadr/Search/SearchRequest.php',
     'App\\Http\\Requests\\Barn\\Kadr\\User\\UserRequest' => $baseDir . '/app/Http/Requests/Barn/Kadr/User/UserRequest.php',
     'App\\Http\\Requests\\Barn\\Rektor\\RektorCurrencyRequest' => $baseDir . '/app/Http/Requests/Barn/Rektor/RektorCurrencyRequest.php',
+    'App\\Http\\Requests\\Barn\\Rektor\\RektorDepartamentGiveItemRequest' => $baseDir . '/app/Http/Requests/Barn/Rektor/RektorDepartamentGiveItemRequest.php',
     'App\\Http\\Requests\\Barn\\SecondDataFiles\\SecondDataRequest' => $baseDir . '/app/Http/Requests/Barn/SecondDataFiles/SecondDataRequest.php',
     'App\\Http\\Requests\\User\\UserRequestCreate' => $baseDir . '/app/Http/Requests/User/UserRequestCreate.php',
     'App\\Imports\\ImportItems' => $baseDir . '/app/Imports/ImportItems.php',

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Barn\Storekeeper\Cargo;
 
-use App\Http\Controllers\Controller;
 use App\Models\CargoModel;
-use App\Models\ProviderModel;
 use Illuminate\Http\Request;
+use App\Models\ProviderModel;
 use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Barn\Kadr\Cargo\CargoEditRequest;
+use App\Http\Requests\Barn\Kadr\Cargo\CargoCreateRequest;
 
 class CargoController extends Controller
 {
@@ -27,14 +29,24 @@ class CargoController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(CargoCreateRequest $request)
     {
+        // dd(1);
+        $filenameWithExt = $request->file('file_name')->getClientOriginalName();
+  
+        
+        $put="public/files";
+       
+        $path = $request->file('file_name')->storeAs($put,$filenameWithExt);
 
+        // dd($filenameWithExt);
         // $time=Carbon::now();
         $data=$request->all();
         // $data['name']=$data['name'].'_'."$time->day".'_'."$time->month".'_'."$time->year";
         // dd($data['name']);
-        // dd($request->come_date);     
+        // dd($request->come_date); 
+        $data['file_name']=$filenameWithExt;
+        // dd($data['file_name']);    
         $item_create=CargoModel::create($data);
 
         return redirect()->route('storekeeper_role.cargo.index');  
@@ -57,10 +69,18 @@ class CargoController extends Controller
     }
 
    
-    public function update(Request $request,CargoModel $cargo )
+    public function update(CargoEditRequest $request,CargoModel $cargo )
     {
+
+        $filenameWithExt = $request->file('file_name')->getClientOriginalName();
+        // dd($filenameWithExt);
+        
+        $put="public/files";
+       
+        $path = $request->file('file_name')->storeAs($put,$filenameWithExt);
     //    $time=Carbon::now();
        $input=$request->all();
+       $input['file_name']=$filenameWithExt;
     //    $input['name']=$input['name'].'_'."$time->day".'_'."$time->month".'_'."$time->year";
        $cargo->fill($input)->save();
        return redirect()->route('storekeeper_role.cargo.index');

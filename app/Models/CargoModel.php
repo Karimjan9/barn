@@ -17,6 +17,7 @@ class CargoModel extends Model
        'sender_id',
        'come_date',
        'active_status',
+       'file_name',
     ];
 
     protected $casts = [

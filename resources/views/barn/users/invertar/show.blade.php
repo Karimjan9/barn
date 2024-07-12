@@ -66,26 +66,30 @@ nav ul li ul li a:hover {
 <div class="page-wrapper">
     <div class="page-content">
         <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-            <div class="breadcrumb-title pe-3">Cargo</div>
+            <div class="breadcrumb-title pe-3">Jihozlar</div>
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{ route('storekeeper_role.actions.index') }}"><i class="bx bx-home-alt"></i></a>
+                        <li class="breadcrumb-item"><a href="{{ route('user_role.users_invertar.index') }}"><i class="bx bx-home-alt"></i></a>
                         </li>
                     </ol>
                 </nav>
             </div>
         </div>
-
         <div class="d-flex align-items-center">
-            <h6 class="mb-0 text-uppercase">Cargo qismi</h6>
+            <div class="ms-auto">
+                <a href="{{ route('user_role.users_invertar.index') }}" class="btn btn-primary px-3"></i>Orqaga</a>
+            </div>
+        </div>
+        <div class="d-flex align-items-center">
+            <h6 class="mb-0 text-uppercase">Jihozlar qabul qilish </h6>
         </div>
         
-        <div class="d-flex align-items-center">
+        {{-- <div class="d-flex align-items-center">
             <div class="ms-auto">
                 <a href="{{ route('storekeeper_role.cargo.create') }}" class="btn btn-primary px-3"><i class="bx bx-plus"></i>Yangi Cargo</a>
             </div>
-        </div>
+        </div> --}}
 
 
         <hr>
@@ -100,19 +104,12 @@ nav ul li ul li a:hover {
                                 <tr>
                                     <th class="fixed_header2 align-middle">#</th>
                                    
-                                    <th class="fixed_header2 align-middle">Cargo ismi</th>
+                                    <th class="fixed_header2 align-middle">Jihoz nomi </th>
                                    
-                                    <th class="fixed_header2 align-middle">Cargo sanasi</th>
+                                    <th class="fixed_header2 align-middle">Jihoz soni </th>
                                     
-                                    <th class="fixed_header2 align-middle">Jo'natuvchi</th>
-                                   
-                                    <th class="fixed_header2 align-middle" >Mulohaza</th>
-
-                                    <th class="fixed_header2 align-middle" >Biriktirilgan fayl</th>
-
-                                    <th class="fixed_header2 align-middle">O'zgartirish</th>
-
-                                    <th class="fixed_header2 align-middle">Kiritish , chiqarish</th>
+                                 
+                                    <th class="fixed_header2 align-middle">Jihoz qabul qilish</th>
 
                                     {{-- <th class="fixed_header2 align-middle">O'chirish</th> --}}
 
@@ -121,53 +118,25 @@ nav ul li ul li a:hover {
                             </thead>
                             <tbody>
                             
-                                @foreach ($cargos as $key=>$cargo)
+                                @foreach ($items as $key=>$item)
                                 <tr>
                             
                                 <td>{{ $key+1 }}</td>
 
-                                <td>{{ $cargo->name }}</td>
+                                <td>{{ $item->get_item->name }}</td>
 
-                                <td>{{ $cargo->come_date!=null ? $cargo->come_date->format('d-m-Y') :"date" }}</td>
+                                <td>{{ $item->give_item}}</td>
 
-                                <td>{{ $cargo->sender_id ?? "Berilmagan" }}</td>
 
-                                <td >{{ $cargo->description}}</td>
-
-                                <td >
-                                  @if ($cargo->file_name!=NULL)
-                                  <a class="btn btn-primary" href="{{ url("storage/files/". $cargo->file_name) }}" target="_blank">Fayl</a>
-                                  @else
-                                      {{ "Biriktirilmagan" }}
-                                  @endif
+                                <td> 
+                                    {{-- <a href="{{ route('user_role.invertar_store',['dep_id'=>$id,'item_id'=>$item->get_item->id]) }}" class="btn btn-sm btn-success text-white me-2" onclick="return confirm('Shu jihozlarni qabul qilmoqchimisiz ?');"></i>Qabul qilish</a> --}}
+                                    <form action="{{ route('user_role.invertar_store',['dep_id'=>$id,'item_id'=>$item->get_item->id]) }}" method="post" id="form-1">
+                                        @csrf
+                                        {{-- <input class="btn btn-sm btn-success confirm-button"  type="submit" value="Qabul qilish"  > --}}
+                                        <button class="btn btn-success" onclick="return confirm('Shu jihozlarni qabul qilmoqchimisiz ?');">Qabul qilish</button>
+                                    </form>
                                 </td>
-
-                                  <td> <a href="{{ route('storekeeper_role.cargo.edit',['cargo'=>$cargo->id]) }}" class="btn btn-sm btn-warning text-white me-2"></i>Cargo o'zgartirish</a></td>
                                  
-                                    {{-- <td class="d-flex align-items-center">
-                                           
-                                            <form action="" method="post">
-                                                @csrf
-                                                @method("DELETE")
-                                                <input class="btn btn-sm btn-danger confirm-button" type="submit" value="Bo'shatish">
-                                            </form>
-                                        </td> --}}
-                                        <td>
-                                          <div class="form-check form-switch">
-                                            <input class="form-check-input"  onchange   = "switch_cargo({{ $cargo->id }});" style="width:75%;height:25px;margin:0px 0px 0px 0px ;" value="{{ $cargo->id }}" type="checkbox" id={{ "flexSwitchCheckChecked"."$key" }} @if ($cargo->active_status==1)
-                                            checked  
-                                            @endif >
-                                            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-                                          </div>
-                                        </td>
-                                 
-                                  {{-- <td>
-                                    <form action="{{ route('storekeeper_role.cargo.destroy',['cargo'=>$cargo->id]) }}" method="post">
-                                      @csrf
-                                      @method("DELETE")
-                                      <input class="btn btn-sm btn-danger confirm-button"  type="submit" value="Delete cargo" onclick="return confirm('Are you sure to delete this ?');" >
-                                  </form>
-                                  </td> --}}
                                 </tr>
                             @endforeach
                                 
@@ -178,7 +147,7 @@ nav ul li ul li a:hover {
                       
                         <div class="card-body">
 
-                            {{ $cargos->links() }}
+                            {{ $items->links() }}
                         </div>
                     </div>
                  </div>
@@ -244,4 +213,5 @@ $(".sub-menu a").click(function () {
 //   switch_cargo();
 // });
 </script>
+
 @endsection

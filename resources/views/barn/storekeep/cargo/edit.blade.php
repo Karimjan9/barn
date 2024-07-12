@@ -53,7 +53,7 @@
                 <div class="card border-top border-0 border-4 border-primary">
                     <div class="card-body p-5">
 
-                        <form class="row g-3" method="post" action="{{ route('storekeeper_role.cargo.update',['cargo'=>$cargo->id])}}">
+                        <form class="row g-3" method="post" action="{{ route('storekeeper_role.cargo.update',['cargo'=>$cargo->id])}}" enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
                             <div class="col-md-8 mb-3" >
@@ -70,6 +70,10 @@
                                    
                                     <input type="date" value="{{ $cargo->come_date!=null ? $cargo->come_date->format('Y-m-d'):"2024-04-04" }}" name="come_date" class="form-control" id="date">
                                
+                            </div>
+                            <div class="col-md-8">
+                                <label for="message_body" class="form-label">Jo'natma fayli</label>
+                                <input class="form-control"  name='file_name' type="file" id="formFile" >
                             </div>
                             <div class="col-md-12">
                                 <label for="description" class="form-label">Cargo tasnifi</label>

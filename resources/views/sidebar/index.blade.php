@@ -18,7 +18,7 @@
                         <div class="parent-icon">
                             <i class='bx bx-home-circle'></i>
                         </div>
-                        <div class="menu-title">Foydalanuvchilar6</div>
+                        <div class="menu-title">Foydalanuvchilar7</div>
                     </a>
                     <ul>
                         <li>
@@ -111,6 +111,23 @@
                             <a href="#" onclick="redrect('{{ route('storekeeper_role.item_unity.index') }}')">
                                 <i class="bx bx-right-arrow-alt"></i>
                                 <div style="margin-right: 5px;">Jihoz birligi </div> 
+                                <span class="badge bg-warning text-dark"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="">
+                    <a href="javascript:;" class="has-arrow" aria-expanded="false">
+                        <div class="parent-icon">
+                            <i class='bx bx-home-circle'></i>
+                        </div>
+                        <div class="menu-title">Tugma excel uchun</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#" onclick="redrect('{{ route('storekeeper_role.command_input') }}')">
+                                <i class="bx bx-right-arrow-alt"></i>
+                                <div style="margin-right: 5px;">Jihoz modeli</div>
                                 <span class="badge bg-warning text-dark"></span>
                             </a>
                         </li>
@@ -214,13 +231,13 @@
                 <div class="parent-icon">
                     <i class='bx bx-home-circle'></i>
                 </div>
-                <div class="menu-title">Ariza berish</div>
+                <div class="menu-title">Jihozlarni qabul qilish qismi</div>
             </a>
             <ul>
                 <li>
-                    <a href="#" onclick="redrect('{{ route('user_role.users_petitions.index') }}')">
+                    <a href="#" onclick="redrect('{{ route('user_role.users_invertar.index') }}')">
                         <i class="bx bx-right-arrow-alt"></i>
-                        <div style="margin-right: 5px;">Ariza qismi</div>
+                        <div style="margin-right: 5px;">Qabul qilish qiami</div>
                         <span class="badge bg-warning text-dark"></span>
                     </a>
                 </li>
@@ -235,15 +252,15 @@
                 <div class="menu-title">Jihozlarim</div>
             </a>
             <ul>
-                <li>
-                    <a href="#" onclick="redrect('{{ route('user_role.show.devices') }}')">
+                {{-- <li>
+                    <a href="#" onclick="redrect('{{ route('user_role.users_invertar.index') }}')">
                         <i class="bx bx-right-arrow-alt"></i>
                         <div style="margin-right: 5px;">Qabul qilish</div>
                         <span class="badge bg-warning text-dark"></span>
                     </a>
-                </li>
+                </li> --}}
                 <li>
-                    <a href="#" onclick="redrect('{{ route('user_role.show.devices_users') }}')">
+                    <a href="#" onclick="redrect('{{ route('user_role.show_invertar_deps') }}')">
                         <i class="bx bx-right-arrow-alt"></i>
                         <div style="margin-right: 5px;">Mening jihozlarim</div>
                         <span class="badge bg-warning text-dark"></span>

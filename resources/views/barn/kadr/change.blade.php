@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-md-12">
                                 <label for="message_body" class="form-label">Buyruq rasmi</label>
-                            <input class="form-control" name='file' type="file" id="formFile" >
+                                <input class="form-control" name='file' type="file" id="formFile" >
                             </div>
                             <div class="col-md-12">
                              

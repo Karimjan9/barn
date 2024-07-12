@@ -277,23 +277,29 @@ Route::middleware(['auth'])->group(function () {
 
                 
 
-                Route::resource('/users_petitions', barn_user::class);
+                Route::resource('/users_invertar', barn_user::class)->only('index','show');
 
-                Route::get('/ajax_get_second_type',[barn_user::class,'get_second_types'])->name('ajax_get_second_type_for_user');
+                Route::post('/invertar_store/{dep_id}/{item_id}',[barn_user::class,'store_invertar'])->name('invertar_store');
 
-                Route::get('/petitions_list',[barn_user::class,'list_of_petition'])->name('list_petition');
+                Route::get('/show_invertar_deps',[barn_user::class,'show_invertar_deps'])->name('show_invertar_deps');
+
+                Route::get('/show_invertar_room/{room_id}',[barn_user::class,'show_invertar_room'])->name('show_invertar_room');
+
+                // Route::get('/ajax_get_second_type',[barn_user::class,'get_second_types'])->name('ajax_get_second_type_for_user');
+
+                // Route::get('/petitions_list',[barn_user::class,'list_of_petition'])->name('list_petition');
                 
-                Route::post('/petitions_store_all',[barn_user::class,'store_all'])->name('petition_store_all');
+                // Route::post('/petitions_store_all',[barn_user::class,'store_all'])->name('petition_store_all');
                 
 
-                Route::get('/devices_show',[barn_user::class,'show_devices'])->name('show.devices');
+                // Route::get('/devices_show',[barn_user::class,'show_devices'])->name('show.devices');
 
-                Route::get('/devices_show_users',[barn_user::class,'show_items_user'])->name('show.devices_users');
+                // Route::get('/devices_show_users',[barn_user::class,'show_items_user'])->name('show.devices_users');
 
 
-                Route::put('/device_update/{id}',[barn_user::class,'device_accept'])->name('show.devices_accept');
+                // Route::put('/device_update/{id}',[barn_user::class,'device_accept'])->name('show.devices_accept');
 
-                Route::put('/device_update_deny/{id}',[barn_user::class,'device_deny'])->name('show.devices_deny');
+                // Route::put('/device_update_deny/{id}',[barn_user::class,'device_deny'])->name('show.devices_deny');
             });
         });
     });

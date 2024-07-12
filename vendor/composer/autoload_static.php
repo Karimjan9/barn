@@ -688,6 +688,7 @@ class ComposerStaticInit47d22f1c68e8ac255b1a8b61e245b652
         'App\\Http\\Requests\\Barn\\Kadr\\Search\\SearchRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Kadr/Search/SearchRequest.php',
         'App\\Http\\Requests\\Barn\\Kadr\\User\\UserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Kadr/User/UserRequest.php',
         'App\\Http\\Requests\\Barn\\Rektor\\RektorCurrencyRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Rektor/RektorCurrencyRequest.php',
+        'App\\Http\\Requests\\Barn\\Rektor\\RektorDepartamentGiveItemRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Rektor/RektorDepartamentGiveItemRequest.php',
         'App\\Http\\Requests\\Barn\\SecondDataFiles\\SecondDataRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/SecondDataFiles/SecondDataRequest.php',
         'App\\Http\\Requests\\User\\UserRequestCreate' => __DIR__ . '/../..' . '/app/Http/Requests/User/UserRequestCreate.php',
         'App\\Imports\\ImportItems' => __DIR__ . '/../..' . '/app/Imports/ImportItems.php',

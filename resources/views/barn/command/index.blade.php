@@ -17,9 +17,11 @@
         </div>
         <div class="d-flex align-items-center">
             <h6 class="mb-0 text-uppercase">Akademik guruhlar</h6>
-            <div class="ms-auto">
+        {{--             
+             <div class="ms-auto">
                 <a href="{{ route('storekeeper_role.command_create') }}" class="btn btn-primary px-5">Yaratish</a>
             </div>
+             --}}
             <div class="ms-auto">
                 <button type="button" class="btn btn-success px-5" data-bs-toggle="modal" data-bs-target="#exampleExtraLargeModal">Import XLXS</button>
             </div>
