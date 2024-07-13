@@ -32,20 +32,24 @@ class CargoController extends Controller
     public function store(CargoCreateRequest $request)
     {
         // dd(1);
-        $filenameWithExt = $request->file('file_name')->getClientOriginalName();
+        $data=$request->all();
+        if ($request->file('file_name')!=null) {
+            $filenameWithExt = $request->file('file_name')->getClientOriginalName();
   
         
-        $put="public/files";
-       
-        $path = $request->file('file_name')->storeAs($put,$filenameWithExt);
+            $put="public/files";
+           
+            $path = $request->file('file_name')->storeAs($put,$filenameWithExt);
+            $data['file_name']=$filenameWithExt;
+        }
 
         // dd($filenameWithExt);
         // $time=Carbon::now();
-        $data=$request->all();
+       
         // $data['name']=$data['name'].'_'."$time->day".'_'."$time->month".'_'."$time->year";
         // dd($data['name']);
         // dd($request->come_date); 
-        $data['file_name']=$filenameWithExt;
+      
         // dd($data['file_name']);    
         $item_create=CargoModel::create($data);
 
@@ -71,16 +75,17 @@ class CargoController extends Controller
    
     public function update(CargoEditRequest $request,CargoModel $cargo )
     {
-
-        $filenameWithExt = $request->file('file_name')->getClientOriginalName();
-        // dd($filenameWithExt);
-        
-        $put="public/files";
-       
-        $path = $request->file('file_name')->storeAs($put,$filenameWithExt);
-    //    $time=Carbon::now();
-       $input=$request->all();
-       $input['file_name']=$filenameWithExt;
+        $input=$request->all();
+        if ($request->file('file_name')!=null) {
+            $filenameWithExt = $request->file('file_name')->getClientOriginalName();
+           
+            $put="public/files";
+           
+            $path = $request->file('file_name')->storeAs($put,$filenameWithExt);
+          
+           $input['file_name']=$filenameWithExt;
+        }
+     
     //    $input['name']=$input['name'].'_'."$time->day".'_'."$time->month".'_'."$time->year";
        $cargo->fill($input)->save();
        return redirect()->route('storekeeper_role.cargo.index');
