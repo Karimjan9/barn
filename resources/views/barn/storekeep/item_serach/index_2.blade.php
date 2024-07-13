@@ -127,7 +127,7 @@
                              </div>
                              <div class="col-md-8 mb-3" >
                                 <label for="full_name" class="form-label">Narxi11</label>
-                                <input  type="number" min="0.01" step="0.01" name="cost" class="form-control" id="cost" oninput="myFunctionCalc()">
+                                <input  type="number" min="0" step="0.01" name="cost" class="form-control" id="cost" oninput="myFunctionCalc()">
                              </div>
                              <br>
                              <h4>Hammasi narxi:<span id="totalPrice">0 </span>so'm </h4>
