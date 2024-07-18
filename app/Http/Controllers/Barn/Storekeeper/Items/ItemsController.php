@@ -107,7 +107,7 @@ class ItemsController extends Controller
         foreach($rows[1] as $key => $value){
         //    dd($value);
             $key=$key+1;
-            if ( $key==805 ) {
+            if ( $key>=737 && $key<=894 ) {
                 // dd(($value));
                 if($value[14]=='дона'){
                     // dd(2);
