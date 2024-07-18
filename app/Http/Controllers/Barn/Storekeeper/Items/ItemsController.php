@@ -104,13 +104,18 @@ class ItemsController extends Controller
         $rows = Excel::toArray(new ImportItems, $request->file('file_xlsx')); 
         // ProcessPodcast::dispatch($path);
         // dd($rows[0]);
-        foreach($rows[0] as $key => $value){
+        foreach($rows[1] as $key => $value){
         //    dd($value);
             $key=$key+1;
-            if ( $key>=240 && $key<=261) {
+            if ( $key==805 ) {
                 // dd(($value));
-                    ItemsModel::create(["name"=>("$value[1]".'-'."$value[2]"),"bodily"=>1,"first"=>8,"second"=>24,"unity_id"=>2,"description"=>"$value[1]".'-'."$value[2]"]);
-
+                if($value[14]=='дона'){
+                    // dd(2);
+                    ItemsModel::create(["name"=>("$value[13]"),"bodily"=>1,"first"=>7,"second"=>23,"unity_id"=>2,"description"=>"$value[13]"]);
+                }elseif ($value[14]=='комп') {
+                    // dd(3);
+                    ItemsModel::create(["name"=>("$value[13]"),"bodily"=>1,"first"=>7,"second"=>23,"unity_id"=>1,"description"=>"$value[13]"]);
+                }
             }
         //     if ($key>=21 && $key<=41) {
         //         // dd($value);
