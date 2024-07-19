@@ -136,7 +136,7 @@ nav ul li ul li a:hover {
 
                                 <td >
                                   @if ($cargo->file_name!=NULL)
-                                  <a class="btn btn-primary" href="{{ url("storage/files/". $cargo->file_name) }}" target="_blank">Fayl</a>
+                                  <a class="btn btn-primary" href="{{ url("storage/files/". $cargo->file_name) }}" target="_blank">Biriktirilgan Fayl</a>
                                   @else
                                       {{ "Biriktirilmagan" }}
                                   @endif
