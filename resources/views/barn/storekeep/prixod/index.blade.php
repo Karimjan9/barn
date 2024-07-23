@@ -71,12 +71,13 @@
                                 <th class="fixed_header2 align-middle" >Mulohaza</th>
                                 <th class="fixed_header2 align-middle" >Harakatlar</th>
 
+                                <th class="fixed_header2 align-middle" >Cargo_function</th>
 
                               
 
                                 {{-- <th class="fixed_header2 align-middle">Delete</th> --}}
 
-
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -102,6 +103,10 @@
                                         </form>
                                     </td> --}}
                               <td> <a href="{{ route('storekeeper_role.prixod.show',['prixod'=>$cargo->id]) }}" class="btn btn-sm btn-primary text-white me-2"></i>  Ko'rish   </a></td>
+                              
+                              
+                              <td> <a href="{{ route('storekeeper_role.prixod.show',['prixod'=>$cargo->id]) }}" class="btn btn-sm btn-warning text-white me-2"></i>  Func_work   </a></td>
+                              
                               {{-- <td>
                                 <form action="{{ route('storekeeper_role.type_item_take.destroy',['type_item_take'=>$item->id]) }}" method="post">
                                   @csrf
