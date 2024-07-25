@@ -58,6 +58,11 @@ nav ul li ul li a:hover {
 .sub-menu_2{
     background: #eeea11;
 }
+table{
+  display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
     </style>
 
 @endsection
@@ -94,21 +99,23 @@ nav ul li ul li a:hover {
         <div class="card radius-10">
                  <div class="card-body">
 
-                    <div class="">
-                        <table class="table table-bordered align-middle mb-0">
-                            <thead class="table-light">
+                    <div class="" >
+                        <table class="table table-bordered align-middle mb-0" >
+                            <thead class="table-light"   >
                                 <tr>
                                     <th class="fixed_header2 align-middle">#</th>
                                    
-                                    <th class="fixed_header2 align-middle">Cargo ismi</th>
+                                    <th class="fixed_header2 align-middle" >Cargo ismi</th>
                                    
                                     <th class="fixed_header2 align-middle">Cargo sanasi</th>
                                     
                                     <th class="fixed_header2 align-middle">Jo'natuvchi</th>
                                    
-                                    <th class="fixed_header2 align-middle" >Mulohaza</th>
+                                    <th class="fixed_header2 align-middle"  >Mulohaza</th>
 
-                                    <th class="fixed_header2 align-middle" >Biriktirilgan fayl</th>
+                                    <th class="fixed_header2 align-middle" >Shartnoma</th>
+
+                                     <th class="fixed_header2 align-middle" >Shot-faktura</th>
 
                                     <th class="fixed_header2 align-middle">O'zgartirish</th>
 
@@ -135,8 +142,15 @@ nav ul li ul li a:hover {
                                 <td >{{ $cargo->description}}</td>
 
                                 <td >
-                                  @if ($cargo->file_name!=NULL)
-                                  <a class="btn btn-primary" href="{{ url("storage/files/". $cargo->file_name) }}" target="_blank">Biriktirilgan Fayl</a>
+                                  @if ($cargo->file_contract!=NULL)
+                                  <a class="btn btn-primary" href="{{ url("storage/files/contracts/". $cargo->file_contract) }}" target="_blank">Biriktirilgan Fayl</a>
+                                  @else
+                                      {{ "Biriktirilmagan" }}
+                                  @endif
+                                </td>
+                                <td >
+                                  @if ($cargo->file_faktura!=NULL)
+                                  <a class="btn btn-primary" href="{{ url("storage/files/faktura/". $cargo->file_faktura) }}" target="_blank">Biriktirilgan Fayl</a>
                                   @else
                                       {{ "Biriktirilmagan" }}
                                   @endif

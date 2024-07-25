@@ -19,16 +19,20 @@ class CargoCreateRequest extends FormRequest
      */
     public function rules()
     {
+        
         return [
-            'file_name'=>['mimes:pdf,doc,docx','max:5120'],
+            'file_contract'=>['mimes:pdf,doc,docx','max:5120'],
+            'file_faktura'=>['mimes:pdf,doc,docx','max:5120'],
         ];
     }
 
     public function messages()
     {
         return [
-            'file_name.mimes' => 'Fayl formati xato!',
-            'file_name.max'=>"Fayl hajmi oshib ketdi!",
+            'file_contract.mimes' => 'Shartnoma formati xato!',
+            'file_contract.max'=>"Shartnoma hajmi oshib ketdi!",
+            'file_faktura.mimes' => 'Shot Faktura formati xato!',
+            'file_faktura.max'=>"Shot Faktura hajmi oshib ketdi!",
         ];
     }
 }

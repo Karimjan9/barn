@@ -72,8 +72,14 @@
                                
                             </div>
                             <div class="col-md-8">
-                                <label for="message_body" class="form-label">Jo'natma fayli</label>
-                                <input class="form-control"  name='file_name' type="file" id="formFile" >
+                                <label for="message_body" class="form-label">Shartnoma</label>
+                                <input class="form-control" name='file_contract' type="file" id="formFile" >
+                            </div>
+
+                            
+                            <div class="col-md-8">
+                                <label for="message_body" class="form-label">Shot faktura</label>
+                                <input class="form-control" name='file_faktura' type="file" id="formFile" >
                             </div>
                             <div class="col-md-12">
                                 <label for="description" class="form-label">Cargo tasnifi</label>

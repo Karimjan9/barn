@@ -194,8 +194,8 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::get('/selected_item_departament/{selected_id}',[SearchController::class,'selected_item_departament'])->name('selected_item_departament');
 
-                
 
+                
             }); 
         });
         Route::prefix('storekeeper/ajax')->group(function () {

@@ -62,6 +62,8 @@ return array(
     'App\\Http\\Requests\\Barn\\Career\\CreateCareerRequest' => $baseDir . '/app/Http/Requests/Barn/Career/CreateCareerRequest.php',
     'App\\Http\\Requests\\Barn\\Career\\EditCareerRequest' => $baseDir . '/app/Http/Requests/Barn/Career/EditCareerRequest.php',
     'App\\Http\\Requests\\Barn\\Kadr\\Career\\CareerFileRequest' => $baseDir . '/app/Http/Requests/Barn/Kadr/Career/CareerFileRequest.php',
+    'App\\Http\\Requests\\Barn\\Kadr\\Cargo\\CargoCreateRequest' => $baseDir . '/app/Http/Requests/Barn/Kadr/Cargo/CargoCreateRequest.php',
+    'App\\Http\\Requests\\Barn\\Kadr\\Cargo\\CargoEditRequest' => $baseDir . '/app/Http/Requests/Barn/Kadr/Cargo/CargoEditRequest.php',
     'App\\Http\\Requests\\Barn\\Kadr\\File\\FileRequest' => $baseDir . '/app/Http/Requests/Barn/Kadr/File/FileRequest.php',
     'App\\Http\\Requests\\Barn\\Kadr\\Search\\ItemSearchRequest' => $baseDir . '/app/Http/Requests/Barn/Kadr/Search/ItemSearchRequest.php',
     'App\\Http\\Requests\\Barn\\Kadr\\Search\\SearchRequest' => $baseDir . '/app/Http/Requests/Barn/Kadr/Search/SearchRequest.php',

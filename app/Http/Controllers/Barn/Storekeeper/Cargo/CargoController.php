@@ -33,16 +33,24 @@ class CargoController extends Controller
     {
         // dd(1);
         $data=$request->all();
-        if ($request->file('file_name')!=null) {
-            $filenameWithExt = $request->file('file_name')->getClientOriginalName();
+        if ($request->file('file_contract')!=null) {
+            $filenameWithExt = $request->file('file_contract')->getClientOriginalName();
   
         
-            $put="public/files";
+            $put="public/files/contracts/";
            
-            $path = $request->file('file_name')->storeAs($put,$filenameWithExt);
-            $data['file_name']=$filenameWithExt;
+            $path = $request->file('file_contract')->storeAs($put,$filenameWithExt);
+            $data['file_contract']=$filenameWithExt;
         }
-
+        if ($request->file('file_faktura')!=null) {
+            $filenameWithExt = $request->file('file_faktura')->getClientOriginalName();
+  
+        
+            $put="public/files/faktura/";
+           
+            $path = $request->file('file_faktura')->storeAs($put,$filenameWithExt);
+            $data['file_faktura']=$filenameWithExt;
+        }
         // dd($filenameWithExt);
         // $time=Carbon::now();
        
@@ -76,14 +84,23 @@ class CargoController extends Controller
     public function update(CargoEditRequest $request,CargoModel $cargo )
     {
         $input=$request->all();
-        if ($request->file('file_name')!=null) {
-            $filenameWithExt = $request->file('file_name')->getClientOriginalName();
+        if ($request->file('file_contract')!=null) {
+            $filenameWithExt = $request->file('file_contract')->getClientOriginalName();
            
-            $put="public/files";
+            $put="public/files/contracts/";
            
-            $path = $request->file('file_name')->storeAs($put,$filenameWithExt);
+            $path = $request->file('file_contract')->storeAs($put,$filenameWithExt);
           
-           $input['file_name']=$filenameWithExt;
+           $input['file_contract']=$filenameWithExt;
+        }
+        if ($request->file('file_faktura')!=null) {
+            $filenameWithExt = $request->file('file_faktura')->getClientOriginalName();
+           
+            $put="public/files/faktura/";
+           
+            $path = $request->file('file_faktura')->storeAs($put,$filenameWithExt);
+          
+           $input['file_faktura']=$filenameWithExt;
         }
      
     //    $input['name']=$input['name'].'_'."$time->day".'_'."$time->month".'_'."$time->year";

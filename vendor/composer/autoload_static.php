@@ -683,6 +683,8 @@ class ComposerStaticInit47d22f1c68e8ac255b1a8b61e245b652
         'App\\Http\\Requests\\Barn\\Career\\CreateCareerRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Career/CreateCareerRequest.php',
         'App\\Http\\Requests\\Barn\\Career\\EditCareerRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Career/EditCareerRequest.php',
         'App\\Http\\Requests\\Barn\\Kadr\\Career\\CareerFileRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Kadr/Career/CareerFileRequest.php',
+        'App\\Http\\Requests\\Barn\\Kadr\\Cargo\\CargoCreateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Kadr/Cargo/CargoCreateRequest.php',
+        'App\\Http\\Requests\\Barn\\Kadr\\Cargo\\CargoEditRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Kadr/Cargo/CargoEditRequest.php',
         'App\\Http\\Requests\\Barn\\Kadr\\File\\FileRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Kadr/File/FileRequest.php',
         'App\\Http\\Requests\\Barn\\Kadr\\Search\\ItemSearchRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Kadr/Search/ItemSearchRequest.php',
         'App\\Http\\Requests\\Barn\\Kadr\\Search\\SearchRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Barn/Kadr/Search/SearchRequest.php',

@@ -69,7 +69,10 @@
                                 <th class="fixed_header2 align-middle">Yetkazib beruvchi</th>
      
                                 <th class="fixed_header2 align-middle" >Mulohaza</th>
-                                <th class="fixed_header2 align-middle" >Biriktirilgan fayl</th>
+
+                                <th class="fixed_header2 align-middle" >Shartnoma</th>
+
+                                <th class="fixed_header2 align-middle" >Shot-faktura</th>
 
                                 <th class="fixed_header2 align-middle" >Harakatlar</th>
 
@@ -89,8 +92,8 @@
                             <td>{{ $all_inf[$key][2]->name ?? "kiritilmagan"}}</td>
                             <td>{{ $cargo->description}}</td>
                             <td >
-                                @if ($cargo->file_name!=NULL)
-                                <a class="btn btn-primary" href="{{ url("storage/files/". $cargo->file_name) }}" target="_blank">Biriktirilgan Fayl</a>
+                                @if ($cargo->file_contract!=NULL)
+                                <a class="btn btn-primary" href="{{ url("storage/files/file_contract/". $cargo->file_contract) }}" target="_blank">Biriktirilgan Fayl</a>
                                 @else
                                     {{ "Biriktirilmagan" }}
                                 @endif
