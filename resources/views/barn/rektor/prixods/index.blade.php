@@ -19,6 +19,12 @@
     margin: 10px 0 0 5px;
     font-size: 20px;
 }
+
+table{
+  display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
     </style>
 
 @endsection
@@ -93,7 +99,14 @@
                             <td>{{ $cargo->description}}</td>
                             <td >
                                 @if ($cargo->file_contract!=NULL)
-                                <a class="btn btn-primary" href="{{ url("storage/files/file_contract/". $cargo->file_contract) }}" target="_blank">Biriktirilgan Fayl</a>
+                                  <a class="btn btn-primary" href="{{ url("storage/files/contracts/". $cargo->file_contract) }}" target="_blank">Biriktirilgan Fayl</a>
+                                  @else
+                                      {{ "Biriktirilmagan" }}
+                                  @endif
+                              </td>
+                              <td >
+                                @if ($cargo->file_faktura!=NULL)
+                                <a class="btn btn-primary" href="{{ url("storage/files/faktura/". $cargo->file_faktura) }}" target="_blank">Biriktirilgan Fayl</a>
                                 @else
                                     {{ "Biriktirilmagan" }}
                                 @endif
