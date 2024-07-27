@@ -61,7 +61,8 @@ nav ul li ul li a:hover {
 table{
   display: block;
     overflow-x: auto;
-    white-space: nowrap;
+    /* white-space: nowrap; */
+    table-layout:fixed;
 }
     </style>
 
@@ -105,13 +106,13 @@ table{
                                 <tr>
                                     <th class="fixed_header2 align-middle">#</th>
                                    
-                                    <th class="fixed_header2 align-middle" >Cargo ismi</th>
+                                    <th style="word-break:break-all;" >Cargo ismi</th>
                                    
                                     <th class="fixed_header2 align-middle">Cargo sanasi</th>
                                     
                                     <th class="fixed_header2 align-middle">Jo'natuvchi</th>
                                    
-                                    <th class="fixed_header2 align-middle"  >Mulohaza</th>
+                                    <th  style="word-break:break-all;" >Mulohaza</th>
 
                                     <th class="fixed_header2 align-middle" >Shartnoma</th>
 
@@ -133,13 +134,23 @@ table{
                             
                                 <td>{{ $key+1 }}</td>
 
-                                <td>{{ $cargo->name }}</td>
+                                <td >
+                                  
+                                  <div style="word-break:break-word;width:150px;">
+                                    {{ $cargo->name }}
+                                  </div>
+                             
+                                </td>
 
                                 <td>{{ $cargo->come_date!=null ? $cargo->come_date->format('d-m-Y') :"date" }}</td>
 
                                 <td>{{ $cargo->sender_id ?? "Berilmagan" }}</td>
 
-                                <td >{{ $cargo->description}}</td>
+                                <td >
+                                  <div style="word-break:break-word;width:150px;">
+                                    {{ $cargo->description}}
+                                  </div>
+                                </td>
 
                                 <td >
                                   @if ($cargo->file_contract!=NULL)
