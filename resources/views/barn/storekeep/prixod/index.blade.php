@@ -86,12 +86,21 @@
                             <tr>
                         
                             <td>{{ $key+1 }}</td>
-                            <td>{{ $cargo->name }}</td>
+                            <td>
+                                <div style="word-break:break-word;width:150px;">
+                                    {{ $cargo->name }}
+                                  </div>
+                             
+                            </td>
                             <td>{{  number_format($all_inf[$key][0],2,","," ") }} so'm</td>
                             <td>{{ $all_inf[$key][1]}}</td>
                             <td>{{  number_format($all_inf[$key][3],2,","," ")}}</td>
                             <td>{{ $all_inf[$key][2]->name ?? "kiritilmagan"}}</td>
-                            <td>{{ $cargo->description}}</td>
+                            <td>
+                                <div style="word-break:break-word;width:150px;">
+                                    {{ $cargo->description}}
+                                  </div>
+                            </td>
                                 
 
                             {{-- <td class="d-flex align-items-center">
