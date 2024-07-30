@@ -49,7 +49,7 @@ class DepartamentUpdateController extends Controller
     {
         $departament=DepartmentKafedraModel::where('id','=',$id)->first();
         // dd($departament);
-        $users=User::where('level_id',6)->get();
+        $users=User::where('level_id',6)->orderByDesc('id')->get();
         // dd($users);
         $buildings=BuildingModel::get();
         return view('barn.departament_update.edit',compact('departament','users','buildings'));
