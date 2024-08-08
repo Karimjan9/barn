@@ -4,7 +4,7 @@
             <img src="{{ url('logo-icon.png') }}"  class="logo-icon" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">{{ config('app.name') }}</h4>
+            <h4 class="logo-text">{{ "Barn Manager" }}</h4>
         </div>
         <div class="toggle-icon ms-auto">
             <i class='bx bx-arrow-to-left'></i>
@@ -18,7 +18,7 @@
                         <div class="parent-icon">
                             <i class='bx bx-home-circle'></i>
                         </div>
-                        <div class="menu-title">Foydalanuvchilar9</div>
+                        <div class="menu-title">Foydalanuvchilar1</div>
                     </a>
                     <ul>
                         <li>
@@ -66,6 +66,7 @@
                                 <div style="margin-right: 5px;">Cargo</div>
                                 <span class="badge bg-warning text-dark"></span>
                             </a>
+                
                         </li>
                         <li>
                             <a href="#" onclick="redrect('{{ route('storekeeper_role.provider.index') }}')">
@@ -237,7 +238,7 @@
                 <li>
                     <a href="#" onclick="redrect('{{ route('user_role.users_invertar.index') }}')">
                         <i class="bx bx-right-arrow-alt"></i>
-                        <div style="margin-right: 5px;">Qabul qilish qiami</div>
+                        <div style="margin-right: 5px;">Qabul qilish qismi</div>
                         <span class="badge bg-warning text-dark"></span>
                     </a>
                 </li>
@@ -266,6 +267,13 @@
                         <span class="badge bg-warning text-dark"></span>
                     </a>
                 </li>
+                <li>
+                    <a href="#" onclick="redrect('{{ route('user_role.show_repair_items') }}')">
+                        <i class="bx bx-right-arrow-alt"></i>
+                        <div style="margin-right: 5px;">Tamirdagi jihozlar</div>
+                        <span class="badge bg-warning text-dark"></span>
+                    </a>
+                </li>
                 {{-- <li>
                     <a href="#" onclick="redrect('{{ route('kadr_role.command.index',['order_id'=>2]) }}')">
                         <i class="bx bx-right-arrow-alt"></i>
@@ -275,6 +283,7 @@
                 </li> --}}
             </ul>
         </li>
+        
   
         @endrole
         @role('rektor')

@@ -285,6 +285,10 @@ Route::middleware(['auth'])->group(function () {
 
                 Route::get('/show_invertar_room/{room_id}',[barn_user::class,'show_invertar_room'])->name('show_invertar_room');
 
+                Route::get('/get_item/to_repair/{item_id}/{room_id}',[barn_user::class,'get_to_repair'])->name('get_to_repair');
+
+                Route::get('/show_repair_items',[barn_user::class,'show_repair_items'])->name('show_repair_items');
+
                 // Route::get('/ajax_get_second_type',[barn_user::class,'get_second_types'])->name('ajax_get_second_type_for_user');
 
                 // Route::get('/petitions_list',[barn_user::class,'list_of_petition'])->name('list_petition');

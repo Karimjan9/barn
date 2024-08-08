@@ -16,6 +16,10 @@ class GiveItemModel extends Model
         'item_id',
         'status',
         'dep_id',
+        'repair_count',
+        'repair_status',
+        'repair_allow_status',
+        'repair_allow_user'
         
     ];
     public function get_item(){
@@ -30,5 +34,9 @@ class GiveItemModel extends Model
     public function get_departament_has_many()
     {
         return $this->hasmany(DepartmentKafedraModel::class,'id','dep_id');
+    }
+
+    public function get_allow_user(){
+        return $this->belongsTo(User::class,'repair_allow_user','id');
     }
 }

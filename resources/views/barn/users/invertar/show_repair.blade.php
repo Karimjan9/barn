@@ -77,12 +77,12 @@ nav ul li ul li a:hover {
             </div>
         </div>
         <div class="d-flex align-items-center">
-            <div class="ms-auto">
+            {{-- <div class="ms-auto">
                 <a href="{{ route('user_role.show_invertar_deps') }}" class="btn btn-primary px-3"></i>Orqaga</a>
-            </div>
+            </div> --}}
         </div>
         <div class="d-flex align-items-center">
-            <h6 class="mb-0 text-uppercase">Qabul qilingan jihozlar </h6>
+            <h6 class="mb-0 text-uppercase">Tamirga berilgan jihozlar </h6>
         </div>
         
         {{-- <div class="d-flex align-items-center">
@@ -109,43 +109,56 @@ nav ul li ul li a:hover {
                                     <th class="fixed_header2 align-middle">Jihoz soni </th>
                                     
                                  
-                                    <th class="fixed_header2 align-middle">Jihoz qabul qilish</th>
+                                    <th class="fixed_header2 align-middle">Jihoz berilgan xona</th>
 
-                                    <th class="fixed_header2 align-middle">Jihozni tamirlashga berish</th>
+                                    <th class="fixed_header2 align-middle">Jihoz statusi</th>
+
+                                    <th class="fixed_header2 align-middle">Tamir uchun ruxsat</th>
+
+                                    <th class="fixed_header2 align-middle">Ruxsat bergan shahs</th>
 
 
                                 </tr>
                             </thead>
                             <tbody>
                             
-                                @foreach ($items as $key=>$item)
-                                {{-- @dd($item) --}}
-                                <tr>
-                            
-                                <td>{{ $key+1 }}</td>
+                                @foreach ($repairs as $key=>$repair)
+                                    {{-- @dd($repair) --}}
+                                    <tr>
+                                
+                                    <td>{{ $key+1 }}</td>
 
-                                <td>{{ $item->get_item->name }}</td>
+                                    <td>{{ $repair->get_item->name }}</td>
 
-                                <td>{{ $item->give_item}}</td>
+                                    <td>{{ $repair->id}}</td>
 
+                                    <td>{{ $repair->get_departament_belong->name}}</td>
+                                    <td> 
 
-                                <td> 
+                                        {{-- <a href="" class="btn btn-sm btn-success text-white me-2" aria-disabled="true" role="button" data-bs-toggle="button"></i>Qabul qilingan</a> --}}
+                                        <button type="button" class="btn btn-success btn-lg" disabled>Tamirga berilgan</button>
+
+                                    </td>
+                                   <td>
+                                    @if ($repair->repair_allow_status==0)
+
+                                        <button type="button" class="btn btn-secondary btn-lg" disabled>Hali ko'rilmagan</button>
+                                    @elseif ($repair->repair_allow_status==1)
+                                        <button type="button" class="btn btn-success btn-lg" disabled>Qabul qilindi</button>
+                                    @elseif ($repair->repair_allow_status==2)
+                                        <button type="button" class="btn btn-danger btn-lg" disabled>Rad etildi</button>
+                                    @endif
+                                   </td>
+                                   <td>
+                                    @if ($repair->repair_allow_user==0)
+                                        Mavjud emas
+                                    @else
+                                    {{ $repair->get_allow_user->full_name }}
+                                    @endif
                                   
-                              
-                                    {{-- <a href="" class="btn btn-sm btn-success text-white me-2" aria-disabled="true" role="button" data-bs-toggle="button"></i>Qabul qilingan</a> --}}
-                                    <button type="button" class="btn btn-success btn-lg" disabled>Qabul qilingan</button>
-                                    {{-- <form action="{{ route('user_role.invertar_store',['dep_id'=>$id,'item_id'=>$item->get_item->id]) }}" method="post" id="form-1">
-                                        @csrf --}}
-                                        {{-- <input class="btn btn-sm btn-success confirm-button"  type="submit" value="Qabul qilish"  > --}}
-                                        {{-- <button class="btn btn-success" disabled>Qabul qilingan</button>
-                                    </form> --}}
-                                </td>
-                                <td>
-                                    <a href="{{ route('user_role.get_to_repair',['item_id'=>$item->id,'room_id'=>$room_id]) }}" class="btn btn-warning " onclick="return confirm('Jihozni tamirashga bermoqchimisiz ?');"></i>  Tamirlashga berish  </a>
-                                </td>
-                                 
-                                </tr>
-                            @endforeach
+                                   </td>
+                                    </tr>
+                                @endforeach
                                 
 
     
@@ -154,7 +167,7 @@ nav ul li ul li a:hover {
                       
                         <div class="card-body">
 
-                            {{ $items->links() }}
+                            {{ $repairs->links() }}
                         </div>
                     </div>
                  </div>

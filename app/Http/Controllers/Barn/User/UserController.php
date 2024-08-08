@@ -71,19 +71,35 @@ class UserController extends Controller
   {
     $items=GiveItemModel::with('get_item')
     ->where('status','=',2)
+    ->where('repair_status','!=',1)
     ->where('dep_id','=',$room_id)
-    ->selectRaw('(item_id) as item_id,count(item_id) as give_item,(give_item.status) as status')
-    ->groupBy('give_item.item_id','give_item.status')
+    ->selectRaw('id as id,(item_id) as item_id,count(item_id) as give_item,(give_item.status) as status')
+    ->groupBy('give_item.item_id','give_item.status','id')
     ->paginate(20);
     // dd($items);
-    return view('barn.users.invertar.accept_item_show',compact('items'));
+    return view('barn.users.invertar.accept_item_show',compact('items','room_id'));
   }
    
 
-
+  public function get_to_repair($item_id,$room_id)
+  {
+    // dd($room_id);
+    $item=GiveItemModel::where('id',$item_id)->first();
+    // dd($item);
+    $count=$item->repair_count+1;
+    GiveItemModel::where('id','=',$item_id)
+    ->update(['repair_count'=>$count,'repair_status'=>1]);
+    return to_route('user_role.show_invertar_room',['room_id'=>$room_id]);
+  }
    
 
-
+  public function show_repair_items()
+  {
+    // dd();
+    $repairs=GiveItemModel::with(['get_item','get_departament_belong'])->where('user_id',Auth()->id())->where('repair_status',1)->paginate(15);
+    // dd($repairs);
+    return view('barn.users.invertar.show_repair',compact('repairs'));
+  }
  
 
 
